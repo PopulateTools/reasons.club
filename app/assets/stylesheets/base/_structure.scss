@@ -1,0 +1,19 @@
+/*
+ * Base styles for structure
+ * 
+ */
+
+.container {
+  margin: auto;
+  width: 90%;
+}
+
+.col-1-2 {
+  width: 50%;
+  float: left;
+}
+.col-2-2 {
+  width: 50%;
+  float: right;
+}
+

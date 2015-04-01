@@ -1,0 +1,37 @@
+/*
+ *
+ * Form layout
+ * -----------
+ *
+ * Put here any styles applied to form layout.
+ *
+ */
+
+
+.form {
+  // TBD
+}
+
+
+.form-group {
+  @extend %clearfix;
+}
+
+.form-label {
+  width: 100%;
+
+  &.uppercase {
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+}
+
+.form-fields {
+  // TBD
+
+  &.solid {
+    font-size: 12px;
+    line-height: 1.5em;
+    padding: 9px 14px;
+  }
+}

@@ -1,0 +1,19 @@
+/*
+ *
+ *  Percent
+ *  -------
+ *
+ *  Width in percents for all elements. Supported values are 5% to 100% in steps of 5%.
+ *
+ *   <div class="five percent">5% width</div>
+ *   <div class="thirty percent">30% width</div>
+ *
+ */
+
+.percent {
+  @for $i from 1 through 20 {
+    &.#{number-to-width-unit($i)} {
+      width: width-unit-to-percent($i) !important;
+    }
+  }
+}

@@ -1,0 +1,102 @@
+/*
+
+Functions
+---------
+
+Calculations used by other SCSS files. If you need to DRY-up some CSS properties
+put that code in `core/_mixins.scss`, this is only for functions.
+
+*/
+
+@function number-to-width-unit($num) {
+  $count: 1;
+
+  @each $word in five, ten, fifteen, twenty,
+  twentyfive, thirty, thirtyfive, forty, fortyfive, 
+  fifty, fiftyfive, sixty, sixtyfive, seventy, seventyfive, 
+  eighty, eightyfive, ninety, ninetyfive, hundred {
+    @if ($count == $num) { @return $word; }
+    $count: $count + 1;
+  }
+
+  @return "invalid";
+}
+
+@function width-unit-to-percent($num) {
+  @return ($num * 5%);
+}
+
+
+// breakpoints
+
+$S:     600px;
+$M:     768px;
+$L:     1170px;
+$XL:     1400px;  
+
+// media queries
+// look at http://paranoida.github.io/sass-mediaqueries/
+
+@mixin MQ($canvas) {
+  @if $canvas == S {
+   @media only screen and (max-width: $S) { @content; } 
+  }
+  @else if $canvas == M {
+   @media only screen and (max-width: $M) { @content; } 
+  }
+  @else if $canvas == L {
+   @media only screen and (max-width: $L) { @content; } 
+  }
+  @else if $canvas == XL {
+   @media only screen and (max-width: $XL) { @content; } 
+  }
+}
+/*
+Use:
+
+html {
+  font-size: 65%;
+ 
+  @include MQ(XS) {
+    font-size: 75%;
+  }
+ 
+  @include MQ(S) {
+    font-size: 85%;
+  }
+}
+
+*/
+
+// rem fallback - credits: http://zerosixthree.se/
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+// center vertically and/or horizontally an absolute positioned element
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    @include transform(translateY(-50%));
+  }
+}

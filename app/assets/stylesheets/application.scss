@@ -1,0 +1,233 @@
+/* 
+ * 1. Core
+ * -------
+ *
+ * Any module relative to app configuration it should be here. This includes the global reset for common ground
+ * in all browsers, any custom reset we want to apply, all variables the app uses, sass functions and mixins...
+ *
+ */
+
+@import "core/settings";
+@import "core/functions";
+@import "core/mixins";
+@import "core/reset";
+
+/* 
+ * 2. Base
+ * -------
+ *
+ * All base styles for the app will be under base folder. This includes fonts, regular styles for headings, 
+ * paragraphs, lists, links, etc.
+ *
+ */
+
+@import "base/structure";
+@import "base/fonts";
+@import "base/base";
+@import "base/links";
+@import "base/lists";
+@import "base/label";
+
+/* 
+ * 3. Helpers
+ * ----------
+ *
+ * Utility classes, like to clearfix the floats or align text. This follows the single responsability principle.
+ *
+ */
+
+@import "helpers/clearfix";
+@import "helpers/is-hidden";
+@import "helpers/percent";
+@import "helpers/font-sizes";
+@import "helpers/white-spacing";
+@import "helpers/colors";
+@import "helpers/layout";
+
+/* 
+ * 4. Objects
+ * ----------
+ *
+ * We want reusable modules that they could be applied repeatedly on different pages. This alignes with
+ * the DRY principle
+ *
+ */
+
+@import "objects/form";
+@import "objects/form-fields";
+@import "objects/buttons";
+@import "objects/justify-columns";
+@import "objects/content";
+
+/* 
+ * 5. Layout
+ * ---------
+ *
+ * Sometimes it happens you need to overwrite some components' behaviour. This should be an exception, and if you 
+ * find yourself overwriting any component twice, we are probably doing wrong.
+ *
+ */
+
+
+/* 
+ * 6. Vendors
+ * ----------
+ *
+ * Any vendor styles, usually linked to jquery plugins or javascripts, should go here.
+ *
+ */
+
+@import "vendor/tipsy";
+
+/* 
+
+Prefer components over page level styles, for large term maintenability reasons mostly. We want our front end to 
+feel like library code. We should start to break files like this into smaller more focused files like 
+form.scss, button.scss, tags.scss, dropdown.css, etc.
+*/
+
+
+/* pending to see where we put this */
+
+/*
+ * Page elements: header, footer...
+ *
+ */
+body > header /* .main-header */ {
+  margin-bottom: 1.5em;
+  padding: 1em 2em;
+  position: relative;
+  background: $header_background;
+  @include box-shadow(2px, 2px, 5px, #CCC);
+  
+  .logo, .tagline {
+    font-size: .8em;
+    display: inline-block;
+    padding-right: 1em;
+    color: $header_text;
+  }
+  .logo {
+    a {
+      color: $header_text;
+      text-decoration: none;
+      span {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: $logo;
+      }
+    }
+  }
+  
+  #controls {
+    position: absolute;
+    top: .7em;
+    right: 1em;
+    text-align: right;
+
+    a {
+      @include border-radius(5px);
+      display: inline-block;
+      padding: 6px 8px 7px;
+      background: $layout_soft;
+      color: $layout_main;
+      width: 18px;
+      overflow: hidden;
+      text-align: center;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+  }
+
+}
+
+/*
+ * Issue page
+ *
+ */
+
+.issue, .reason { 
+  /*border: 1px solid #CCC;*/
+}
+.issue {
+  > header {
+    // @include border-radius(8px);
+    // background: $color_neutral_background;
+    color: $color_neutral_main;
+
+
+    h1 {
+      font-size: 2em;
+      margin: 0 0 5px 0;
+    }
+    .description {
+      font-size: .85em;
+      width: 85%;
+      opacity: .8;
+      margin: 0 0 2em 0;
+    }
+  }
+}
+.reason {
+  position: relative;
+  padding-left: 65px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  h2 {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    a {
+      text-decoration: none;
+      @include transition;
+    }
+  }
+  .vote {
+    position: absolute;
+    left: 0;
+  }
+  .tools {
+    font-size: .75em;
+  }
+}
+.reasons-for {
+  background: $color_for_background;
+  @include border-radius($top-left:5px, $bottom-left:8px);
+  a {
+    color: $color_for_dark;
+    &:hover {
+      background: darken($color_for_soft, 10%);
+    }
+  }
+  .tools {
+    color: lighten($color_for_dark, 30%);
+  }
+  header {
+    text-transform: uppercase;
+    color: $color_for_main;
+  }
+}
+.reasons-against {
+  background: $color_against_background;
+  @include border-radius($top-right:5px, $bottom-right:8px);
+  a {
+    color: $color_against_dark;
+    &:hover {
+      background: darken($color_against_soft, 10%);
+    }
+  }
+  .tools {
+    color: lighten($color_against_main, 20%);
+  }
+  header {
+    text-transform: uppercase;
+    color: $color_against_main;
+  }
+}
+.reasons-list header div {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+// Overwriting image for asset_pipeline -> there is probably a better way
+.tipsy .tipsy-arrow { background-image: url(image_path('tipsy.gif')) !important }
+

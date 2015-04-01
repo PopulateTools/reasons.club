@@ -1,0 +1,53 @@
+/*
+
+Put here all variables the app is going to use. 
+
+*/
+
+$default-border-radius: 3px;
+
+/*
+ *
+ * Colors
+ * ------
+ *
+ */
+
+/* Theme:; Origins */
+$color_for_main: #2DBE9E;
+$color_for_background: #D7F1EB;
+$color_for_soft: #B5E4D9;
+$color_for_dark: #155141; 
+
+$color_against_main: #FC723E;
+$color_against_background: #FCDBD0;
+$color_against_soft: #FCC6B3;
+$color_against_dark: #712C19;
+
+$color_neutral_main: #333C4D;
+$color_neutral_background: #EAEBED;
+
+
+/* App colors */
+$layout_soft: #F6EABB;
+$layout_main: #AA933F;
+$header_background: #F9F2D5;
+$header_text: #928038;
+$logo: #FF9900;
+
+/*
+ *
+ * Fonts
+ * -----
+ *
+ */
+
+$font-base: "Source Sans Pro", Arial, sans-serif;
+$font-form: Arial, sans-serif;
+
+
+
+
+/* to remove */
+$light_background: #ADADAD;
+$main-color: red;

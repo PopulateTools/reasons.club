@@ -1,0 +1,17 @@
+/*
+
+Clear floats easily. Put this class in the parent of floated children and keep pushing.
+
+*/
+
+.clearfix, %clearfix {
+
+  &:after, &:before {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}

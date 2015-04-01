@@ -1,0 +1,2 @@
+class ReasonsController < ApplicationController
+end

@@ -1,0 +1,14 @@
+/*
+
+Font size helpers
+-----------------
+
+Use this to modify the default font size of an element.
+
+*/
+
+@for $i from 10 through 20 {
+    .s#{$i} {
+        font-size: #{$i}px;
+    }
+}

@@ -1,0 +1,108 @@
+/*
+$color_for-main: #2DBE9E;
+$color_for-background: #D7F1EB;
+$color_for-dark: #155141; 
+*/
+
+.btn-vote {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 41px;
+  text-align: center;
+  font-size: .9em;
+  
+  a {
+    display: block;
+    padding: 19px 0 3px 0;
+    text-decoration: none;
+    @include transition;
+    @include border-radius(3px);
+    box-sizing: border-box;
+    background: $color_for_soft;
+    border-bottom: 2px solid $color_for_main;
+  
+    &:hover {
+      cursor: pointer;
+      background: darken($color_for_soft, 10%);
+      @include border-radius(3px);
+    }
+  }
+  
+}
+.btn-triangle {
+  position: absolute;
+  top: 7px;
+  right: 15px;
+}
+.reasons-for .btn-vote.active a, .reasons-against .btn-vote.active a {
+  background: $color_for_main;
+  color: #FFF;
+
+  a {
+    color: #FFF;
+  }
+}
+.reasons-for .btn-vote {
+  a {
+    color: $color_for_main;
+  }
+}
+.reasons-against .btn-vote a {
+  background: $color_against_soft; 
+  border-bottom: 2px solid $color_against_main;
+  color: $color_against_main;
+  &:hover {
+    background: darken($color_against_soft, 10%);
+  }
+}
+.reasons-against .btn-vote.active a {
+  background: $color_against_main;
+}
+.reasons-for .btn-triangle {
+  @include triangle('up', 8px, $color_for_main);
+}
+.reasons-against .btn-triangle {
+  @include triangle('up', 8px, $color_against_main);
+}
+.reasons-for .active .btn-triangle, .reasons-against .active .btn-triangle {
+  @include triangle('up', 8px, #FFF);
+}
+
+
+/* ToDo: substitute .button with .btn 
+a.button, .donation a.button, a.button:visited, .donation a.button:visited { text-decoration: none; color: #FFF; }
+.btn, button, .button, a.button, input[type='submit'] { 
+  background: $main-color; 
+  color: #FFF;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: .6em 2em .4em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 0;
+  border-bottom: 2px solid darken($main-color, 10%);
+  transition: all 0.3s ease 0s;
+  font-size: 1em; 
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+    background: darken($main-color, 3%);
+  }
+}
+a.button.not_active {
+  background: darken($light_background, 10%);
+  color: $main_color;
+  border-bottom-color: $main_color;
+}
+a.button.not_active:hover {
+  background: darken($light_background, 20%);
+  color: darken($main_color, 10%);
+}
+
+.btn-secondary {
+  opacity: .5;
+}
+*/

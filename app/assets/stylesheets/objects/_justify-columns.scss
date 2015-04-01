@@ -1,0 +1,21 @@
+/**
+* Use this object if you need a row where the elements need to be distibuted all along the width,
+* no matter how many elements to be. If they don't fit, they goes to the next row.
+*/
+
+.justify-columns {
+    font-size: 0; /* To clean the spacing between inline-blocks */
+    text-align: justify;
+}
+
+.justify-columns:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.justify-item {
+    display: inline-block;
+    vertical-align: middle;
+}

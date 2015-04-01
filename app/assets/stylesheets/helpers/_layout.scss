@@ -1,0 +1,40 @@
+/*
+ *
+ *  Layout
+ *  ------
+ *
+ *  Utility class for change display property.
+ *
+ */
+
+.inline { 
+  display: inline 
+}
+
+.block { 
+  display: block 
+}
+
+.inline-block { 
+  display: inline-block 
+}
+
+.table {
+  display: table;
+}
+
+.table-fixed {
+  display: table;
+  table-layout: fixed;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.float-left {
+  float: left; 
+}
+.float-right {
+  float: right; 
+}
