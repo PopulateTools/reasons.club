@@ -5,6 +5,8 @@ class Reason < ActiveRecord::Base
 
   acts_as_votable
 
+  validates :user_id, presence: true
+  
   def self.for
     where('for' => true)
   end

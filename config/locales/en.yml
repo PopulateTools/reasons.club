@@ -21,6 +21,10 @@
 
 en:
   hello: "Hello world"
+  tagline: Disqus with order, reach conclusions faster, take decisions
+  about: About
+  contact: Contact
+  help: Help
   get_access:
     we_are_getting_ready: "We are getting ready. Tell us your email, and we'll ping you"
     we_are_getting_ready_paragraph: "If you want to vote on a reason, or create your own issues, tell us your email and we'll ping you when we are ready. We won't use your email for nothing more (and less!), we hate spam more than you."

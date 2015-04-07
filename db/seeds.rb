@@ -44,6 +44,37 @@ Reason.create(
   issue: Issue.all[0])
 
 
+Issue.create(
+  title: 'Razones para usar Reasons.club',
+  description: 'En la tradición de tomar de nuestra propia medicina aquí tienes una lista de razones por las que usar Reasons.club es una buena idea, o lo contrario',
+  locale: 'es',
+  privacy_public: true,
+  user: User.all[0])
+Reason.create(
+  title: 'Te ayuda a organizar tus ideas sobre un tema',
+  for: true,
+  description: 'El mero hecho de pensar sobre todos los factores en torno a una decisión te ayuda a ordenar tus ideas al respecto',
+  user: User.all[0],
+  issue: Issue.all[1])
+Reason.create(
+  title: 'Recopila la opinión de varias personas sobre el tema',
+  for: true,
+  description: 'Si tienes que tomar una decisión entre varias personas, Reasons.club te permite que cada uno de ellos pueda listar sus razones, y los demás den su opinión sobre cada una de ellas.',
+  user: User.all[0],
+  issue: Issue.all[1])
+Reason.create(
+  title: 'Es rápido y fácil de usar',
+  for: true,
+  description: 'Y gratis, claro. Crea un nuevo club y comienza a anotar razones. ',
+  user: User.all[0],
+  issue: Issue.all[1])
+Reason.create(
+  title: 'Delimitar un tema a una lista de razones te hace perder perspectiva sobre otras posibilidades ',
+  for: false,
+  description: 'Cuando tienes que tomar una decisión no todo es blanco o negro. Hacer una lista de pros y contras dá demasiada presencia a ese blanco o negro. Si analices un tema o situación sin hacer una lista de pros y contras puedes concluir con opciones que ... ',
+  user: User.all[0],
+  issue: Issue.all[1])
+
 # votes
 Reason.all[0].liked_by User.all[0]
 Reason.all[0].liked_by User.all[1]
