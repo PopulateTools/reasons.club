@@ -84,6 +84,35 @@ properties.
   }
 }
 
+/* Responsive mixin 
+   ----------------
+  @include screen(768, 1280) { 
+    background: black; 
+  }
+  @include min-screen(320) { 
+    width: 300px; 
+  }
+*/
+
+$units: 1px !default;
+
+@mixin screen($res-first, $res-last: $res-first) {
+  @if $res-first == $res-last {
+    @media screen and ( max-width: if(unitless($res-first), $res-first*$units, $res-first) ) {
+      @content;
+    }
+  } @else if $res-first < $res-last {
+    @media screen and ( min-width: if(unitless($res-first), $res-first*$units, $res-first) ) and ( max-width: if(unitless($res-last), $res-last*$units, $res-last) ) {
+      @content;
+    }
+  }
+}
+
+@mixin min-screen($res) {
+  @media screen and ( min-width: if(unitless($res), $res*$units, $res) ) {
+    @content;
+  }
+}
 
 // border radius; https://github.com/akorman/border-radius-sass/
 @mixin border-radius($a: false, $b: false, $c: false, $d: false, $top-left: 0, $top-right: 0, $bottom-right: 0, $bottom-left: 0, $top: false, $bottom: false, $right: false, $left: false, $radius: false) {
@@ -115,10 +144,6 @@ properties.
 
 }
 
-@mixin transition {
-  transition: all 0.3s ease 0s;
-}
-
 // https://github.com/matthieua/sass-css3-mixins/blob/master/css3-mixins.scss
 @mixin css3-prefix($property, $value) {
   -webkit-#{$property}: #{$value};
@@ -138,3 +163,9 @@ properties.
 }
 
 
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}

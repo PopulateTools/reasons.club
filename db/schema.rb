@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319111401) do
+ActiveRecord::Schema.define(version: 20150401144158) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 20150319111401) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "invites", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "issues", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -34,19 +40,26 @@ ActiveRecord::Schema.define(version: 20150319111401) do
     t.string   "slug"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "user_id"
   end
 
   add_index "issues", ["slug"], name: "index_issues_on_slug"
+  add_index "issues", ["user_id"], name: "index_issues_on_user_id"
 
   create_table "reasons", force: :cascade do |t|
     t.string   "title"
     t.string   "slug"
-    t.boolean  "for",        default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "description"
+    t.boolean  "for",         default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "user_id"
+    t.integer  "issue_id"
   end
 
+  add_index "reasons", ["issue_id"], name: "index_reasons_on_issue_id"
   add_index "reasons", ["slug"], name: "index_reasons_on_slug", unique: true
+  add_index "reasons", ["user_id"], name: "index_reasons_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -61,6 +74,8 @@ ActiveRecord::Schema.define(version: 20150319111401) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "twitter_handle"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

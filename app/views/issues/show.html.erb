@@ -1,0 +1,48 @@
+<%= render 'shared/newcomers_banner' %>
+
+<div class="issue clearfix">
+
+  <header>
+    <h1><%= @issue.title %></h1>
+    <div class="description">
+      <%= @issue.description %>
+    </div>
+  </header>
+
+  <div class="reasons">
+
+    <div class="col-1-2">
+      <div class="reasons-list reasons-for p4">
+
+        <header>
+          <div><strong><%= @issue.reasons.for.count %></strong> Razones a favor</div>
+          <div><strong><%= @votes[:for] %></strong> Votos</div>
+          <!-- <div><strong>4</strong> Partidarios</div> -->
+        </header>
+
+        <%= render @issue.reasons.for %>
+
+        <%= render 'reasons/form', :locals => {:position => 'for'} %>
+
+      </div><!-- .reasons-for -->
+    </div>
+
+    <div class="col-2-2">
+      <div class="reasons-list reasons-against p4">
+
+        <header>
+          <div><strong><%= @issue.reasons.against.count %></strong> Razones en contra</div>
+          <div><strong><%= @votes[:against] %></strong> Votos</div>
+          <!-- <div><strong>4345</strong> Partidarios</div> -->
+        </header>
+
+        <%= render @issue.reasons.against %>
+
+        <%= render 'reasons/form', :locals => {:position => 'against'} %>
+
+      </div><!-- .reasons-against -->
+    </div>
+
+  </div><!-- .reasons -->
+
+</div><!-- .issue -->

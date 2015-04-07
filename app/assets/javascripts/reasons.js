@@ -1,2 +1,11 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+jQuery(document).ready(function($){
+  $('textarea.js-auto-size').textareaAutoSize();
+
+  $('.reason_title').keydown(function(event) {
+    if (event.keyCode == 13) {
+      $(this.form).submit()
+      return false;
+    }
+  })
+
+});

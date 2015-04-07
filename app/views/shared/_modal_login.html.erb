@@ -1,0 +1,140 @@
+
+
+<div id="modal-signin" class="cd-user-modal" <%= %Q{data-error="#{flash[:modal_error]}"}.html_safe if flash[:modal_error] %>> <!-- this is the entire modal form, including the background -->
+
+  <%= devise_error_messages! %>
+
+  <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+    <div class="cd-user-modal-content cd-user-login">
+
+      <div id="social-login">
+      
+        <p class="mb0"><strong><%= t 'sessions.new.connect_with_twitter_or_facebook' %></strong></p>
+        <p class="mt0"><em><%= t 'sessions.new.well_never_publish' %></em></p>
+
+        <div class="social-login mt4 mb4 clearfix">
+          <%= link_to(t('.twitter'), '/auth/twitter', class: " btn float-left") %>
+          <%= link_to(t('.facebook'), '/auth/facebook', class: " btn float-right") %>
+        </div>
+
+        <div class="separator"></div>
+
+      </div>
+        
+      <div id="cd-login" >
+        <%= modal_flash_message(:login) %>
+
+        <p><%= t 'sessions.new.or_choose_tradition' %></p>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field-group mb2">
+            <%= f.label :email, class: 'form-icon' do %>
+              <span class="fa fa-user"></span>
+              <%= t 'sessions.new.email' %>
+            <% end %>
+            <%= f.email_field :email, placeholder: t('sessions.new.email'), autofocus: true, tabindex: 1  %>
+          </div>
+
+          <div class="field-group mb2">
+            <%= f.label :password, class: 'form-icon' do %>
+              <span class="fa fa-key"></span>
+              <%= t 'sessions.new.password' %>
+            <% end %>
+            <%= link_to '?', 'javascript:void(0)', class: 'recover-password tipsit', title: t('sessions.new.forgot_password') %>
+            <%= f.password_field :password, autocomplete: "off", class: 'input-text', placeholder: t('sessions.new.password'), tabindex: 2 %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="clearfix mt3 pb4">
+            <%= f.button t('sessions.new.create_account'), class: "btn btn-secondary float-left create-account", tabindex: 4 %>
+            <%= f.submit t('sessions.new.login_action'), class: "btn btn-primary float-right", tabindex: 3 %>
+          </div>
+
+        <% end %>
+
+      </div>
+
+      <div id="cd-signup" >
+        <%= modal_flash_message(:signup) %>
+
+        <p><strong><%= t 'sessions.new.complete_your' %></strong></p>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "login-form"}) do |f| %>
+
+          <div class="field-group mb2">
+            <%= f.label :name, class: 'form-icon' do %>
+              <span class="fa fa-user"></span>
+              <%= t 'sessions.new.name' %>
+            <% end %>
+            <%= f.text_field :name, class: 'input-text', placeholder: t('sessions.new.name') %>
+          </div>
+
+          <div class="field-group mb2">
+            <%= f.label :email, class: 'form-icon' do %>
+              <span class="fa fa-user"></span>
+              <%= t 'sessions.new.email' %>
+            <% end %>
+            <%= f.email_field :email, class: 'input-text', placeholder: t('sessions.new.email') %>
+          </div>
+
+          <div class="field-group mb2">
+            <%= f.label :password, class: 'form-icon' do %>
+              <span class="fa fa-key"></span>
+              <%= t 'sessions.new.password' %>
+            <% end %>
+            <%= f.password_field :password, class: 'input-text', placeholder: t('sessions.new.password') %>
+          </div>
+
+          <!--
+          <% if @validatable %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          -->
+
+          <div class="field-group mb2">
+            <%= f.label :password_confirmation, class: 'form-icon' do %>
+              <span class="fa fa-key"></span>
+              <%= t 'sessions.new.password' %>
+            <% end %>
+            <%= f.password_field :password_confirmation, class: 'input-text', placeholder: t('sessions.new.password_confirmation') %>
+          </div>
+        
+          <div class="clearfix mt3 pb4">
+            <%= f.button t('sessions.new.already_have_account'), class: "btn btn-secondary float-left login" %>
+            <%= f.submit t('sessions.new.create_account'), class: "btn btn-primary float-right" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="cd-reset-password" >
+        <%= modal_flash_message(:password_resets) %>
+
+        <p><strong><%= t 'sessions.new.tell_us_to_recover' %></strong></p>
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "login-form", id: "new_password_resets" }) do |f| %>
+        
+          <div class="field-group mb2">
+            <%= label_tag :email, class: 'form-icon' do %>
+              <span class="fa fa-user"></span>
+              <%= t 'sessions.new.email' %>
+            <% end %>
+            <%= email_field_tag :email, "", class: 'input-text', placeholder: t('sessions.new.email') %>
+          </div>
+
+          <div class="clearfix mt3 pb4">
+            <%= button_tag t('sessions.new.back_to_login'), class: "btn btn-secondary float-left login" %>
+            <%= submit_tag t('sessions.new.recover_password'), class: "btn btn-primary float-right" %>
+          </div>
+        <% end %>
+      </div>
+
+      <a href="#0" class="cd-close-form">Close</a>
+    </div><!-- .cd-user-login -->
+  </div> <!-- cd-user-modal-container -->
+</div> <!-- cd-user-modal -->

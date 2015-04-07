@@ -1,0 +1,7 @@
+<% if @result %>
+  $('#invite').html("<div class='alert success'><%= escape_javascript(t('get_access.great_well_be_in_touch')) %>. <a href=''>F</a> <a href=''>T</a></div>");
+<% else %>
+  $('#invite').html("<div class='alert error'><%= escape_javascript('errrrrroor') %></div>");
+<% end %>
+
+

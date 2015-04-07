@@ -18,6 +18,7 @@ gem 'meta-tags'
 gem 'friendly_id'
 gem 'acts_as_votable'
 gem 'devise'  
+gem 'bourbon'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

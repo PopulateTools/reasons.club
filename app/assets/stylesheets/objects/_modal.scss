@@ -209,6 +209,7 @@ xsigin/signup popup
   opacity: 0;
   @include transition(opacity .3s 0, visibility 0 .3s);
 
+
   &.is-visible {
     visibility: visible;
     opacity: 1;
@@ -229,7 +230,7 @@ xsigin/signup popup
   background: #FFF;
   margin: 3em auto 4em;
   cursor: auto;
-  @include border-radius;
+  @include border-radius(5px);
   @include transform(translateY(-30px));
 
   @include transition-property (transform);
@@ -501,7 +502,18 @@ xsigin/signup popup
 }
 
 
-/* TrackDons styles */
+/* Reasons.club styles */
+.cd-user-modal-content {
+  padding: 30px;
+  margin: 30px;
+  text-align: center;
+  font-size: .9em;
+  
+  @include screen(768) { 
+    padding: 10px 30px;
+    margin: 0;
+  }
+}
 
 .cd-user-login {
   text-align: center;

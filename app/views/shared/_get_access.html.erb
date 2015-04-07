@@ -1,0 +1,18 @@
+
+
+<div id="modal-signin" class="cd-user-modal" <%= %Q{data-error="#{flash[:modal_error]}"}.html_safe if flash[:modal_error] %>> <!-- this is the entire modal form, including the background -->
+  <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+    <div class="cd-user-modal-content" >
+
+      <h2><%= t 'get_access.we_are_getting_ready' %></h2> 
+      <p><%= t 'get_access.we_are_getting_ready_paragraph' %></p>
+
+      <%= form_for @invite, remote: true, html: { id: :invite } do |f| %>
+        <%= f.email_field :email, placeholder: t('sessions.new.email'), autofocus: true, tabindex: 1  %>
+        <%= f.submit t('get_access.getit'), class: "btn", tabindex: 2 %>
+      <% end %>
+
+      <a href="#0" class="cd-close-form">Close</a>
+    </div><!-- .cd-user-login -->
+  </div> <!-- cd-user-modal-container -->
+</div> <!-- cd-user-modal -->

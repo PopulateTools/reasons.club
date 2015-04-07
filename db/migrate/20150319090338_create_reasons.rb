@@ -3,7 +3,8 @@ class CreateReasons < ActiveRecord::Migration
     create_table :reasons do |t|
       t.string :title
       t.string :slug
-      t.boolean :for, default:true
+      t.text :description
+      t.boolean :for, default: true
 
       t.timestamps null: false
     end

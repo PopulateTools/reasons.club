@@ -10,6 +10,5 @@ class CreateIssues < ActiveRecord::Migration
       t.timestamps null: false
 
     end
-    add_index :issues, :slug, unique: true
   end
 end

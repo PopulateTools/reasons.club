@@ -7,6 +7,8 @@
  *
  */
 
+@import "bourbon";
+
 @import "core/settings";
 @import "core/functions";
 @import "core/mixins";
@@ -58,6 +60,7 @@
 @import "objects/buttons";
 @import "objects/justify-columns";
 @import "objects/content";
+@import "objects/modal";
 
 /* 
  * 5. Layout
@@ -67,7 +70,7 @@
  * find yourself overwriting any component twice, we are probably doing wrong.
  *
  */
-
+@import "reasons";
 
 /* 
  * 6. Vendors
@@ -120,17 +123,18 @@ body > header /* .main-header */ {
   
   #controls {
     position: absolute;
-    top: .7em;
-    right: 1em;
+    top: .9em;
+    right: 2em;
     text-align: right;
+    font-size: .85em;
 
     a {
-      @include border-radius(5px);
+      @include border-radius(4px);
       display: inline-block;
-      padding: 6px 8px 7px;
+      padding: 6px 12px 7px;
       background: $layout_soft;
       color: $layout_main;
-      width: 18px;
+      // width: 18px;
       overflow: hidden;
       text-align: center;
       margin-left: 10px;
@@ -205,6 +209,17 @@ body > header /* .main-header */ {
     text-transform: uppercase;
     color: $color_for_main;
   }
+  .add_reason_input {
+    .fa {
+      color: $color_for_main;
+    }
+    input[type="text"], textarea {
+      color: $color_for_dark;
+    }
+    textarea {
+      border-bottom: 1px solid $color_for_soft;
+    }
+  }
 }
 .reasons-against {
   background: $color_against_background;
@@ -222,11 +237,63 @@ body > header /* .main-header */ {
     text-transform: uppercase;
     color: $color_against_main;
   }
+  .add_reason_input {
+    .fa {
+      color: $color_against_main;
+    }
+    input[type="text"], textarea {
+      color: $color_against_dark;
+    }
+    textarea {
+      border-bottom: 1px solid $color_against_soft;
+    }
+  }
 }
 .reasons-list header div {
   display: inline-block;
   padding-right: 10px;
 }
+.add_reason_input {
+  .fa {
+    width: 48px;
+    margin-right: 17px;
+    font-size: 1.4em;
+    text-align: right; 
+    // color: ;
+  }
+  textarea {
+    background: transparent;
+    border: none;
+    width: 86%;
+    padding: 2px 0;
+    font-weight: 600;
+    box-sizing: border-box;
+    max-height: 260px; // optional but recommended
+    min-height: 26px;
+    height: 26px;
+    overflow-x: hidden; // for Firefox (issue #5)
+    outline: none;
+  }
+  @include placeholder {
+    font-style: italic;
+    font-weight: normal;
+    color: ligthen($color_neutral_main, 20%);
+    
+  }
+  .btn {
+    display: none;
+  }
+}
+
+.alert { 
+  background: #EBE8CC; 
+  padding-top: 1em; 
+  padding-bottom: 1em; 
+  margin-bottom: 2em; 
+  @include border-radius(6px);
+}
+.success, .info, .warning, .danger { }
+
 
 // Overwriting image for asset_pipeline -> there is probably a better way
 .tipsy .tipsy-arrow { background-image: url(image_path('tipsy.gif')) !important }
