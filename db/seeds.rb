@@ -75,6 +75,18 @@ Reason.create(
   description: 'Lo ha hecho en esta entrevista http://www.eldiario.es/politica/electores-esperaban-dieramos-ideologicas-Zapatero_0_375862925.html y lo hizo con Jordi Évole ',
   user: User.all[0],
   issue: Issue.all[0])
+Reason.create(
+  title: 'Es de las únicas políticas que tiene un perfil propio dentro del PP',
+  for: true,
+  description: '',
+  user: User.all[0],
+  issue: Issue.all[0])
+Reason.create(
+  title: 'Es la única candidata que propone de forma unívoca bajar impuestos',
+  for: true,
+  description: '',
+  user: User.all[0],
+  issue: Issue.all[0])
 
 Issue.create(
   title: 'Razones para usar Reasons.club',
