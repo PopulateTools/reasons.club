@@ -1,5 +1,5 @@
 <% if @result %>
-  $('#invite').html("<div class='alert success'><%= escape_javascript(t('get_access.great_well_be_in_touch')) %>. <a href=''>F</a> <a href=''>T</a></div>");
+  $('#invite').html("<div class='alert success'><%= escape_javascript(t('get_access.great_well_be_in_touch')) %>. <a class='popup' href='http://www.facebook.com/sharer/sharer.php?u=<%= u(t('get_access.fb')) %>'><i class='fa fa-facebook-square'></i></a> <a class='popup' href='https://twitter.com/home?status=<%= u(t('get_access.tweet')) %>'><i class='fa fa-twitter-square'></i></a></div>");
 <% else %>
   $('#invite').html("<div class='alert error'><%= escape_javascript('errrrrroor') %></div>");
 <% end %>

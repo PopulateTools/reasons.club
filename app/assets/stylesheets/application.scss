@@ -157,13 +157,45 @@ body > header /* .main-header */ {
     // @include border-radius(8px);
     // background: $color_neutral_background;
     color: $color_neutral_main;
-
+    position: relative;
+    background: $random_color_1;
+    padding: 2em 2em .5em 2em;
+    @include border-radius(6px, 6px, 0, 0);
 
     h1 {
       font-size: 2em;
       margin: 0 0 5px 0;
+      display: inline-block;
+      color: #FFF;
+      z-index: 2;
+      position: relative;
+      font-size: 1.8em;
+      font-weight: 600;
     }
+    .share_container {
+      z-index: 2;
+      float: right;
+      position: relative;
+    }
+    .share {
+      background: #FFF;
+      a {
+        color: $random_color_1;
+      }
+    }
+    em {
+      position: absolute;
+      background: #FF9F0D;
+      opacity: .5;
+      bottom: 0; 
+      height: 4em;
+      width: 100%;
+      left: 0;
+      z-index: 1;
+    }
+    
     .description {
+      display: none;
       font-size: .85em;
       width: 85%;
       opacity: .8;
@@ -203,11 +235,12 @@ body > header /* .main-header */ {
     }
   }
   .tools {
-    color: lighten($color_for_dark, 30%);
+    color: darken($color_for_soft, 10%);
   }
   header {
     text-transform: uppercase;
     color: $color_for_main;
+    background: $color_for_main;
   }
   .add_reason_input {
     .fa {
@@ -231,11 +264,12 @@ body > header /* .main-header */ {
     }
   }
   .tools {
-    color: lighten($color_against_main, 20%);
+    color: darken($color_against_soft, 10%);
   }
   header {
     text-transform: uppercase;
     color: $color_against_main;
+    background: $color_against_main;
   }
   .add_reason_input {
     .fa {
@@ -249,9 +283,15 @@ body > header /* .main-header */ {
     }
   }
 }
-.reasons-list header div {
-  display: inline-block;
-  padding-right: 10px;
+.reasons-list header {
+  color: #FFF;
+  div {
+    display: inline-block;
+    padding-right: 10px;
+  } 
+  > .add-reason:first-child {
+    margin-top: 50px;
+  }
 }
 .add_reason_input {
   .fa {
@@ -264,7 +304,7 @@ body > header /* .main-header */ {
   textarea {
     background: transparent;
     border: none;
-    width: 86%;
+    width: 80%;
     padding: 2px 0;
     font-weight: 600;
     box-sizing: border-box;
@@ -294,6 +334,196 @@ body > header /* .main-header */ {
 }
 .success, .info, .warning, .danger { }
 
+footer {
+  text-align: center;
+  padding: 10em 3em; 
+  font-size: .75em;
+
+  a {
+    color: $header_text;
+    padding: 0 1em;
+  }
+}
+
+// get access / invites
+.new_invite {
+  a {
+    color: $header_text;
+  }
+  .fa {
+    font-size: 2em; 
+    margin: 0 0 0 1em;
+  }
+}
+
+// home
+.home_intro_main {
+  background: $layout_super_soft;
+  text-align: center;
+  color: $header_text;
+  margin-top: -2em;
+  padding-bottom: 3em; 
+  margin-bottom: 4em;
+
+  h1 {
+    font-size: 1.6em;
+    padding: 4em 0 1em;
+  }
+  h2 {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    position: relative;
+    font-weight: 600;
+    span {
+      background: $layout_super_soft;
+      padding: 0 .5em;
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  .justify-item {
+    font-size: 15px;
+    text-align: center;
+    vertical-align: top;
+
+    ul, li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin: 0 0 2em 0;
+      padding: 0 1em;
+      line-height: 1.4em;
+      color: lighten(#2D2D2D, 20%);
+    }
+  }
+}
+.start_your_own {
+  text-align: center;
+  input[type=text] {
+    width: 400px;
+  }
+}
+// issues_list
+.issues_list {
+  vertical-align: top; 
+  margin-bottom: 4em;
+
+  .issue {
+    @include border-radius(8px);
+    font-size: 14px;
+    background: #BB6E08;
+    padding: 3em 1em 1em 1em;
+    position: relative; 
+    min-height: 8em;
+    margin-bottom: 1em;
+
+    h2 {
+      position: absolute;
+      z-index: 2;
+      top: 4.1em; 
+      left: 1em;
+      right: 1em;
+      text-align: left;
+      font-size: 1.4em;
+      font-weight: 600;
+    }
+    a {
+      color: #FFF;
+      display: block;
+      text-decoration: none;
+    }
+    i {
+      position: absolute;
+      background: #FF9F0D;
+      opacity: .5;
+      bottom: 0; 
+      height: 6em;
+      width: 100%;
+      left: 0;
+      z-index: 1;
+    }
+  }
+  .issue:nth-child(1) {
+    background: $random_color_1;
+  }
+  .issue:nth-child(2) {
+    background: $random_color_2;
+  }
+  .issue:nth-child(3) {
+    background: $random_color_3;
+  }
+  .issue:nth-child(4) {
+    background: $random_color_4;
+  }
+  .issue:nth-child(5) {
+    background: $random_color_5;
+  }
+  .issue:nth-child(6) {
+    background: $random_color_6;
+  }
+
+}
+
+// various
+i.back_line {
+  border-top: 1px solid #E2C247;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+.back_liner {
+  color: $header_text;
+  position: relative;
+  font-size: .85em;
+  text-align: center;
+  span {
+    background: #FFF;
+    position: relative;
+    padding: 0 .5em; 
+    z-index: 2;
+  }
+  margin-bottom: 2em; 
+}
+.back_line::before {
+  border-top: 1px solid red;
+  background: orange;
+}
+
+// share buttons
+.share_container {
+  display: inline-block;
+  padding-top: 5px;
+  vertical-align: top;
+}
+.share {
+  @include border-radius(4px); 
+  display: inline-block;
+  margin: 0 0 0 1em;
+  padding: .5em 1em;
+  font-size: .8em;
+
+  a {
+    color: #FFF;
+    display: block;
+    font-weight: 600;
+    text-decoration: none;
+    @include transition;
+  }
+  .fa {
+    padding-right: .5em;
+  }
+}
+.facebook {
+  background: #306199;
+}
+.twitter {
+  background: #26c4f1;
+}
 
 // Overwriting image for asset_pipeline -> there is probably a better way
 .tipsy .tipsy-arrow { background-image: url(image_path('tipsy.gif')) !important }

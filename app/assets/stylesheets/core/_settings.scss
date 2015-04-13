@@ -13,16 +13,41 @@ $default-border-radius: 3px;
  *
  */
 
-/* Theme:; Origins */
-$color_for_main: #2DBE9E;
-$color_for_background: #D7F1EB;
-$color_for_soft: #B5E4D9;
-$color_for_dark: #155141; 
+/* Theme: Origins */
+// $color_for_main: #2DBE9E;
+// $color_for_background: #D7F1EB;
+// $color_for_soft: #B5E4D9;
+// $color_for_dark: #155141; 
 
-$color_against_main: #FC723E;
-$color_against_background: #FCDBD0;
-$color_against_soft: #FCC6B3;
-$color_against_dark: #712C19;
+// $color_against_main: #FC723E;
+// $color_against_background: #FCDBD0;
+// $color_against_soft: #FCC6B3;
+// $color_against_dark: #712C19;
+
+/* Theme: Draft */
+// $color_for_main: #669933;
+// $color_for_background: #EFF5EA;
+// $color_for_soft: #D8E2CE;
+// $color_for_dark: #666666; 
+
+// $color_against_main: #990000;
+// $color_against_background: #F5E5E5;
+// $color_against_soft: #EBCCCC;
+// $color_against_dark: #470002;
+
+/* Theme: A la tercera va la vencida */
+$color_for_main: #5CA591;
+$color_for_background: #EEF6F4;
+$color_for_soft: #C2DED6;
+$color_for_dark: #284B40; 
+
+$color_against_main: #BB4500;
+$color_against_background: #F8ECE5;
+$color_against_soft: #ECCBB7;
+$color_against_dark: #3F1500;
+
+
+/*****/
 
 $color_neutral_main: #333C4D;
 $color_neutral_background: #EAEBED;
@@ -30,10 +55,19 @@ $color_neutral_background: #EAEBED;
 
 /* App colors */
 $layout_soft: #F6EABB;
+$layout_super_soft: #FCF8EA;
 $layout_main: #AA933F;
 $header_background: #F9F2D5;
 $header_text: #928038;
 $logo: #FF9900;
+
+/* Random colors for issues listing */
+$random_color_1: #BB6E08;
+$random_color_2: #BB4500;
+$random_color_3: #39685B;
+$random_color_4: #9CB3AD;
+$random_color_5: #46364A;
+$random_color_6: #1E3730;
 
 /*
  *

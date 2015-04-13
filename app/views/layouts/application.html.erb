@@ -9,44 +9,49 @@
 </head>
 <body>
 
-<header class="main-header">
-  <div class="logo"><%= link_to '<span>Reasons</span>.club'.html_safe, root_path %></div>
-  <div class="tagline"><%= t 'tagline' %></div>
+<% unless params[:embed] %>
 
-  <div id="controls">
-    <a href="" id="add_new_issue" title="Add new issue to discuss" class="tipsit-n cd-signup">+</a>
-    <% if user_signed_in? %>
-      <a href="" id="notifications_notice" title="You have 23 new notifications" class="tipsit-n">23</a>
-      <%= link_to '@', edit_user_registration_path, :class => 'navbar-link', style: "background: url('#{gravatar_for(current_user, size: 32, only_url: true)}')", title: current_user.email %>
-      <%= link_to "L", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      <%# link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
-      <%# link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-      <%= link_to "Sign up", '', :class => 'cd-signup navbar-link'  %>
-      <%= link_to "Login", '', :class => 'cd-signup navbar-link'  %>
-    <% end %>
-  </div>
-  
-</header>
+  <header class="main-header">
+    <div class="logo"><%= link_to '<span>Reasons</span>.club'.html_safe, root_path %></div>
+    <div class="tagline"><%= t 'tagline' %></div>
 
-<div class="container">
+    <div id="controls">
+      <a href="" id="add_new_issue" title="Add new issue to discuss" class="tipsit-n cd-signup">+</a>
+      <% if user_signed_in? %>
+        <a href="" id="notifications_notice" title="You have 23 new notifications" class="tipsit-n">23</a>
+        <%= link_to '@', edit_user_registration_path, :class => 'navbar-link', style: "background: url('#{gravatar_for(current_user, size: 32, only_url: true)}')", title: current_user.email %>
+        <%= link_to "L", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% else %>
+        <%# link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+        <%# link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <%= link_to "Sign up", '', :class => 'cd-signup navbar-link'  %>
+        <%= link_to "Login", '', :class => 'cd-signup navbar-link'  %>
+      <% end %>
+    </div>
+    
+  </header>
 
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
+<% end %>
 
-  <%= yield %>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<%= yield %>
+
+<% unless params[:embed] %>
 
   <footer>
     <%= link_to t('about'), '' %>
-    <%= link_to t('contact'), '' %>
+    <%# link_to t('contact'), '' %>
     <%= link_to t('help'), '' %>
   </footer>
 
-</div><!-- .container -->
+<% end %>
 
 <% unless user_signed_in? %>
   <%# render 'shared/modal_login' %>
