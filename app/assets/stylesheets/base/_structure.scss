@@ -6,6 +6,10 @@
 .container {
   margin: auto;
   width: 90%;
+
+  @include screen(740) { 
+    width: 100%; 
+  }
 }
 
 .col-1-2 {

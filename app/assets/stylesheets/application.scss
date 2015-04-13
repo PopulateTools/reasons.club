@@ -103,6 +103,7 @@ body > header /* .main-header */ {
   background: $header_background;
   @include box-shadow(2px, 2px, 5px, #CCC);
   
+
   .logo, .tagline {
     font-size: .8em;
     display: inline-block;
@@ -120,7 +121,14 @@ body > header /* .main-header */ {
       }
     }
   }
-  
+  @include screen(740) {
+    padding: 2% 3% 3%;
+
+    .tagline {
+      margin-top: 2%;
+    }
+  }
+
   #controls {
     position: absolute;
     top: .9em;
@@ -139,6 +147,16 @@ body > header /* .main-header */ {
       text-align: center;
       margin-left: 10px;
       text-decoration: none;
+    }
+
+    @include screen(740) {
+      top: 7%;
+      right: 0;
+
+      a {
+        padding: 3px 12px 4px;
+        margin-left: 2px;
+      }
     }
   }
 
@@ -161,6 +179,11 @@ body > header /* .main-header */ {
     background: $random_color_1;
     padding: 2em 2em .5em 2em;
     @include border-radius(6px, 6px, 0, 0);
+    
+    @include screen(740) { 
+      @include border-radius(0);
+      padding: 7% 3% 3%;
+    }
 
     h1 {
       font-size: 2em;
@@ -171,17 +194,25 @@ body > header /* .main-header */ {
       position: relative;
       font-size: 1.8em;
       font-weight: 600;
+      @include screen(740) { 
+        font-size: 1.2em;
+        display: inline;
+      }
     }
     .share_container {
       z-index: 2;
       float: right;
       position: relative;
+      @include screen(740) {
+        display: none;
+        paddint-top: 0;
+      }
     }
     .share {
       background: #FFF;
       a {
         color: $random_color_1;
-      }
+      }      
     }
     em {
       position: absolute;
@@ -193,13 +224,26 @@ body > header /* .main-header */ {
       left: 0;
       z-index: 1;
     }
-    
     .description {
       display: none;
       font-size: .85em;
       width: 85%;
       opacity: .8;
       margin: 0 0 2em 0;
+    }
+    @include screen(740) {      
+      .share {
+        padding: .3em .5em;
+        a span {
+          display: none;
+        }
+        i {
+          padding: 0;
+        }
+        em {
+          height: 4.5em;
+        }
+      }
     }
   }
 }
@@ -220,6 +264,27 @@ body > header /* .main-header */ {
   .vote {
     position: absolute;
     left: 0;
+  }
+  @include screen(740) {
+    padding-left: 0;
+    margin: 6% 6% 12% 6%;
+
+    h2 {
+      font-size: .85em;
+    }
+    .btn-vote {
+      width: 100%;
+      position: relative;
+      margin-bottom: 4%;
+      height: 28px;
+
+      a {
+        padding: 3px 0 2px 10px;
+      }
+    }
+    .btn-triangle {
+      left: 34%;
+    }
   }
   .tools {
     font-size: .75em;
@@ -292,6 +357,10 @@ body > header /* .main-header */ {
   > .add-reason:first-child {
     margin-top: 50px;
   }
+  @include screen(740) {
+    padding: 2% 0 2% 6%;
+    font-size: .85em;
+  }
 }
 .add_reason_input {
   .fa {
@@ -324,7 +393,23 @@ body > header /* .main-header */ {
     display: none;
   }
 }
+@include screen(740) {
+  .add-reason {
+    margin: 6% 6% 12% 6%;
+    padding: 0;
+  }
+  .add_reason_input {
+    width: auto;
+    margin-right: 0;
+    .fa {
+      font-size: 1.2em; 
+      margin-right: 5px;
+      width: 17px;
+      vertical-align: super;
+    }
+  }
 
+}
 .alert { 
   background: #EBE8CC; 
   padding-top: 1em; 
@@ -399,6 +484,11 @@ footer {
       color: lighten(#2D2D2D, 20%);
     }
   }
+  @include screen(740) {
+    .percent.thirty {
+      width: 100% !important;
+    }
+  }
 }
 .start_your_own {
   text-align: center;
@@ -465,6 +555,17 @@ footer {
     background: $random_color_6;
   }
 
+  @include screen(740) {
+    .percent.thirty {
+      width: 100% !important;
+    }
+    .issue {
+      min-height: 3em;
+    }
+    .issue h2 {
+      top: 1.1em;
+    }
+  }
 }
 
 // various
