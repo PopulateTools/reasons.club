@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_new_invite
 
-  http_basic_authenticate_with name: "reasons", password: "wadusclub" if Rails.env.production?
+  # http_basic_authenticate_with name: "reasons", password: "wadusclub" if Rails.env.production?
 
 
 
