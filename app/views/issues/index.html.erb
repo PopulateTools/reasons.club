@@ -1,5 +1,99 @@
 <%# set_meta_tags :description => t('metas.donations.home.description') %>
 
-<h1><%= title t('issues.all_issues') %></h1>
+<div class="full home_intro_main">
 
-<%= render @issues %>
+  <div class="container">
+
+    <h1><%= t('home.intro_text') %></h1>
+
+    <div class="justify-columns clearfix">
+      
+      <div class="justify-item thirty percent">
+        <h2><i class="back_line"></i><span><%= t('home.for_yourself') %></span></h2>
+
+        <ul>
+          <li><%= t('home.for_yourself_1') %></li>
+          <li><%= t('home.for_yourself_2') %></li>
+          <li><%= t('home.for_yourself_3') %></li>
+        </ul>
+      </div>
+
+      <div class="justify-item thirty percent">
+        <h2><i class="back_line"></i><span><%= t('home.for_small_teams') %></span></h2>
+
+        <ul>
+          <li><%= t('home.for_small_teams_1') %></li>
+          <li><%= t('home.for_small_teams_2') %></li>
+          <li><%= t('home.for_small_teams_3') %></li>
+        </ul>
+      </div>
+
+      <div class="justify-item thirty percent">
+        <h2><i class="back_line"></i><span><%= t('home.for_public_discussions') %></span></h2>
+
+        <ul>
+          <li><%= t('home.for_public_discussions_1') %></li>
+          <li><%= t('home.for_public_discussions_2') %></li>
+          <li><%= t('home.for_public_discussions_3') %></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="full issues_list">
+
+  <div class="container">
+    
+    <p class="back_liner">
+      <i class="back_line"></i>
+      <span><strong><%= t('home.some_example_public_clubs') %></strong></span>
+    </p>
+    
+    <div class="justify-columns clearfix">
+      <%= render @issues %>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="full ">
+
+  <div class="container">
+    
+    <p class="back_liner">
+      <i class="back_line"></i>
+      <span><strong><%= t('home.reasons_for_using_reasons') %></strong></span>
+    </p>
+    
+    <iframe src="/issues/razones-para-usar-reasons-club?embed=1" width="100%" height="700" scrolling="no" seamless="seamless" style="border: none; "></iframe>
+
+  </div>
+
+</div>
+
+<div class="full start_your_own">
+
+  <div class="container">
+    
+    <p class="back_liner">
+      <i class="back_line"></i>
+      <span><strong><%= t('home.create_your_first_club') %></strong></span>
+    </p>
+    
+    <p><%= t('home.start') %></p>
+
+    <%# form_for @invite, remote: true, html: { id: :invite } do |f| %>
+      <%= text_field_tag :email, nil, placeholder: t('issues.create.your_issue'), class: 'cd-signup' %>
+      <%= submit_tag t('issues.create.create_your_club'), class: "btn cd-signup" %>
+    <%# end %>
+
+  </div>
+
+</div>
+
+

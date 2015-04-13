@@ -1,48 +1,60 @@
-<%= render 'shared/newcomers_banner' %>
 
-<div class="issue clearfix">
+<div class="container">
 
-  <header>
-    <h1><%= @issue.title %></h1>
-    <div class="description">
-      <%= @issue.description %>
-    </div>
-  </header>
+  <%= render 'shared/newcomers_banner' %>
 
-  <div class="reasons">
+  <div class="issue clearfix">
 
-    <div class="col-1-2">
-      <div class="reasons-list reasons-for p4">
+    <header>
 
-        <header>
-          <div><strong><%= @issue.reasons.for.count %></strong> Razones a favor</div>
-          <div><strong><%= @votes[:for] %></strong> Votos</div>
-          <!-- <div><strong>4</strong> Partidarios</div> -->
-        </header>
+      <em></em>
+      <h1><%= @issue.title %></h1>
+      <div class="share_container">
+        <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= u(request.original_url) %>&t=<%= u(@issue.title) %>" class="popup"><i class="fa fa-facebook"></i>Facebook</a></div>
+        <div class="share twitter"><a href="http://twitter.com/home?status=<%= @issue.title %> <%= request.original_url %>" class="popup"><i class="fa fa-twitter"></i>Twitter</a></div>
+      </div>
+      <div class="description">
+        <%= @issue.description %>
+      </div>
 
-        <%= render @issue.reasons.for %>
+    </header>
 
-        <%= render 'reasons/form', :locals => {:position => 'for'} %>
+    <div class="reasons">
 
-      </div><!-- .reasons-for -->
-    </div>
+      <div class="col-1-2">
+        <div class="reasons-list reasons-for">
 
-    <div class="col-2-2">
-      <div class="reasons-list reasons-against p4">
+          <header class="py2 px4">
+            <div><strong><%= @issue.reasons.for.count %></strong> Razones a favor</div>
+            <div><strong><%= @votes[:for] %></strong> Votos</div>
+            <!-- <div><strong>4</strong> Partidarios</div> -->
+          </header>
 
-        <header>
-          <div><strong><%= @issue.reasons.against.count %></strong> Razones en contra</div>
-          <div><strong><%= @votes[:against] %></strong> Votos</div>
-          <!-- <div><strong>4345</strong> Partidarios</div> -->
-        </header>
+          <%= render @issue.reasons.for %>
 
-        <%= render @issue.reasons.against %>
+          <%= render 'reasons/form', :locals => {:position => 'for'} %>
 
-        <%= render 'reasons/form', :locals => {:position => 'against'} %>
+        </div><!-- .reasons-for -->
+      </div>
 
-      </div><!-- .reasons-against -->
-    </div>
+      <div class="col-2-2">
+        <div class="reasons-list reasons-against">
 
-  </div><!-- .reasons -->
+          <header class="py2 px4">
+            <div><strong><%= @issue.reasons.against.count %></strong> Razones en contra</div>
+            <div><strong><%= @votes[:against] %></strong> Votos</div>
+            <!-- <div><strong>4345</strong> Partidarios</div> -->
+          </header>
 
-</div><!-- .issue -->
+          <%= render @issue.reasons.against %>
+
+          <%= render 'reasons/form', :locals => {:position => 'against'} %>
+
+        </div><!-- .reasons-against -->
+      </div>
+
+    </div><!-- .reasons -->
+
+  </div><!-- .issue -->
+
+</div>

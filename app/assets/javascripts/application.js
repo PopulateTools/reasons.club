@@ -25,5 +25,4 @@
 //= require vendor/jquery.textarea_autosize
 
 //= require general
-//= require get_access
 //= require reasons

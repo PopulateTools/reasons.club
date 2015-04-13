@@ -9,6 +9,7 @@ jQuery(document).ready(function($){
   $('.cd-signup').on('click', function(event){
     event.preventDefault();
     open_modal('#modal-signin', 'signup');
+    $('#invite_email').focus();
   });
 
   $('.cd-signin').on('click', function(event){

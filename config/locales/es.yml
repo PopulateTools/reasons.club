@@ -19,15 +19,15 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+es:
   hello: "Hello world"
-  tagline: Disqus with order, reach conclusions faster, take decisions
-  about: About
-  contact: Contact
-  help: Help
+  tagline: Discute con orden, alcanza conclusiones más rápido, toma decisiones
+  about: Acerca de
+  contact: Contacto
+  help: Ayuda
   home:
-    intro_text: Disqus with order, reach conclusions faster, take decisions
-    for_yourself: For yourself
+    intro_text: Discute con orden, alcanza conclusiones más rápido, toma decisiones
+    for_yourself: Para tí
     for_yourself_1: Take quick notes about the issues you have to decide and get your ideas organized
     for_yourself_2: Create drafts of pros and cons about the decisions you have to take
     for_yourself_3: List reasons affecting the issues you have to work on
