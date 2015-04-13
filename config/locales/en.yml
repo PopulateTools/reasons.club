@@ -61,4 +61,8 @@ en:
     create:
       your_issue: Issue to decide
       create_your_club: Create your Club
+  metas:
+    issues:
+      issue:
+        description: Reasons.club enables you to discuss with order and structure. Learn about %{title}
 
