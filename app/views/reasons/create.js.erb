@@ -1,3 +1,4 @@
+<%# @reason.inspect %>
 <% if @result %>
   <% 
   if @reason.for == true
@@ -9,7 +10,7 @@
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript(render(:partial => @reason, :formats => [:html] )) %>");
   $('.reason_title_<%= destination %>').val('');
 <% else %>
-  $('#add_reason_against').html("<%= escape_javascript('errrrrroor') %>");
+  $('.new_reason_here_<%= destination %>').append("<%= escape_javascript('errrrrroor') %>");
 <% end %>
 
 

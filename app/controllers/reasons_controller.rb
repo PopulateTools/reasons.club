@@ -1,5 +1,7 @@
 class ReasonsController < ApplicationController
 
+  before_action :set_new_reason
+
   def new
     @reason = Reason.new
   end
@@ -18,6 +20,10 @@ class ReasonsController < ApplicationController
 
     def reason_params
       params.require(:reason).permit(:title, :description, :issue_id, :for)      
+    end
+
+    def set_new_reason
+      @reason = Reason.new
     end
 
 

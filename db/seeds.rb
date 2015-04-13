@@ -5,7 +5,7 @@ User.create(
   name: 'Alvaro Ortiz', 
   email: 'alvaro@furilo.com', 
   password: "alvarofu", 
-  password_confirmation: "alvaro12",
+  password_confirmation: "alvarofu",
   twitter_handle: 'furilo')
 User.create(
   name: 'Reason Holder', 
