@@ -16,6 +16,14 @@ class ReasonsController < ApplicationController
     end
   end
 
+  # def show
+  #   @reason = Reason.find(params[:id])
+  #   respond_to do |format|
+  #     format.html { redirect_to @reason }
+  #     format.js
+  #   end
+  # end
+
   private
 
     def reason_params
@@ -23,7 +31,7 @@ class ReasonsController < ApplicationController
     end
 
     def set_new_reason
-      @reason = Reason.new
+      @reason = Reason.new issue: @issue
     end
 
 
