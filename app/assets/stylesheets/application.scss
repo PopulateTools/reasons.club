@@ -259,6 +259,10 @@ body > header /* .main-header */ {
     a {
       text-decoration: none;
       @include transition;
+      span {
+        opacity: .25;
+        font-weight: normal;
+      }
     }
   }
   .vote {
