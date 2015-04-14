@@ -7,7 +7,7 @@ class ReasonsController < ApplicationController
   end
 
   def create
-    @reason = Reason.new(reason_params)
+    @reason = current_user.reasons.build(reason_params)
     if @result = @reason.save
       respond_to do |format|
         format.html { redirect_to @reason }
