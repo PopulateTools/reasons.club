@@ -9,12 +9,23 @@ class Reason < ActiveRecord::Base
 
   # validates :user_id, presence: true
   
+  before_validation :set_public_id
+
   def self.for
     where('for' => true)
   end
 
   def self.against
     where('for' => false)
+  end
+
+  def set_public_id
+    last_reason = self.issue.reasons.last
+    if last_reason.present?
+      self.public_id = last_reason.public_id + 1
+    else
+      self.public_id = 1
+    end
   end
 
 end
