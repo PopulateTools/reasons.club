@@ -16,13 +16,15 @@ class ReasonsController < ApplicationController
     end
   end
 
-  # def show
-  #   @reason = Reason.find(params[:id])
-  #   respond_to do |format|
-  #     format.html { redirect_to @reason }
-  #     format.js
-  #   end
-  # end
+  def show
+    @issue = Issue.friendly.find(params[:id])
+    @reason = Reason.find_by(public_id: params[:public_id], issue: @issue)
+    # @reason = Reason.friendly.find(params[:id]).where(public_id: params[:public_id])
+    respond_to do |format|
+      format.html { redirect_to @reason }
+      format.js
+    end
+  end
 
   private
 

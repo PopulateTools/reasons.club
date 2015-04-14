@@ -4,10 +4,17 @@
     <%= link_to reason.votes_for.size, '', class: 'cd-signup' %>
   </div>
   <div class="title">
-    <h2><%= link_to "#{reason.title} <span>##{reason.public_id}</span>".html_safe, reason_path(public_id: reason.public_id), remote: true, class: 'cd-signup' %></h2>
+    <h2><%= "#{reason.title} <span>##{reason.public_id}</span>".html_safe %></h2>
   </div>
   <div class="tools">
     N comentario
     N enlaces
   </div>
+
+  <div class="comments">
+
+    comments
+
+  </div>
+
 </div>

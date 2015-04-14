@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/issue'
 
-  resources :reasons
+  get '/issues/:id/:public_id', to: 'reasons#show', as: 'reason'
+    
   resources :issues do
     resources :reasons
+    # get '/issues/:id/:public_id', to: 'reasons#show', as: 'reason_wadus'
   end
 
   resources :invites

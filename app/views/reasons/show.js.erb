@@ -1,0 +1,7 @@
+<% if @reason %>
+  $('#show_reason_extended').html("<%= escape_javascript(render(:partial => 'reason_extended', locals: { reason: @reason }, :formats => [:html] )) %>");
+<% else %>
+  $('#show_reason_extended').append("<%= escape_javascript('errrrrroor') %>");
+<% end %>
+
+
