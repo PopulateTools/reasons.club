@@ -15,3 +15,12 @@
 
 });
 
+// $(document).on('click', 'a[data-remote=true]', function(e) {
+//   history.pushState({}, '', $(this).attr('href'));
+// });
+
+// $(window).on('popstate', function () {
+//   console.log('pop');
+//   $.get(document.location.href)
+// });
+

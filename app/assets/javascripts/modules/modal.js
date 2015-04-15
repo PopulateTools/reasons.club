@@ -59,7 +59,13 @@ jQuery(document).ready(function($){
     event.preventDefault();
     if(event.which=='27'){
       $('.cd-user-modal').removeClass('is-visible');
+      close_reason_extended();
     }
+  });
+  $('.blurry').on('click', function(event){
+    if( $(event.target).is('.blurry') || $(event.target).is('.cd-close-form') ) {
+      close_reason_extended();
+    } 
   });
 
   //show forgot-password form 
@@ -100,6 +106,10 @@ jQuery(document).ready(function($){
     
   });
 
+  function close_reason_extended() {
+    $('.show_extended').hide();
+    $('.blurry').fadeOut();
+  }
 
   function open_modal(modal, target){
     modal = typeof modal !== 'undefined' ?  modal : '#modal-signin';

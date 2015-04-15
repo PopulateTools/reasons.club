@@ -1,0 +1,49 @@
+<div class="reason m4 <%= reason.for ? 'reasons-for' : 'reasons-against' %>">
+  
+  <%# render 'reasons/reason_header', locals: { reason: reason } %>
+
+  <div class="vote btn-vote <%= user_voted_for(reason) ? 'active' : '' %> vote-<%= reason.public_id %>"><!-- .active -->
+    <div class="btn-triangle"></div>
+    <%= render(:partial => 'vote_ajax') %>
+  </div>
+  <div class="title">
+    <h2><%= "#{reason.title} <span>##{reason.public_id}</span>".html_safe %></h2>
+  </div>
+  <div class="tools">
+    N comentario
+    N enlaces
+  </div>
+
+  <div class="content">
+    
+    <div class="description">
+
+      <h3><%= t('reason.description') %></h3>
+      
+      <div class="note"><%= t('reason.wiki_reason') %></div>
+
+      <%= reason.description %>
+
+    </div>
+
+    <div class="clearfix">
+
+      <div class="comments">
+
+        <h3><%= t('reason.comments') %></h3>
+        <div class="note"><%= t('reason.comment_about_this_reason') %></div>
+
+      </div>
+
+      <div class="references">
+
+        <h3><%= t('reason.references') %></h3>
+        <div class="note"><%= t('reason.references_about_this_reason') %></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
