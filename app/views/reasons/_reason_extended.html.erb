@@ -2,9 +2,9 @@
   
   <%# render 'reasons/reason_header', locals: { reason: reason } %>
 
-  <div class="vote btn-vote "><!-- .active -->
+  <div class="vote btn-vote <%= user_voted_for(reason) ? 'active' : '' %> vote-<%= reason.public_id %>"><!-- .active -->
     <div class="btn-triangle"></div>
-    <%= link_to reason.votes_for.size, '', class: 'cd-signup' %>
+    <%= render(:partial => 'vote_ajax') %>
   </div>
   <div class="title">
     <h2><%= "#{reason.title} <span>##{reason.public_id}</span>".html_safe %></h2>

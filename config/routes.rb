@@ -15,6 +15,13 @@ Rails.application.routes.draw do
     # get '/issues/:id/:public_id', to: 'reasons#show', as: 'reason_wadus'
   end
 
+  resources :reasons do
+    member do
+      patch 'vote'
+      patch 'unvote'
+    end
+  end
+  
   resources :invites
 
 end

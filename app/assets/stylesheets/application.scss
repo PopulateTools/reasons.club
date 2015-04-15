@@ -177,7 +177,7 @@ body > header /* .main-header */ {
     color: $color_neutral_main;
     position: relative;
     background: $random_color_1;
-    padding: 2em 2em .5em 2em;
+    padding: 2em 2em .5em 1.8em;
     @include border-radius(6px, 6px, 0, 0);
     
     @include screen(740) { 

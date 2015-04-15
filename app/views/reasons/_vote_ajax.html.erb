@@ -1,0 +1,8 @@
+    <% if !user_signed_in? %>
+      <% # show button, to log in when pressed %>
+      <%= link_to @reason.votes_for.size, '', class: 'cd-signup' %>
+    <% elsif current_user.voted_for? @reason %>
+      <%= link_to @reason.votes_for.size, unvote_reason_path(id: @reason.issue.id, public_id: @reason.public_id), :remote => true, :method => 'patch' %>
+    <% elsif %>
+      <%= link_to @reason.votes_for.size, vote_reason_path(id: @reason.issue.id, public_id: @reason.public_id), :remote => true, :method => 'patch' %>
+    <% end %>
