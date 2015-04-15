@@ -1,5 +1,6 @@
 <% if @reason %>
-  $('#show_reason_extended').html("<%= escape_javascript(render(:partial => 'reason_extended', locals: { reason: @reason }, :formats => [:html] )) %>");
+  $('.blurry').show();
+  $('#show_reason_extended').fadeIn().html("<%= escape_javascript(render(:partial => 'reason_extended', locals: { reason: @reason }, :formats => [:html] )) %>");
 <% else %>
   $('#show_reason_extended').append("<%= escape_javascript('errrrrroor') %>");
 <% end %>

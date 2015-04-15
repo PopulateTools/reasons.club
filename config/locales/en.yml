@@ -65,4 +65,10 @@ en:
     issues:
       issue:
         description: Reasons.club enables you to discuss with order and structure. Learn about %{title}
+  reason:
+    description: Description
+    comments: Comments
+    references: References
+    comment_about_this_reason: Soon you'll be able to add comments about this reason and contribute to the debate.
+    references_about_this_reason: "Soon you'll be able to add references: links to news, reports, studies, etc. to document this reason."
 
