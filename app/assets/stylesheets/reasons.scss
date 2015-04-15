@@ -1,0 +1,223 @@
+.reasons {
+  position: relative;
+
+  .show_extended {
+    display: none;
+    position: fixed;
+    width: 70%;
+    margin: 0 11%; 
+    padding: 2% 4%;
+    top: 19%;
+    left: 0;
+    border: 1px solid #CDCDCD;
+    background: #FFF; 
+    z-index: 20;
+    @include border-radius(8px);
+    // @include box-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4), $inset: "");
+    @include box-shadow(0, 0, 160px, rgba(100,100,10,.5));
+
+    .reason {
+      background: #FFF;
+
+      h2 {
+        font-size: 1.6em;
+      }
+
+    }
+  }
+
+}
+.reason {
+  position: relative;
+  padding-left: 65px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  h2 {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    a {
+      text-decoration: none;
+      @include transition;
+      span {
+        opacity: .25;
+        font-weight: normal;
+      }
+    }
+    span {
+      opacity: .25;
+      font-weight: normal;
+    }
+  }
+  .vote {
+    position: absolute;
+    left: 0;
+  }
+  @include screen(740) {
+    padding-left: 0;
+    margin: 6% 6% 12% 6%;
+
+    h2 {
+      font-size: .85em;
+    }
+    .btn-vote {
+      width: 100%;
+      position: relative;
+      margin-bottom: 4%;
+      height: 28px;
+
+      a {
+        padding: 3px 0 2px 10px;
+      }
+    }
+    .btn-triangle {
+      left: 34%;
+    }
+  }
+  .tools {
+    font-size: .75em;
+  }
+}
+.reasons-for {
+  background: $color_for_background;
+  @include border-radius($top-left:5px, $bottom-left:8px);
+  color: $color_for_dark;
+  a {
+    color: $color_for_dark;
+    &:hover {
+      background: darken($color_for_soft, 10%);
+    }
+  }
+  .tools {
+    color: darken($color_for_soft, 10%);
+  }
+  header {
+    text-transform: uppercase;
+    color: $color_for_main;
+    background: $color_for_main;
+  }
+  .add_reason_input {
+    .fa {
+      color: $color_for_main;
+    }
+    input[type="text"], textarea {
+      color: $color_for_dark;
+    }
+    textarea {
+      border-bottom: 1px solid $color_for_soft;
+    }
+  }
+}
+.reasons-against {
+  background: $color_against_background;
+  @include border-radius($top-right:5px, $bottom-right:8px);
+  color: $color_against_dark;
+  a {
+    color: $color_against_dark;
+    &:hover {
+      background: darken($color_against_soft, 10%);
+    }
+  }
+  .tools {
+    color: darken($color_against_soft, 10%);
+  }
+  header {
+    text-transform: uppercase;
+    color: $color_against_main;
+    background: $color_against_main;
+  }
+  .add_reason_input {
+    .fa {
+      color: $color_against_main;
+    }
+    input[type="text"], textarea {
+      color: $color_against_dark;
+    }
+    textarea {
+      border-bottom: 1px solid $color_against_soft;
+    }
+  }
+}
+.reasons-list header {
+  color: #FFF;
+  div {
+    display: inline-block;
+    padding-right: 10px;
+  } 
+  > .add-reason:first-child {
+    margin-top: 50px;
+  }
+  @include screen(740) {
+    padding: 2% 0 2% 6%;
+    font-size: .85em;
+  }
+}
+.add_reason_input {
+  .fa {
+    width: 48px;
+    margin-right: 17px;
+    font-size: 1.4em;
+    text-align: right; 
+    // color: ;
+  }
+  textarea {
+    background: transparent;
+    border: none;
+    width: 80%;
+    padding: 2px 0;
+    font-weight: 600;
+    box-sizing: border-box;
+    max-height: 260px; // optional but recommended
+    min-height: 26px;
+    height: 26px;
+    overflow-x: hidden; // for Firefox (issue #5)
+    outline: none;
+  }
+  @include placeholder {
+    font-style: italic;
+    font-weight: normal;
+    color: ligthen($color_neutral_main, 20%);
+  }
+  .btn {
+    display: none;
+  }
+}
+@include screen(740) {
+  .add-reason {
+    margin: 6% 6% 12% 6%;
+    padding: 0;
+  }
+  .add_reason_input {
+    width: auto;
+    margin-right: 0;
+    .fa {
+      font-size: 1.2em; 
+      margin-right: 5px;
+      width: 17px;
+      vertical-align: super;
+    }
+  }
+
+}
+
+.content {
+  font-size: .85em; 
+  
+  h3 {
+    text-transform: uppercase;
+    font-size: 1em;
+  }
+  .description {
+    margin: 0 0 3em 0;
+  }
+  .comments {
+    width: 60%;
+    float: left;
+    margin: 0 5% 0 0;
+  }
+  .references {
+    width: 35%;
+    float: right;
+    margin: 0;
+  }
+}

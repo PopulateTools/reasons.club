@@ -177,7 +177,7 @@ body > header /* .main-header */ {
     color: $color_neutral_main;
     position: relative;
     background: $random_color_1;
-    padding: 2em 2em .5em 2em;
+    padding: 2em 2em .5em 1.8em;
     @include border-radius(6px, 6px, 0, 0);
     
     @include screen(740) { 
@@ -247,169 +247,7 @@ body > header /* .main-header */ {
     }
   }
 }
-.reason {
-  position: relative;
-  padding-left: 65px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  h2 {
-    font-size: 1em;
-    font-weight: 600;
-    margin: 0 0 5px 0;
-    a {
-      text-decoration: none;
-      @include transition;
-    }
-  }
-  .vote {
-    position: absolute;
-    left: 0;
-  }
-  @include screen(740) {
-    padding-left: 0;
-    margin: 6% 6% 12% 6%;
 
-    h2 {
-      font-size: .85em;
-    }
-    .btn-vote {
-      width: 100%;
-      position: relative;
-      margin-bottom: 4%;
-      height: 28px;
-
-      a {
-        padding: 3px 0 2px 10px;
-      }
-    }
-    .btn-triangle {
-      left: 34%;
-    }
-  }
-  .tools {
-    font-size: .75em;
-  }
-}
-.reasons-for {
-  background: $color_for_background;
-  @include border-radius($top-left:5px, $bottom-left:8px);
-  a {
-    color: $color_for_dark;
-    &:hover {
-      background: darken($color_for_soft, 10%);
-    }
-  }
-  .tools {
-    color: darken($color_for_soft, 10%);
-  }
-  header {
-    text-transform: uppercase;
-    color: $color_for_main;
-    background: $color_for_main;
-  }
-  .add_reason_input {
-    .fa {
-      color: $color_for_main;
-    }
-    input[type="text"], textarea {
-      color: $color_for_dark;
-    }
-    textarea {
-      border-bottom: 1px solid $color_for_soft;
-    }
-  }
-}
-.reasons-against {
-  background: $color_against_background;
-  @include border-radius($top-right:5px, $bottom-right:8px);
-  a {
-    color: $color_against_dark;
-    &:hover {
-      background: darken($color_against_soft, 10%);
-    }
-  }
-  .tools {
-    color: darken($color_against_soft, 10%);
-  }
-  header {
-    text-transform: uppercase;
-    color: $color_against_main;
-    background: $color_against_main;
-  }
-  .add_reason_input {
-    .fa {
-      color: $color_against_main;
-    }
-    input[type="text"], textarea {
-      color: $color_against_dark;
-    }
-    textarea {
-      border-bottom: 1px solid $color_against_soft;
-    }
-  }
-}
-.reasons-list header {
-  color: #FFF;
-  div {
-    display: inline-block;
-    padding-right: 10px;
-  } 
-  > .add-reason:first-child {
-    margin-top: 50px;
-  }
-  @include screen(740) {
-    padding: 2% 0 2% 6%;
-    font-size: .85em;
-  }
-}
-.add_reason_input {
-  .fa {
-    width: 48px;
-    margin-right: 17px;
-    font-size: 1.4em;
-    text-align: right; 
-    // color: ;
-  }
-  textarea {
-    background: transparent;
-    border: none;
-    width: 80%;
-    padding: 2px 0;
-    font-weight: 600;
-    box-sizing: border-box;
-    max-height: 260px; // optional but recommended
-    min-height: 26px;
-    height: 26px;
-    overflow-x: hidden; // for Firefox (issue #5)
-    outline: none;
-  }
-  @include placeholder {
-    font-style: italic;
-    font-weight: normal;
-    color: ligthen($color_neutral_main, 20%);
-    
-  }
-  .btn {
-    display: none;
-  }
-}
-@include screen(740) {
-  .add-reason {
-    margin: 6% 6% 12% 6%;
-    padding: 0;
-  }
-  .add_reason_input {
-    width: auto;
-    margin-right: 0;
-    .fa {
-      font-size: 1.2em; 
-      margin-right: 5px;
-      width: 17px;
-      vertical-align: super;
-    }
-  }
-
-}
 .alert { 
   background: #EBE8CC; 
   padding-top: 1em; 
@@ -496,6 +334,7 @@ footer {
     width: 400px;
   }
 }
+
 // issues_list
 .issues_list {
   vertical-align: top; 
@@ -569,6 +408,23 @@ footer {
 }
 
 // various
+.note {
+  background: lightgoldenrodyellow;
+  border: 1px solid #DFDFDF;
+  padding: .5em 1em;
+  border-radius: 5px;
+  margin: 1em 0;
+}
+.blurry {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 10; 
+  background: #FFF;
+  opacity: .5;
+  top: 0;
+}
 i.back_line {
   border-top: 1px solid #E2C247;
   position: absolute;

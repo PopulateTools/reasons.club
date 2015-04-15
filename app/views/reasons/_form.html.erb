@@ -4,7 +4,7 @@
         <div class="py2 px4 add-reason">
           
           <div class="add_reason_input">
-          <%= form_for @reason, remote: true do |f| %>
+          <%= form_for [@issue, @reason], remote: true do |f| %>
             <i class="fa fa-plus-circle"></i>
             <%= f.text_area :title, placeholder: t('reasons.add_argument'), class: "cd-signup reason_title js-auto-size reason_title_#{locals[:position]}", rows: '1' %>
             <%= f.hidden_field :issue_id, :value => @issue.id %>
