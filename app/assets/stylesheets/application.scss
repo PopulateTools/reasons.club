@@ -334,6 +334,7 @@ footer {
     width: 400px;
   }
 }
+
 // issues_list
 .issues_list {
   vertical-align: top; 
@@ -407,6 +408,13 @@ footer {
 }
 
 // various
+.note {
+  background: lightgoldenrodyellow;
+  border: 1px solid #DFDFDF;
+  padding: .5em 1em;
+  border-radius: 5px;
+  margin: 1em 0;
+}
 .blurry {
   position: fixed;
   display: none;
