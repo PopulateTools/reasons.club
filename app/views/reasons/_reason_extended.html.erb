@@ -1,4 +1,7 @@
-<div class="reason m4">
+<div class="reason m4 <%= reason.for ? 'reasons-for' : 'reasons-against' %>">
+  
+  <%# render 'reasons/reason_header', locals: { reason: reason } %>
+
   <div class="vote btn-vote "><!-- .active -->
     <div class="btn-triangle"></div>
     <%= link_to reason.votes_for.size, '', class: 'cd-signup' %>
@@ -11,9 +14,32 @@
     N enlaces
   </div>
 
-  <div class="comments">
+  <div class="content">
+    
+    <div class="description">
 
-    comments
+      <h3><%= t('reason.description') %></h3>
+      <%= reason.description %>
+
+    </div>
+
+    <div class="clearfix">
+
+      <div class="comments">
+
+        <h3><%= t('reason.comments') %></h3>
+        <p><%= t('reason.comment_about_this_reason') %></p>
+
+      </div>
+
+      <div class="references">
+
+        <h3><%= t('reason.references') %></h3>
+        <p><%= t('reason.references_about_this_reason') %></p>
+
+      </div>
+
+    </div>
 
   </div>
 
