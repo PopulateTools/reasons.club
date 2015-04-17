@@ -26,8 +26,8 @@ form, .form {
   }
 }
 
-.form-fields {
-  // TBD
+.form-fields, .field {
+  margin: 0 0 1em 0;
 
   &.solid {
     font-size: 12px;
