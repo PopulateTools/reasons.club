@@ -35,7 +35,9 @@ class UsersController < ApplicationController
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
     # authorize! :update, @user 
-    if request.patch? && params[:user] #&& params[:user][:email]
+    if request.patch? && User.find_by(email: params[:user][:email]).present?
+      flash[:error] = t('user.email_already_exists', href: destroy_user_session_path, datamethod: 'delete').html_safe
+    elsif request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
         @user.skip_reconfirmation! if @user.respond_to?(:skip_confirmation)
         sign_in(@user, :bypass => true)
