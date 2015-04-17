@@ -252,10 +252,9 @@ body > header /* .main-header */ {
 
 .alert { 
   background: #EBE8CC; 
-  padding-top: 1em; 
-  padding-bottom: 1em; 
+  padding: 1em; 
   margin-bottom: 2em; 
-  @include border-radius(6px);
+  // @include border-radius(6px);
 }
 .success, .info, .warning, .danger { }
 
@@ -483,6 +482,16 @@ i.back_line {
 .twitter {
   background: #26c4f1;
 }
+
+// login etc
+.login_reg {
+  width: 50%;
+  .share {
+    font-size: 1.2em;
+    display: inline-block;
+  }
+}
+
 
 // Overwriting image for asset_pipeline -> there is probably a better way
 .tipsy .tipsy-arrow { background-image: url(image_path('tipsy.gif')) !important }

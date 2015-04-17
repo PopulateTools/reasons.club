@@ -1,6 +1,8 @@
-<div class="container">
+<div class="container login_reg">
 
   <h2>Sign up</h2>
+
+  <%= render "devise/shared/social_login" %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
