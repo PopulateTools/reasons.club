@@ -203,6 +203,15 @@ Reason.create(
     # create_your_first_club: Create your first club
 
 
+# Issue.create(title: 'Razones para alquilar casa (vs. comprar)', locale: 'es', privacy_public: true, user_id: 1)
+# Issue.create(title: 'Razones para votar a Podemos (o no)', locale: 'es', privacy_public: true, user_id: 1)
+# Issue.create(title: 'Razones para votar a Manuela Carmena (o no)', locale: 'es', privacy_public: true, user_id: 1)
+# Issue.create(title: 'Razones para legalizar la prostitución (o no)', locale: 'es', privacy_public: true, user_id: 1)
+# Issue.create(title: 'Razones para legalizar las drogas (o no)', locale: 'es', privacy_public: true, user_id: 1)
+# Issue.create(title: 'Razones para tener listas abiertas (o no)', locale: 'es', privacy_public: true, user_id: 1)
+# Issue.create(title: 'Razones para votar a Cristina Cifuentes (o no)', locale: 'es', privacy_public: true, user_id: 1)
+# Issue.create(title: 'Razones para vacunar a los niños/as (o no)', locale: 'es', privacy_public: true, user_id: 1)
+
 # votes
 Reason.all[0].liked_by User.all[0]
 Reason.all[0].liked_by User.all[1]
