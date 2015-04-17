@@ -1,0 +1,18 @@
+<div class="container">
+  
+  <h1><%= t('user.welcome_title') %></h1>
+
+  <p class="note"><%= t('user.welcome_text') %></p>
+
+  <p><%= t('user.meanwhile') %></p>
+
+  <div class="share_container">
+    <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= u(request.domain) %>&t=<%= u(t('tagline')) %>" class="popup"><i class="fa fa-facebook"></i><span>Facebook</span></a></div>
+    <div class="share twitter"><a href="http://twitter.com/home?status=<%= u(t('tagline')) %> <%= request.domain %>" class="popup"><i class="fa fa-twitter"></i><span>Twitter</span></a></div>
+  </div>
+
+  <p><%= t('user.meanwhile_bis').html_safe %></p>
+
+  <p><%= link_to t('user.need_to_edit'), edit_user_registration_path %></p>
+
+</div>
