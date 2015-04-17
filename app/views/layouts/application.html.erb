@@ -43,6 +43,9 @@
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
+
+<%= flash_message %>
+
 <%= yield %>
 
 <% unless params[:embed] %>

@@ -78,3 +78,4 @@ en:
     meanwhile: Meanwhile, show your Reasons.club to your friends!
     meanwhile_bis: And <a href="/">explore existing clubs</a>, of course.
     need_to_edit: Need to edit your account?
+    email_already_exists: Hey, that email is already registered. <a href="%{href}" data-method="%{datamethod}">Log in with your other account</a> and then link them!
