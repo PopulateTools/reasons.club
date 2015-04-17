@@ -147,6 +147,8 @@ body > header /* .main-header */ {
       text-align: center;
       margin-left: 10px;
       text-decoration: none;
+      min-height: 17px;
+      min-width: 7px;
     }
 
     @include screen(740) {

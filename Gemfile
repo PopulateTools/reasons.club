@@ -20,6 +20,8 @@ gem 'friendly_id'
 gem 'acts_as_votable'
 gem 'devise'  
 gem 'bourbon'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
