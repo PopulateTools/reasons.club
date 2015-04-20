@@ -3,6 +3,9 @@
 
       <em></em>
       <h1><%= @issue.title %></h1>
+      <% if @issue.privacy_public == "0" %>
+        <i class="fa fa-lock tipsit" title="<%= t('issues.private') %>"></i>
+      <% end %>
       <div class="share_container">
         <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= u(request.original_url) %>&t=<%= u(t('tagline')) %>" class="popup"><i class="fa fa-facebook"></i><span>Facebook</span></a></div>
         <div class="share twitter"><a href="http://twitter.com/home?status=<%= @issue.title %> <%= request.original_url %>" class="popup"><i class="fa fa-twitter"></i><span>Twitter</span></a></div>
@@ -48,7 +51,7 @@
             <!-- <div><strong>4345</strong> Partidarios</div> -->
           </header>
 
-          <% if @issue.reasons.for.empty? %>
+          <% if @issue.reasons.against.empty? %>
             <div class="no_reasons_yet m4">
               <%= t('issues.no_reasons_yet') %>
             </div>
