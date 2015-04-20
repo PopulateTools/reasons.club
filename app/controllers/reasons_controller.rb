@@ -27,8 +27,6 @@ class ReasonsController < ApplicationController
 
   def vote
     @reason.liked_by current_user
-    logger.debug 'votando'
-    logger.debug @reason.inspect
     respond_to do |format|
       format.html { redirect_to reason }
       format.js
@@ -37,8 +35,6 @@ class ReasonsController < ApplicationController
 
   def unvote
     @reason.unliked_by current_user
-    logger.debug 'desvotando'
-    logger.debug @reason.inspect
     respond_to do |format|
       format.html { redirect_to reason }
       format.js

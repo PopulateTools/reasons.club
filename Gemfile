@@ -22,6 +22,8 @@ gem 'devise'
 gem 'bourbon'
 gem 'omniauth'
 gem 'omniauth-twitter'
+
+# services 
 gem 'rollbar', '~> 1.5.0'
 
 # Use Unicorn as the app server
