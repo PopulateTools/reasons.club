@@ -61,10 +61,31 @@ en:
     create:
       your_issue: Issue to decide
       create_your_club: Create your Club
+    created: Hooray, your Club has been created. Time to start reasoning
+    create_submit: Create your Club
+    new_top_bar_title: Add new issue to discuss
+    no_reasons_yet: No reasons yet. Start reasoning now!
+    reasons_for: reasons for
+    reasons_against: reasons against
+    votes: votes
+    reasons_creation_placeholder: This is where you'll add your reasons for and against
+    set_up_your_club: Set up your Club
+    your_clubs_title: Your Club's title
+    just_for_me: Just for me <span>Private club, noboby can access it</span>
+    just_for_me_exp: Private club, noboby can access it
+    for_a_closed_group: "COMING SOON: For a closed group <span>Accessible only to those you invite</span>"
+    for_a_closed_group_exp: Accessible only to those you invite
+    for_a_closed_group_exp_long: You can write or paste your co-reasoners' emails. They'll receive a personal link to be able to start adding reasons and commenting.
+    for_everybody: For everybody <span>Anyone can join the -discussion- party</span>
+    for_everybody_exp: Anyone can join the -discussion- party
+    for_everybody_exp_long: You'll be able to share the URL of your Club publicly
+    no_one_to_invite: "No one to invite since this is only for you... You'll be able to to open this Club to a group or everybody afterwards (so: use this mode if you want to prepare a draft)"
+    private: This issue is just for you, nobody can access it (you can change this)
   metas:
     issues:
       issue:
         description: Reasons.club enables you to discuss with order and structure. Learn about %{title}
+        create_new: Create new Club
   reason:
     description: Description
     comments: Comments

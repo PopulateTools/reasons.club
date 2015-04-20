@@ -1,0 +1,8 @@
+<%# @reason.inspect %>
+<% if @result %>
+  $('.issue').append("<%= escape_javascript(render(:partial => 'show_issue', :formats => [:html] )) %>");
+<% else %>
+  $('.new_reason_here_<%= destination %>').append("<%= escape_javascript('errrrrroor') %>");
+<% end %>
+
+
