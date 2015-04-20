@@ -21,6 +21,7 @@
     $('.invites-pref').hide();
     $('#invites_' + val).show();
   }
+
 });
 
 
