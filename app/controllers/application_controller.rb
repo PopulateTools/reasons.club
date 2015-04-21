@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # http_basic_authenticate_with name: "reasons", password: "wadusclub" if Rails.env.production?
 
   def after_sign_in_path_for(resource)
-    me_path
+    user_path
   end
 
   
