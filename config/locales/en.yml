@@ -103,3 +103,53 @@ en:
     meanwhile_bis: And <a href="/">explore existing clubs</a>, of course.
     need_to_edit: Need to edit your account?
     email_already_exists: Hey, that email is already registered. <a href="%{href}" data-method="%{datamethod}">Log in with your other account</a> and then link them!
+  mailer: 
+    lets_start: Lets start reasoning
+    welcome_mail: |
+      Hooray %{user_name}, 
+
+      You are ready to start reasoning with essence, reaching conclusions faster, and taking decisions. No more empty debates or not being sure why you do something.
+       
+      You can create private (for you or for a small group) or public Clubs. Clubs are where the action is: start compiling lists of pros and cons, and document them. 
+
+      If you use this in your company, tell us, and pay us! If you use this as an individual, share with your friends so people in companies get to know it and end up paying us so you can keep using it for free!
+
+      Now, go to your account: %{user_url}
+
+      or explore public Clubs: http://Reasons.club
+
+      Best, 
+
+      Álvaro Ortiz
+      Chief Reasoner
+    new_vote_on_your_reason: |
+      Howdy %{user_name}, 
+
+      Sorry for interrupting, but there is a new vote by {%voter} in your reason: {%reason}
+
+      %{reason_url}
+
+      This gets you points towards your Reasoning karma. And that should make you happy. 
+
+      Nothing more to see.
+
+    new_reason_on_your_issue: |
+      Hey %{user_name}, 
+
+      It's me again, telling you that there is a new reason by {%voter} in your Club: {%issue}
+
+      %{issue_url}
+
+      Are all your reasons there? C'mon!
+
+    new_vote_on_your_issue: |
+      Hey %{user_name}, 
+
+      Your Club keeps getting attention: a new vote by {%voter} for {%reason}
+
+      %{issue_url}
+
+      Have you shared your Club enough?
+
+      Keep those votes and reasons coming.
+

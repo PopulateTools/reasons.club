@@ -21,7 +21,7 @@
       <% if user_signed_in? %>
         <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_issue_path, title: t('issues.new_top_bar_title'), class: "tipsit-n", id: "add_new_issue"  %>
         <!-- <a href="" id="notifications_notice" title="You have 23 new notifications" class="tipsit-n">23</a> -->
-        <%= link_to '', me_path, :class => 'navbar-link tipsit-n', style: "background: url('#{gravatar_for(current_user, size: 32, only_url: true)}')", title: "Your account (#{current_user.email})" %>
+        <%= link_to '', user_profile_path, :class => 'navbar-link tipsit-n', style: "background: url('#{gravatar_for(current_user, size: 32, only_url: true)}')", title: "Your account (#{current_user.email})" %>
         <%= link_to "<i class='fa fa-toggle-on'></i>".html_safe, destroy_user_session_path, method: :delete, :class => 'navbar-link tipsit-n', title: 'Logout, and come later'  %>
       <% else %>
         <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_issue_path, title: t('issues.new_top_bar_title'), class: "tipsit-n cd-signup", id: "add_new_issue"  %>
