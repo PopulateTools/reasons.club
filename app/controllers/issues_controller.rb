@@ -2,6 +2,7 @@ class IssuesController < ApplicationController
 
   before_action :set_new_reason, only: [:show]
   before_action :load_issue, only: [:show]
+  before_action :random_issue, only: [:show]
   before_action :set_new_issue, only: [:new]
 
   def new
@@ -59,6 +60,11 @@ class IssuesController < ApplicationController
       @issue = Issue.friendly.includes(reasons: [:user]).find(params[:id])
       @votes = issue_total_votes(@issue)
     end 
+
+    def random_issue
+      offset = rand(Issue.public_issues.count)
+      @rand_issue = Issue.offset(offset).first
+    end
 
 
 end

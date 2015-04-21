@@ -1,0 +1,9 @@
+  
+  <div class="next_issue">
+    <p><%= t('issues.keep_reasoning') %>...</p>
+    <h2><%= link_to @rand_issue.title, issue_path %></h2>
+    <div class="num_reasons">
+      <span><%= @rand_issue.reasons.for.count %> <%= t('issues.reasons_for') %></span>
+      <span><%= @rand_issue.reasons.against.count %> <%= t('issues.reasons_against') %></span>
+    </div>
+  </div>
