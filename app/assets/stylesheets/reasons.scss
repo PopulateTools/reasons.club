@@ -1,5 +1,7 @@
 .reasons {
   position: relative;
+  clear: both; 
+  overflow: hidden;
 
   .show_extended {
     display: none;

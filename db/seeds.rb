@@ -19,7 +19,8 @@ Issue.create(
   title: 'Razones para votar (o no) a Esperanza Aguirre',
   description: 'Esperanza Aguirre tiene una trayectoria política muy cuestionable para alguien que quiere volver a presentarse a unas elecciones. En esta lista apuntamos algunas de las razones por las que pensamos que NO debería poder ser representante público. Si quieres añadir razones por las que votarla, adelante ;)',
   locale: 'es',
-  privacy_public: true,
+  privacy_public: '2',
+  featured: '1',
   user: User.all[0])
 Reason.create(
   title: 'Muchos de sus colaboradores cercanos estan implicados en casos de corrupcion',
@@ -92,7 +93,8 @@ Issue.create(
   title: 'Razones para usar Reasons.club',
   description: 'En la tradición de tomar de nuestra propia medicina aquí tienes una lista de razones por las que usar Reasons.club es una buena idea, o lo contrario',
   locale: 'es',
-  privacy_public: true,
+  privacy_public: '2',
+  featured: '1',
   user: User.all[0])
 Reason.create(
   title: 'Te ayuda a organizar tus ideas sobre un tema',
@@ -125,7 +127,8 @@ Issue.create(
   title: 'Razones para hacer deporte al aire libre (vs. ir al gimnasio)',
   description: 'Muchas personas pagan una cuota de un gimnasio cuando muchas veces podrían hacer deporte al aire libre ahorrando dinero y haciendo un ejercicio equivalente, y además, al aire libre.',
   locale: 'es',
-  privacy_public: true,
+  privacy_public: '2',
+  featured: '1',
   user: User.all[0])
 Reason.create(
   title: 'Ahorras dinero',
