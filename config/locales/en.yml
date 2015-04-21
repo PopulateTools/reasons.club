@@ -122,10 +122,11 @@ en:
 
       Álvaro Ortiz
       Chief Reasoner
+    new_vote_on_your_reason_subject: "New vote on your reason: %{reason}"
     new_vote_on_your_reason: |
       Howdy %{user_name}, 
 
-      Sorry for interrupting, but there is a new vote by {%voter} in your reason: {%reason}
+      Sorry for interrupting, but there is a new vote by %{voter} in your reason: %{reason}
 
       %{reason_url}
 
@@ -133,19 +134,21 @@ en:
 
       Nothing more to see.
 
+    new_reason_on_your_issue_subject: "New reason on your Club: %{issue}"
     new_reason_on_your_issue: |
       Hey %{user_name}, 
 
-      It's me again, telling you that there is a new reason by {%voter} in your Club: {%issue}
+      It's me again, telling you that there is a new reason by %{voter} in your Club: %{issue}
 
       %{issue_url}
 
       Are all your reasons there? C'mon!
 
+    new_vote_on_your_issue_subject: "New vote on your Club: %{issue}"
     new_vote_on_your_issue: |
       Hey %{user_name}, 
 
-      Your Club keeps getting attention: a new vote by {%voter} for {%reason}
+      Your Club keeps getting attention: a new vote by %{voter} for %{reason}
 
       %{issue_url}
 
