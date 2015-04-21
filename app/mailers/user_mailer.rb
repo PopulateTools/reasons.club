@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-  default from: 'discuss@reasons.club'
+  default from: 'Reasons.club <discuss@reasons.club>'
  
   def welcome_email(user)
     @user = user
@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
   end
 
   def new_vote_on_your_reason(voter, reason)
-    @voter = voter
+    @voter = voter.name
     @user_name = reason.user.name
     @reason = reason.title
     @reason_url = issue_reason_url(reason.issue_id, reason)
@@ -18,7 +18,7 @@ class UserMailer < ApplicationMailer
   end
 
   def new_reason_on_your_issue(voter, issue)
-    @voter = voter
+    @voter = voter.name
     @user_name = issue.user.name
     @issue = issue.title
     @issue_url = issue_url(issue)
@@ -26,11 +26,12 @@ class UserMailer < ApplicationMailer
   end
 
   def new_vote_on_your_issue(voter, reason)
-    @voter = voter
+    @voter = voter.name
     @user_name = reason.issue.user.name
     @reason = reason.title
+    @issue = reason.issue.title
     @issue_url = issue_url(reason.issue)
-    mail(to: reason.issue.user.email, subject: t('mailer.new_vote_on_your_issue_subject', user_name: @user_name, voter: @voter, reason: @reason, issue_url: @issue_url))
+    mail(to: reason.issue.user.email, subject: t('mailer.new_vote_on_your_issue_subject', user_name: @user_name, voter: @voter, reason: @reason, issue: @issue, issue_url: @issue_url))
   end
 
 end
