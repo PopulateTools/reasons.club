@@ -22,5 +22,10 @@ module ApplicationHelper
     end
   end
 
+  def twitter_login_path
+    '/login/auth/twitter'
+  end
+
+
   
 end
