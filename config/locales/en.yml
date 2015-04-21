@@ -25,6 +25,7 @@ en:
   about: About
   contact: Contact
   help: Help
+  connect_with: Connect with 
   home:
     intro_text: Disqus with order, reach conclusions faster, take decisions
     for_yourself: For yourself
@@ -50,6 +51,8 @@ en:
     great_well_be_in_touch: "Great, we'll be in touch"
     fb: "Reasons.club: Disqus with order, reach conclusions faster, take decisions http://Reasons.club"
     tweet: "Reasons.club: Disqus with order, reach conclusions faster, take decisions http://Reasons.club"
+    sign_in_with_twitter: Sign in with Twitter
+    connect_with_twitter: Connect with Twitter to become a Reasoner
   sessions:
     new:
       email: Email

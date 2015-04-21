@@ -27,8 +27,10 @@
         <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_issue_path, title: t('issues.new_top_bar_title'), class: "tipsit-n cd-signup", id: "add_new_issue"  %>
         <%# link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
         <%# link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-        <%= link_to "Sign up", '', :class => 'cd-signup navbar-link'  %>
-        <%= link_to "Login", '', :class => 'cd-signup navbar-link'  %>
+        <%# link_to "Sign up", '', :class => 'cd-signup navbar-link'  %>
+        <%# link_to "Login", '', :class => 'cd-signup navbar-link'  %>
+        <%# render 'devise/shared/social_login_buttons' %>
+        <%= link_to "#{t('connect_with')}  <i class='fa fa-twitter'></i> Twitter".html_safe, twitter_login_path %>
       <% end %>
     </div>
     

@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     me_path
   end
 
+  
   private 
 
     def set_new_invite
