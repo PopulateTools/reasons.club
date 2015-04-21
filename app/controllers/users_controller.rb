@@ -41,7 +41,8 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.skip_reconfirmation! if @user.respond_to?(:skip_confirmation)
         sign_in(@user, :bypass => true)
-        redirect_to me_path, notice: 'Your profile was successfully updated.'
+        UserMailer.welcome_email(@user).deliver_later
+        redirect_to user_profile_path, notice: 'Your profile was successfully updated.'
       else
         @show_errors = true
       end

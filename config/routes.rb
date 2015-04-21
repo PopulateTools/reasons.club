@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   
   resources :users, only: [:update, :finish_signup, :destroy]
-  get '/me', to: 'users#me'
+  get '/me', to: 'users#me', :as => :user_profile
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   get 'pages/home'

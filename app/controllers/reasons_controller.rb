@@ -9,6 +9,8 @@ class ReasonsController < ApplicationController
 
   def create
     @reason = current_user.reasons.build(reason_params)
+    # ToDo: control when we fire the notification
+    UserMailer.new_reason_on_your_issue(current_user, @reason.issue).deliver_later
     if @result = @reason.save
       respond_to do |format|
         format.html { redirect_to @reason }
@@ -27,6 +29,11 @@ class ReasonsController < ApplicationController
 
   def vote
     @reason.liked_by current_user
+    # ToDo: control when we fire the notification
+    UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
+    if @reason.user != @reason.issue.user
+      UserMailer.new_vote_on_your_issue(current_user, @reason).deliver_later
+    end
     respond_to do |format|
       format.html { redirect_to reason }
       format.js
