@@ -1,8 +1,47 @@
-<div class="container">
+<div class="container user_page">
   
   <h1><%= t('user.welcome_title') %></h1>
 
   <p class="note"><%= t('user.welcome_text') %></p>
+
+  <% if current_user.twitter_handle.present? %>
+    <h2><strong>@<%= current_user.twitter_handle %></strong> <%= current_user.name %></h2>
+  <% end %>
+
+  <%= link_to '<i class="fa fa-plus"></i> Create new Club'.html_safe, new_issue_path, title: t('issues.new_top_bar_title'), class: "tipsit-n", id: "add_new_issue"  %>
+  
+  <div class="clearfix">
+
+    <div class="fifty percent float-left">
+      <h3>Activity</h3>
+      ...
+    </div>
+
+    <div class="fifty percent float-right">
+      <div class="your_clubs">
+        <h3>Your Clubs <% if @issues.any? %>(<%= @issues.size %>)<% end %></h3>
+        <% if @issues.any? %>
+          <ul>
+          <% @issues.each do |issue| %>
+            <li><%= link_to issue.title, issue %></li>
+          <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <div class="your_clubs">
+        <h3>Your Reasons <% if @reasons.any? %>(<%= @reasons.size %>)<% end %></h3>
+        <% if @reasons.any? %>
+          <ul>
+          <% @reasons.each do |reason| %>
+            <li><%= link_to reason.title, reason_path(reason.issue, reason) %></li>
+          <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
 
   <p><%= t('user.meanwhile') %></p>
 
