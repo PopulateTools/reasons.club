@@ -21,13 +21,13 @@
 
 en:
   hello: "Hello world"
-  tagline: Disqus with order, reach conclusions faster, take decisions
+  tagline: Discuss with order, reach conclusions faster, take decisions
   about: About
   contact: Contact
   help: Help
   connect_with: Connect with 
   home:
-    intro_text: Disqus with order, reach conclusions faster, take decisions
+    intro_text: Discuss with order, reach conclusions faster, take decisions
     for_yourself: For yourself
     for_yourself_1: Take quick notes about the issues you have to decide and get your ideas organized
     for_yourself_2: Create drafts of pros and cons about the decisions you have to take
@@ -49,8 +49,8 @@ en:
     we_are_getting_ready_paragraph: "If you want to vote on a reason, or create your own issues, tell us your email and we'll ping you when we are ready. We won't use your email for nothing more (and less!), we hate spam more than you."
     getit: Get access
     great_well_be_in_touch: "Great, we'll be in touch"
-    fb: "Reasons.club: Disqus with order, reach conclusions faster, take decisions http://Reasons.club"
-    tweet: "Reasons.club: Disqus with order, reach conclusions faster, take decisions http://Reasons.club"
+    fb: "Reasons.club: Discuss with order, reach conclusions faster, take decisions http://Reasons.club"
+    tweet: "Reasons.club: Discuss with order, reach conclusions faster, take decisions http://Reasons.club"
     sign_in_with_twitter: Sign in with Twitter
     connect_with_twitter: Connect with Twitter to become a Reasoner
   sessions:
