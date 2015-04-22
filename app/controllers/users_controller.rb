@@ -14,7 +14,9 @@ class UsersController < ApplicationController
   end
 
   def me
-    
+    @issues = current_user.issues
+    @reasons = current_user.reasons
+    @votes = current_user.votes
   end
 
   # PATCH/PUT /users/:id.:format
