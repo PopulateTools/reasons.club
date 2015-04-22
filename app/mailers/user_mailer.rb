@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
   def welcome_email(user)
     @user = user
     @user_name = user.name
-    @user_url  = user_url(user)
+    @user_url  = user_profile_url(user)
     mail(to: @user.email, bcc: "alvaro+reasons@furilo.com", subject: t('mailer.lets_start', user_name: @user_name, user_url: @user_url))
   end
 
