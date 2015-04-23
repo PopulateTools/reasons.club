@@ -506,6 +506,20 @@ footer {
   }
 }
 
+/*
+ * Activities
+ *
+ */
+.activities {
+  li {
+    margin-bottom: .5em;
+  }
+  span.date {
+    opacity: .5;
+  }
+}
+
+
 // various
 .note {
   background: lightgoldenrodyellow;
