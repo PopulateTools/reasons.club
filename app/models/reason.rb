@@ -7,6 +7,8 @@ class Reason < ActiveRecord::Base
 
   acts_as_votable
 
+  include PublicActivity::Common
+
   # validates :user_id, presence: true
   
   before_validation :set_public_id

@@ -12,6 +12,7 @@ class ReasonsController < ApplicationController
     # ToDo: control when we fire the notification
     UserMailer.new_reason_on_your_issue(current_user, @reason.issue).deliver_later
     if @result = @reason.save
+      @reason.create_activity action: 'create', owner: current_user
       respond_to do |format|
         format.html { redirect_to @reason }
         format.js
@@ -29,6 +30,7 @@ class ReasonsController < ApplicationController
 
   def vote
     @reason.liked_by current_user
+    @reason.create_activity action: 'vote', owner: current_user
     # ToDo: control when we fire the notification
     UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
     if @reason.user != @reason.issue.user

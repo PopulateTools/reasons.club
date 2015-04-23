@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   get '/me', to: 'users#me', :as => :user_profile
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
+  get 'activity', to: 'activities#index'
   get 'pages/home'
   get 'pages/issue'
 
-  get '/issues/:id/:public_id', to: 'reasons#show', as: 'reason'
+  # get '/issues/:id', to: 'issues#show', as: 'reason'
     
   resources :issues do
     resources :reasons

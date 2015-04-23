@@ -26,6 +26,11 @@ module ApplicationHelper
     '/login/auth/twitter'
   end
 
+  def reason_path(reason)
+    issue_path(reason.issue, :anchor => "#{reason.public_id.to_s}")
+  end
+
+  
 
   
 end
