@@ -158,7 +158,7 @@ en:
       Keep those votes and reasons coming.
   activity:
     reason:
-      create: created
+      create: created the reason
       vote: voted
     issue: 
-      create: created
+      create: created the issue
