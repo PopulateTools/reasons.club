@@ -1,0 +1,38 @@
+  
+<%# 
+
+Añadiste la razón XXX en XXX <span>fecha</span>
+Editaste la razón XXX en XXX <span>fecha</span>
+Añadiste un comentario a la razón XXX en XXX <span>fecha</span>
+Marcaste como XXX la razón XXX en XXX <span>fecha</span>
+
+USER votó la razón XXX en XXX <span>fecha</span>
+USER editó la razón XXX en XXX <span>fecha</span>
+USER añadió un comentario a la razón XXX en XXX <span>fecha</span>
+USER marcó como XXX la razón XXX en XXX <span>fecha</span>
+
+%>
+  
+<% #if @activities.any? %>
+  <ul>
+  <% @activities.each do |activity| %>
+    <li>
+      <%= link_to activity.owner.name, user_profile_path(activity.owner_id) %>
+      <%= t('activity.'+activity.key) %> 
+      <%= link_to activity.trackable.title, reason_path(activity.trackable) %> 
+      <span><%= time_ago_in_words(activity.created_at) %></span>
+    </li>
+  <% end %>
+  </ul>
+<% #end %>
+
+<!-- 
+#<PublicActivity::Activity 
+id: 25, 
+trackable_id: 22, 
+trackable_type: "Reason", 
+owner_id: 2, 
+owner_type: "User", 
+key: "reason.reason.vote", 
+parameters: {:reason=>"Reason title", :reason_id=>"123"}, recipient_id: nil, recipient_type: nil, created_at: "2015-04-22 16:45:05", updated_at: "2015-04-22 16:45:05">
+ -->

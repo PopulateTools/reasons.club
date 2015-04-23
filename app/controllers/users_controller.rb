@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def me
+    @activities = PublicActivity::Activity.where owner: current_user
     @issues = current_user.issues
     @reasons = current_user.reasons
     @votes = current_user.votes

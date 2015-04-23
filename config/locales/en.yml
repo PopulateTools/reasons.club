@@ -156,4 +156,9 @@ en:
       Have you shared your Club enough?
 
       Keep those votes and reasons coming.
-
+  activity:
+    reason:
+      create: created
+      vote: voted
+    issue: 
+      create: created

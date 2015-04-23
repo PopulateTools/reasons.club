@@ -88,8 +88,8 @@
     <p><%= t('home.start') %></p>
 
     <%# form_for @invite, remote: true, html: { id: :invite } do |f| %>
-      <%= text_field_tag :email, nil, placeholder: t('issues.create.your_issue'), class: 'cd-signup' %>
-      <%= submit_tag t('issues.create.create_your_club'), class: "btn cd-signup" %>
+      <%# text_field_tag :email, nil, placeholder: t('issues.create.your_issue'), class: 'cd-signup' %>
+      <%= link_to t('issues.create.create_your_club'), new_issue_path, class: "btn" %>
     <%# end %>
 
   </div>

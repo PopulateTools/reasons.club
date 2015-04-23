@@ -23,6 +23,8 @@ gem 'bourbon'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'public_activity'
+
 # services 
 gem 'rollbar', '~> 1.5.0'
 

@@ -14,7 +14,7 @@
 
     <div class="fifty percent float-left">
       <h3>Activity</h3>
-      ...
+      <%= render 'activity' %>
     </div>
 
     <div class="fifty percent float-right">
@@ -33,7 +33,7 @@
         <% if @reasons.any? %>
           <ul>
           <% @reasons.each do |reason| %>
-            <li><%= link_to reason.title, reason_path(reason.issue, reason) %></li>
+            <li><%= link_to reason.title, reason_path(reason) %></li>
           <% end %>
           </ul>
         <% end %>

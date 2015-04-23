@@ -53,9 +53,10 @@
 <% unless params[:embed] %>
 
   <footer>
-    <%= link_to t('about'), '' %>
+    <%= link_to t('about'), '/issues/about' %>
     <%# link_to t('contact'), '' %>
-    <%= link_to t('help'), '' %>
+    <%= link_to t('help'), '/issues/help' %>
+    <%= link_to t('improve'), '/issues/improve' %>
   </footer>
 
 <% end %>

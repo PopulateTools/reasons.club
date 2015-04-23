@@ -6,6 +6,8 @@ class Issue < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  include PublicActivity::Common
+  
   validates :title, presence: true, length: { minimum: 10 }
 
   scope :public_issues, -> { where(privacy_public: 2) }
