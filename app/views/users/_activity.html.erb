@@ -17,6 +17,7 @@ USER marcó como XXX la razón XXX en XXX <span>fecha</span>
   <ul class="activities">
   <% @activities.each do |activity| %>
     <li>
+      <%# time_ago_in_words(activity.created_at) %>
       <% if activity.owner == current_user %>
         <%= t('you') %>
       <% else %>
@@ -25,7 +26,7 @@ USER marcó como XXX la razón XXX en XXX <span>fecha</span>
       <% end %>
       <%= t('activity.'+activity.key) %> 
       <%= link_to activity.trackable.title, eval("#{activity.trackable_type.downcase}_path(activity.trackable)") %> 
-      <span class="date"><%= time_ago_in_words(activity.trackable.created_at) %></span>
+      <span class="date"><%= t('ago', :time => time_ago_in_words(activity.created_at)) %></span>
     </li>
   <% end %>
   </ul>

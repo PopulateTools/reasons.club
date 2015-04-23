@@ -26,6 +26,7 @@ en:
   contact: Contact
   help: Help
   connect_with: Connect with 
+  ago: "%{time} ago"
   home:
     intro_text: Discuss with order, reach conclusions faster, take decisions
     for_yourself: For yourself
