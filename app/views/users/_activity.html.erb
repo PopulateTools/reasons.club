@@ -20,7 +20,7 @@ USER marcó como XXX la razón XXX en XXX <span>fecha</span>
       <%= link_to activity.owner.name, user_profile_path(activity.owner_id) %>
       <%= t('activity.'+activity.key) %> 
       <%= link_to activity.trackable.title, reason_path(activity.trackable) %> 
-      <span><%= time_ago_in_words(activity.created_at) %></span>
+      <span><%= time_ago_in_words(activity.trackable.created_at) %></span>
     </li>
   <% end %>
   </ul>
