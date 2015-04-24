@@ -12,7 +12,7 @@
     <% end %>
   </div>
   <div class="title">
-    <h2><%= link_to "#{reason.title} <span>##{reason.public_id}</span>".html_safe, reason_path(reason), remote: true %></h2>
+    <h2><%= link_to "#{reason.title} <span>##{reason.public_id}</span>".html_safe, reason_modal_path(reason), remote: true %></h2>
   </div>
   <div class="tools">
     N comentario

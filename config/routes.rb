@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/issue'
 
+
   # get '/issues/:id', to: 'issues#show', as: 'reason'
     
   resources :issues do
@@ -23,7 +24,9 @@ Rails.application.routes.draw do
     # get '/issues/:id/:public_id', to: 'reasons#show', as: 'reason_wadus'
   end
 
-  resources :reasons, except: [:show] do
+  get 'reason/:id', to: 'reasons#show', as: 'reason_modal'
+
+  resources :reasons do
     member do
       patch 'vote'
       patch 'unvote'
