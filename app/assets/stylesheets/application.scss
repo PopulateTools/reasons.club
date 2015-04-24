@@ -226,6 +226,7 @@ body > header /* .main-header */ {
       background: #FFF;
       a {
         color: $random_color_1;
+        background: #FFF;
       }      
     }
     em {
@@ -588,11 +589,15 @@ i.back_line {
     padding-right: .5em;
   }
 }
-.facebook {
+.facebook, .facebook a, .reasons-against .btn-vote.active .facebook a, .reasons-for .btn-vote.active .facebook a {
   background: #306199;
+  border-bottom: none; 
+  padding: 4px 9px; 
 }
-.twitter {
+.twitter, .twitter a, .reasons-against .btn-vote.active .twitter a, .reasons-for .btn-vote.active .twitter a {
   background: #26c4f1;
+  border-bottom: none; 
+  padding: 4px 9px; 
 }
 
 // login etc

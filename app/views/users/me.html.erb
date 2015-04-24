@@ -4,10 +4,8 @@
 
   <p class="note"><%= t('user.welcome_text') %></p>
 
-  <% if current_user.twitter_handle.present? %>
-    <h2><strong>@<%= current_user.twitter_handle %></strong> <%= current_user.name %></h2>
-  <% end %>
-
+  <h2><%= nick_and_name(current_user) %></h2>
+  
   <%= link_to '<i class="fa fa-plus"></i> Create new Club'.html_safe, new_issue_path, title: t('issues.new_top_bar_title'), class: "tipsit-n", id: "add_new_issue"  %>
   
   <div class="clearfix">

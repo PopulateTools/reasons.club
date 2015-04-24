@@ -27,6 +27,7 @@ en:
   help: Help
   connect_with: Connect with 
   ago: "%{time} ago"
+  by: by
   home:
     intro_text: Discuss with order, reach conclusions faster, take decisions
     for_yourself: For yourself
@@ -98,6 +99,8 @@ en:
     comment_about_this_reason: Soon you'll be able to add comments about this reason and contribute to the debate.
     references_about_this_reason: "Soon you'll be able to add references: links to news, reports, studies, etc. to document this reason."
     wiki_reason: This is a wiki reason. You can contribute with facts and information about this reason. You'll be able to conrtibute to this section once you reach enough Reasoner karma.
+    after_vote_share_message: Vote casted! Give it difussion, check what others think
+    # Voto registrado: Dale difusión (a ver qué piensan los demás)
   user:
     welcome_title: Welcome to Reasons.club
     welcome_text: Happy to have you here and help you discuss about anything, and specially to help you reach conclusions faster. Be it a public matter, something to discuss with your colleagues or partner, or just a personal club to help you make up your mind. We are getting ready...

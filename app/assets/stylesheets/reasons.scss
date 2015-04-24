@@ -54,6 +54,7 @@
   .vote {
     position: absolute;
     left: 0;
+    z-index: 10;
   }
   @include screen(740) {
     padding-left: 0;
@@ -222,5 +223,26 @@
     width: 35%;
     float: right;
     margin: 0;
+  }
+}
+
+.after_vote_share {
+  // @include box-shadow(0, 0, 10px, rgba(5,5,5,.5));
+  // border: 1px solid #CDCDCD;
+  position: absolute;
+  background: #FFF; 
+  z-index: -1;
+  @include border-radius(4px);
+  width: 250px;
+  top: -12px;
+  left: -13px;
+  padding: .5em 1em 1em 5.5em;
+  text-align: left;
+
+  .share_container {
+    display: block;
+    div {
+      margin: 0 1em 1em 0;
+    }
   }
 }
