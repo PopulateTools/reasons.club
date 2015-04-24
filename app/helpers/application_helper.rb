@@ -28,8 +28,13 @@ module ApplicationHelper
 
   def reason_path(reason)
     issue_path(reason.issue, :anchor => "#{reason.public_id.to_s}")
+    
   end
 
+  def reason_url(reason)
+    issue_url(reason.issue, :anchor => "#{reason.public_id.to_s}")
+    
+  end
   
 
   

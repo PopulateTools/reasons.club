@@ -13,7 +13,7 @@ class UserMailer < ApplicationMailer
     @voter = voter.name
     @user_name = reason.user.name
     @reason = reason.title
-    @reason_url = reason_url(reason)
+    @reason_url = issue_url(reason.issue)
     mail(to: reason.user.email, bcc: "alvaro+reasonsbcc@furilo.com", subject: t('mailer.new_vote_on_your_reason_subject', user_name: @user_name, voter: @voter, reason: @reason, reason_url: @reason_url))
   end
 
