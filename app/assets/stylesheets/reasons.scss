@@ -155,7 +155,8 @@
   }
 }
 .add_reason_input {
-  .fa {
+  .icon_holder {
+    display: inline-block;
     width: 48px;
     margin-right: 17px;
     font-size: 1.4em;

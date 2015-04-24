@@ -4,6 +4,7 @@ class ReasonsController < ApplicationController
   before_action :load_reason, only: [:show, :vote, :unvote]
 
   def new
+    logger.info 'si entra reason path'
     @reason = Reason.new
   end
 

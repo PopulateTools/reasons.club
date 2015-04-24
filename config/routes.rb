@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     # get '/issues/:id/:public_id', to: 'reasons#show', as: 'reason_wadus'
   end
 
-  resources :reasons do
+  resources :reasons, except: [:show] do
     member do
       patch 'vote'
       patch 'unvote'
