@@ -21,10 +21,33 @@
     $('#invites_' + val).show();
   }
 
-  $('.btn-vote a').bind('ajax:beforeSend', function(){
-    $(this).html('<i class="fa fa-cog fa-spin"></i>');
-  });
+  
+  /*
+   * Reasons interactions
+   *
+   */
 
+  /* reason upvote */
+  // ToDo control if I'm up or downvoting
+  $('.btn-vote').bind('ajax:beforeSend', function(){
+    numVotes = $(this).find('a').text();
+    $(this).find('a').html('<i class="fa fa-cog fa-spin"></i>');
+    status = $(this).find('a').attr('action');
+    
+    
+  })/*
+  .bind('ajax:success', function(){
+
+  })
+  .bind('ajax:complete', function(){
+    console.log('complete');
+  }).bind('ajax:error', function(){
+    console.log('error');
+  })
+  */
+  ;
+
+  /* reason add */
   $('.add_reason_input form').bind('ajax:beforeSend', function(){
     $(this).find('.fa').removeClass('fa-plus-circle');
     $(this).find('.fa').addClass('fa-cog fa-spin');

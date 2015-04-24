@@ -22,6 +22,22 @@ module ApplicationHelper
     end
   end
 
+  def nick_and_name(user)
+    if nick(user)
+      "<strong>@#{nick(user)}</strong> #{user.name}".html_safe
+    else
+      user.name
+    end
+  end
+
+  def nick(user)
+    if user.twitter_handle.present? 
+      "<strong class='tipsit-n' title='#{user.name}'>@#{user.twitter_handle}</strong>".html_safe
+    else
+      user.name 
+    end
+  end
+
   def twitter_login_path
     '/login/auth/twitter'
   end

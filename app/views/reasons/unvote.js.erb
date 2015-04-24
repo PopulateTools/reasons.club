@@ -1,2 +1,5 @@
+/*
 $('.vote-<%= @reason.public_id %>').html("<%= escape_javascript(render(:partial => 'vote_ajax', :formats => [:html] )) %>");
+*/
 $('.vote-<%= @reason.public_id %>').removeClass('active');
+$('.vote-<%= @reason.public_id %> a').replaceWith("<%= escape_javascript(render(:partial => 'vote_ajax', :formats => [:html] )) %>"); 
