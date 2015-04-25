@@ -8,6 +8,7 @@
   end
   %>
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript(render(:partial => @reason, :formats => [:html] )) %>");
+  $('.new_reason_here_<%= destination %>').append('<%= escape_javascript(render(:partial => "reasons/after_reason_share", :formats => [:html] )) %>');
   $('.reason_title_<%= destination %>').val('');
 <% else %>
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript('errrrrroor') %>");

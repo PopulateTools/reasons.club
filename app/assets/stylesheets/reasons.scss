@@ -186,6 +186,9 @@
     display: none;
   }
 }
+.new_reason_here_for, .new_reason_here_against {
+  position: relative;
+}
 @include screen(740) {
   .add-reason {
     margin: 6% 6% 12% 6%;
@@ -226,8 +229,8 @@
   }
 }
 
-.after_vote_share {
-  // @include box-shadow(0, 0, 10px, rgba(5,5,5,.5));
+.after_vote_share, .after_reason_share {
+  @include box-shadow(0, 0, 30px, rgba(5,5,5,.3));
   // border: 1px solid #CDCDCD;
   position: absolute;
   background: #FFF; 
@@ -244,5 +247,17 @@
     div {
       margin: 0 1em 1em 0;
     }
+  }
+}
+.after_reason_share {
+  z-index: 1;
+  width: 70%;
+  padding: 1em 1.5em .5em;
+  top: -99px;
+  left: 92px;
+  font-size: .85em;
+  .share_container {
+    display: block;
+    margin: .5em 0 0 0;
   }
 }
