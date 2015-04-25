@@ -1,7 +1,7 @@
 class ReasonsController < ApplicationController
 
   before_action :set_new_reason
-  before_action :load_reason, only: [:show, :vote, :unvote]
+  before_action :load_reason, only: [:show, :update, :vote, :unvote]
 
   def new
     @reason = Reason.new
@@ -19,6 +19,17 @@ class ReasonsController < ApplicationController
       end
     end
   end
+
+  def edit
+  end
+
+  def update
+    @reason.update_attributes reason_params
+    respond_to do |format|
+      format.html { redirect_to '' }
+      format.json { respond_with_bip(@reason) }
+    end
+  end 
 
   def show
     # @reason = Reason.friendly.find(params[:id]).where(public_id: params[:public_id])

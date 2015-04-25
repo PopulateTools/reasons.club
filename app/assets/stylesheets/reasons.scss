@@ -1,11 +1,11 @@
 .reasons {
   position: relative;
   clear: both; 
-  overflow: hidden;
+  overflow: visible;
 
   .show_extended {
     display: none;
-    position: fixed;
+    position: absolute;
     width: 70%;
     margin: 0 11%; 
     padding: 2% 4%;
@@ -228,7 +228,6 @@
     margin: 0;
   }
 }
-
 .after_vote_share, .after_reason_share {
   @include box-shadow(0, 0, 30px, rgba(5,5,5,.3));
   // border: 1px solid #CDCDCD;
@@ -260,4 +259,24 @@
     display: block;
     margin: .5em 0 0 0;
   }
+}
+.reason_description_textarea {
+  position: relative;
+
+  .fa-edit {
+    position: absolute;
+    left: -25px;
+    top: 2px;
+  }
+  span.best_in_place {
+    display: block;
+    width: 100%;
+    min-height: 100px;
+  }
+}
+.meta_tools {
+  border-top: 1px solid #DFDFDF;
+  padding-top: 5px;
+  font-size: .85em;
+  opacity: .75;
 }

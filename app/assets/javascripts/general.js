@@ -12,6 +12,8 @@
   // $.slidebars();
   // $.subscribe("view:ready", rebindAll);
   
+  $(".best_in_place").best_in_place();
+
   // new issue
   $('input[name="issue[privacy_public]"]').on('change', function(){
     openNewIssueInvitePref(this.value)
@@ -28,7 +30,6 @@
    */
 
   /* reason upvote */
-  // ToDo control if I'm up or downvoting
   $('.btn-vote').bind('ajax:beforeSend', function(){
     numVotes = $(this).find('a').text();
     $(this).find('a').html('<i class="fa fa-cog fa-spin"></i>');
