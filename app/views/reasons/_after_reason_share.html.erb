@@ -1,0 +1,12 @@
+  
+  <div class="after_reason_share">
+
+    <%= t('reason.after_reason_share_message') %>
+  
+    <div class="share_container">
+      <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= reason_url(@reason) %>&t=<%= u(t('tagline')) %>" class="popup"><i class="fa fa-facebook"></i><span>Facebook</span></a></div>
+      <div class="share twitter"><a href="http://twitter.com/home?status=<%= truncate(@reason.title, length: 117) %> <%= reason_url(@reason) %>" class="popup"><i class="fa fa-twitter"></i><span>Twitter</span></a></div>
+    </div>
+    
+  </div>
+

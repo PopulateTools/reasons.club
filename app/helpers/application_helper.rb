@@ -24,7 +24,7 @@ module ApplicationHelper
 
   def nick_and_name(user)
     if nick(user)
-      "<strong>@#{nick(user)}</strong> #{user.name}".html_safe
+      "<strong>#{nick(user)}</strong> #{user.name}".html_safe
     else
       user.name
     end

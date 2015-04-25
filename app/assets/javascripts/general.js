@@ -32,9 +32,7 @@
   $('.btn-vote').bind('ajax:beforeSend', function(){
     numVotes = $(this).find('a').text();
     $(this).find('a').html('<i class="fa fa-cog fa-spin"></i>');
-    status = $(this).find('a').attr('action');
-    
-    
+    // status = $(this).find('a').attr('action');
   })/*
   .bind('ajax:success', function(){
 
