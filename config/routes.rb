@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   get 'reason/:id', to: 'reasons#show', as: 'reason_modal'
+  match 'reason/:id', to: 'reasons#update', as: 'update_reason', via: [:put, :patch]
 
   resources :reasons do
     member do

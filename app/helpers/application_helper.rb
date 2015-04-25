@@ -48,8 +48,30 @@ module ApplicationHelper
   end
 
   def reason_url(reason)
-    issue_url(reason.issue, :anchor => "#{reason.public_id.to_s}")
-    
+    issue_url(reason.issue, :anchor => "#{reason.public_id.to_s}")  
+  end
+
+  def markdown(text)
+    return if text.blank?
+
+    options = {
+      filter_html:     true,
+      hard_wrap:       true, 
+      link_attributes: { rel: 'nofollow', target: "_blank" },
+      space_after_headers: true, 
+      fenced_code_blocks: true
+    }
+
+    extensions = {
+      autolink:           true,
+      superscript:        true,
+      disable_indented_code_blocks: true
+    }
+
+    renderer = Redcarpet::Render::HTML.new(options)
+    markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+    markdown.render(text).html_safe
   end
   
 

@@ -1,6 +1,10 @@
 <% if @reason %>
   $('.blurry').show();
   $('#show_reason_extended').fadeIn().html("<%= escape_javascript(render(:partial => 'reason_extended', locals: { reason: @reason }, :formats => [:html] )) %>");
+  if($('.reason_description_textarea .best_in_place').html() == '') {
+    $('.reason_description_textarea .best_in_place').html('<%= t("reason.no_description_yet") %>');
+  }
+  rebindAll(null);
 <% else %>
   $('#show_reason_extended').append("<%= escape_javascript('errrrrroor') %>");
 <% end %>
