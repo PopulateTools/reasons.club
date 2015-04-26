@@ -272,6 +272,14 @@
     display: block;
     width: 100%;
     min-height: 100px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  form.form_in_place {
+    .btn {
+      margin-bottom: 1em;
+    }
   }
 }
 .meta_tools {

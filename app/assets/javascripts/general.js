@@ -7,6 +7,7 @@
   function rebindAll() {
     $('.tipsit').tipsy({fade: true, gravity: 's'});
     $('.tipsit-n').tipsy({fade: true, gravity: 'n'});
+    console.log('rebind');
   }
 
   // $.slidebars();
