@@ -33,8 +33,9 @@
             :skip_blur => true,
             :url => update_reason_path(reason),
             :ok_button_class => 'btn',
-            # :confirm => true,
-            :display_with => lambda{ |v| markdown(v) }
+            :confirm => true,
+            :display_with => lambda{ |v| markdown(v)
+            }
         %>
 
         <div class="meta_tools revisions">

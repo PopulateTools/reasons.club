@@ -13,6 +13,8 @@ class Reason < ActiveRecord::Base
   
   before_validation :set_public_id
 
+  scope :sorted, -> { order(date: :desc) }
+   
   def self.for
     where('for' => true)
   end

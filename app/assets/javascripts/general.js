@@ -7,7 +7,6 @@
   function rebindAll() {
     $('.tipsit').tipsy({fade: true, gravity: 's'});
     $('.tipsit-n').tipsy({fade: true, gravity: 'n'});
-    console.log('rebind');
   }
 
   // $.slidebars();
@@ -23,6 +22,21 @@
     $('.invites-pref').hide();
     $('#invites_' + val).show();
   }
+
+  a = window.location.pathname;
+  h = window.location.hash;
+  h = h.substring(1);
+  if((a.indexOf('issues') >= 0) && (window.location.hash != '')) {
+    console.log('entrando');
+    $.ajax({
+      url: "/reason/" + h,
+      dataType: 'script',
+      success: function(data) {
+        console.log('ajax');    
+      }
+    });    
+  }
+  // });
 
   
   /*
@@ -59,16 +73,3 @@
   rebindAll(null);
 
 });
-
-
-
-
-// $(document).on('click', 'a[data-remote=true]', function(e) {
-//   history.pushState({}, '', $(this).attr('href'));
-// });
-
-// $(window).on('popstate', function () {
-//   console.log('pop');
-//   $.get(document.location.href)
-// });
-

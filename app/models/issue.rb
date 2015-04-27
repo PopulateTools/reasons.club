@@ -1,6 +1,7 @@
 class Issue < ActiveRecord::Base
 
   has_many :reasons
+  # has_many :most_voted_reasons, :class_name => 'Statistic', :order
   belongs_to :user
   
   extend FriendlyId
