@@ -25,7 +25,7 @@
 
       <div class="reason_description_textarea">
 
-        <i class="fa fa-edit"></i>
+        <i class="fa fa-edit" title="<%= t('reason.edit_the_wiki_answer') %>"></i>
 
         <%= best_in_place reason, :description, :as => :textarea, 
             :place_holder => t('reason.no_description_yet'), 
@@ -38,7 +38,9 @@
         %>
 
         <div class="meta_tools revisions">
-          <%= reason.versions.size %> <%= t('reason.revisions') %>
+          <%= reason.versions.size %> <%= t('reason.revisions', :count => reason.versions.size) %> ·
+          <%= @contributors.size %> <%= t("person", :count => @contributors.size) %>
+          <%= t("have", :count => @contributors.size) %> <%= t("contributed") %>
         </div>  
 
       </div>
