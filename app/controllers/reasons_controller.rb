@@ -24,15 +24,19 @@ class ReasonsController < ApplicationController
   end
 
   def update
-    @reason.update_attributes reason_params
-    respond_to do |format|
-      format.html { redirect_to '' }
-      format.json { respond_with_bip(@reason) }
+    if @reason.update_attributes reason_params
+      # ToDo: when we let update more than description, control which activity we have
+      @reason.create_activity action: 'update.description', owner: current_user
+      respond_to do |format|
+        format.html { redirect_to '' }
+        format.json { respond_with_bip(@reason) }
+      end
     end
   end 
 
   def show
     # @reason = Reason.friendly.find(params[:id]).where(public_id: params[:public_id])
+    @contributors = reason_description_contributors(@reason)
     respond_to do |format|
       format.html { redirect_to '' }
       format.js
@@ -74,6 +78,16 @@ class ReasonsController < ApplicationController
     def load_reason
       # issue = Issue.friendly.find(params[:id])
       @reason = Reason.find(params[:id])
+    end
+
+    def reason_description_contributors(reason)
+      contributors = []
+      reason.versions.select("DISTINCT(whodunnit), *").each do |reason|
+        unless contributors.include? reason.whodunnit
+          contributors.push reason.whodunnit
+        end
+      end
+      contributors
     end
 
 end

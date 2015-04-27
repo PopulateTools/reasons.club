@@ -29,6 +29,13 @@ en:
   ago: "%{time} ago"
   by: by
   everything: Everything
+  person:
+    one: person
+    other: people
+  have:
+    one: has
+    other: have
+  contributed: contributed
   home:
     intro_text: Discuss with order, reach conclusions faster, take decisions
     for_yourself: For yourself
@@ -74,7 +81,10 @@ en:
     after_reason_share_message: Reason added! Broadcast your mind, check what others think
     # Voto registrado: Dale difusión (a ver qué piensan los demás)
     no_description_yet: No description for this issue yet. Click to start contributing
-    revisions: revisions
+    revisions: 
+      one: revision
+      other: revisions
+    edit_the_wiki_answer: Edit the wiki answer for this reason
   issues:
     create:
       your_issue: Issue to decide
@@ -173,5 +183,7 @@ en:
     reason:
       create: created the reason
       vote: voted
+      update: 
+        description: updated the wiki answer on
     issue: 
       create: created the issue
