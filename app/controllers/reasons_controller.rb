@@ -26,6 +26,7 @@ class ReasonsController < ApplicationController
   def update
     if @reason.update_attributes reason_params
       # ToDo: when we let update more than description, control which activity we have
+      # ToDo: control if we have just made an edit (ie. in the last 2h?)
       @reason.create_activity action: 'update.description', owner: current_user
       respond_to do |format|
         format.html { redirect_to '' }
@@ -35,7 +36,6 @@ class ReasonsController < ApplicationController
   end 
 
   def show
-    # @reason = Reason.friendly.find(params[:id]).where(public_id: params[:public_id])
     @contributors = reason_description_contributors(@reason)
     respond_to do |format|
       format.html { redirect_to '' }
