@@ -17,12 +17,13 @@ class UserMailer < ApplicationMailer
     mail(to: reason.user.email, bcc: "alvaro+reasonsbcc@furilo.com", subject: t('mailer.new_vote_on_your_reason_subject', user_name: @user_name, voter: @voter, reason: @reason, reason_url: @reason_url))
   end
 
-  def new_reason_on_your_issue(voter, issue)
+  def new_reason_on_your_issue(voter, issue, reason)
     @voter = voter.name
     @user_name = issue.user.name
     @issue = issue.title
+    @reason = reason
     @issue_url = issue_url(issue)
-    mail(to: issue.user.email, bcc: "alvaro+reasonsbcc@furilo.com", subject: t('mailer.new_reason_on_your_issue_subject', user_name: @user_name, voter: @voter, issue: @issue, issue_url: @issue_url))
+    mail(to: issue.user.email, bcc: "alvaro+reasonsbcc@furilo.com", subject: t('mailer.new_reason_on_your_issue_subject', user_name: @user_name, voter: @voter, reason: @reason, issue: @issue, issue_url: @issue_url))
   end
 
   def new_vote_on_your_issue(voter, reason)

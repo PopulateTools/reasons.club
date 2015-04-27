@@ -10,7 +10,7 @@ class ReasonsController < ApplicationController
   def create
     @reason = current_user.reasons.build(reason_params)
     # ToDo: control when we fire the notification
-    UserMailer.new_reason_on_your_issue(current_user, @reason.issue).deliver_later
+    UserMailer.new_reason_on_your_issue(current_user, @reason.issue, @reason.title).deliver_later
     if @result = @reason.save
       @reason.create_activity action: 'create', owner: current_user
       respond_to do |format|
