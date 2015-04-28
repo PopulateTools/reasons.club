@@ -3,7 +3,7 @@ class ReasonsController < ApplicationController
   before_action :set_new_reason
   before_action :load_reason, only: [:show, :update, :vote, :unvote]
   before_action :authenticate_user!, only: [:create, :update, :vote, :unvote]
-
+  
   def new
     @reason = Reason.new
   end
@@ -47,6 +47,7 @@ class ReasonsController < ApplicationController
   def vote
     @reason.liked_by current_user
     @reason.create_activity action: 'vote', owner: current_user
+    Reason.update_counters(@reason, votes_positive: +1)
     # ToDo: control when we fire the notification
     UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
     if @reason.user != @reason.issue.user
@@ -60,6 +61,7 @@ class ReasonsController < ApplicationController
 
   def unvote
     @reason.unliked_by current_user
+    Reason.update_counters(@reason, votes_positive: -1)
     respond_to do |format|
       format.html { redirect_to reason }
       format.js

@@ -58,8 +58,11 @@ class IssuesController < ApplicationController
     end
 
     def load_issue
-      @issue = Issue.friendly.includes(reasons: [:user]).find(params[:id])
-      @votes = issue_total_votes(@issue)
+      # @issue = Issue.friendly.includes(reasons: [:user]).find(params[:id])
+      @issue = Issue.friendly.includes(:most_voted_reasons).find(params[:id]) 
+      # @votes = issue_total_votes(@issue)
+      votes = { for: 0, against: 0}
+      @votes = votes
     end 
 
     def random_issue
