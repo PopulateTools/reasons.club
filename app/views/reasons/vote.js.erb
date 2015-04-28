@@ -5,4 +5,4 @@ $('.vote-<%= @reason.public_id %>').addClass('active');
 $('.vote-<%= @reason.public_id %>').addClass('active');
 $('.vote-<%= @reason.public_id %> a').replaceWith("<%= escape_javascript(render(:partial => 'vote_ajax', :formats => [:html] )) %>"); 
 $('.vote-<%= @reason.public_id %>').append('<%= escape_javascript(render(:partial => "reasons/after_vote_share", :formats => [:html] )) %>');
-
+$('.vote-<%= @reason.public_id %> .after_vote_share').delay(2500).fadeOut('slow');
