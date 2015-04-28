@@ -2,6 +2,7 @@ class ReasonsController < ApplicationController
 
   before_action :set_new_reason
   before_action :load_reason, only: [:show, :vote, :unvote]
+  before_action :authenticate_user!, only: [:create, :update, :vote, :unvote]
 
   def new
     @reason = Reason.new
