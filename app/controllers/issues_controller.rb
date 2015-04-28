@@ -4,6 +4,7 @@ class IssuesController < ApplicationController
   before_action :load_issue, only: [:show]
   before_action :random_issue, only: [:show]
   before_action :set_new_issue, only: [:new]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def new
 
