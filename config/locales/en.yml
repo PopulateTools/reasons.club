@@ -29,6 +29,13 @@ en:
   ago: "%{time} ago"
   by: by
   everything: Everything
+  person:
+    one: person
+    other: people
+  have:
+    one: has
+    other: have
+  contributed: contributed
   home:
     intro_text: Discuss with order, reach conclusions faster, take decisions
     for_yourself: For yourself
@@ -63,6 +70,21 @@ en:
   reasons:
     add_argument: Add argument
     submit_reason: Send your reason
+  reason:
+    description: Description
+    comments: Comments
+    references: References
+    comment_about_this_reason: Soon you'll be able to add comments about this reason and contribute to the debate.
+    references_about_this_reason: "Soon you'll be able to add references: links to news, reports, studies, etc. to document this reason."
+    wiki_reason: This is a wiki reason. You can contribute with facts and information about this reason. You'll be able to contribute to this section once you reach enough Reasoner karma.
+    after_vote_share_message: Vote casted! Share, check what others think
+    after_reason_share_message: Reason added! Broadcast your mind, check what others think
+    # Voto registrado: Dale difusión (a ver qué piensan los demás)
+    no_description_yet: No description for this issue yet. Click to start contributing
+    revisions: 
+      one: revision
+      other: revisions
+    edit_the_wiki_answer: Edit the wiki answer for this reason
   issues:
     create:
       your_issue: Issue to decide
@@ -93,16 +115,6 @@ en:
       issue:
         description: Reasons.club enables you to discuss with order and structure. Learn about %{title}
         create_new: Create new Club
-  reason:
-    description: Description
-    comments: Comments
-    references: References
-    comment_about_this_reason: Soon you'll be able to add comments about this reason and contribute to the debate.
-    references_about_this_reason: "Soon you'll be able to add references: links to news, reports, studies, etc. to document this reason."
-    wiki_reason: This is a wiki reason. You can contribute with facts and information about this reason. You'll be able to conrtibute to this section once you reach enough Reasoner karma.
-    after_vote_share_message: Vote casted! Share, check what others think
-    after_reason_share_message: Reason added! Broadcast your mind, check what others think
-    # Voto registrado: Dale difusión (a ver qué piensan los demás)
   user:
     welcome_title: Welcome to Reasons.club
     welcome_text: Happy to have you here and help you discuss about anything, and specially to help you reach conclusions faster. Be it a public matter, something to discuss with your colleagues or partner, or just a personal club to help you make up your mind. We are getting ready...
@@ -129,12 +141,13 @@ en:
 
       Álvaro Ortiz
       Chief Reasoner
-    new_vote_on_your_reason_subject: "New vote on your reason: %{reason}"
+    new_vote_on_your_reason_subject: "New vote on: %{reason}"
     new_vote_on_your_reason: |
       Howdy %{user_name}, 
 
-      Sorry for interrupting, but there is a new vote by %{voter} in your reason: %{reason}
+      Sorry for interrupting, but there is a new vote by %{voter} in your reason: 
 
+      %{reason}
       %{reason_url}
 
       This gets you points towards your Reasoning karma. And that should make you happy. 
@@ -145,17 +158,21 @@ en:
     new_reason_on_your_issue: |
       Hey %{user_name}, 
 
-      It's me again, telling you that there is a new reason by %{voter} in your Club: %{issue}
+      It's me again, telling you that there is a new reason by %{voter} in your Club: 
 
+      %{reason}
+      in %{issue}
       %{issue_url}
 
       Are all your reasons there? C'mon!
 
-    new_vote_on_your_issue_subject: "New vote on your Club: %{issue}"
+    new_vote_on_your_issue_subject: "New vote on: %{issue}"
     new_vote_on_your_issue: |
       Hey %{user_name}, 
 
-      Your Club keeps getting attention: a new vote by %{voter} for %{reason}
+      Your Club keeps getting attention: a new vote by %{voter} for 
+
+      %{reason}
 
       %{issue_url}
 
@@ -166,5 +183,7 @@ en:
     reason:
       create: created the reason
       vote: voted
+      update: 
+        description: updated the wiki answer on
     issue: 
       create: created the issue

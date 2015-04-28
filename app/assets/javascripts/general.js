@@ -12,6 +12,8 @@
   // $.slidebars();
   // $.subscribe("view:ready", rebindAll);
   
+  $(".best_in_place").best_in_place();
+
   // new issue
   $('input[name="issue[privacy_public]"]').on('change', function(){
     openNewIssueInvitePref(this.value)
@@ -21,6 +23,21 @@
     $('#invites_' + val).show();
   }
 
+  a = window.location.pathname;
+  h = window.location.hash;
+  h = h.substring(1);
+  if((a.indexOf('issues') >= 0) && (window.location.hash != '')) {
+    console.log('entrando');
+    $.ajax({
+      url: "/reason/" + h,
+      dataType: 'script',
+      success: function(data) {
+        console.log('ajax');    
+      }
+    });    
+  }
+  // });
+
   
   /*
    * Reasons interactions
@@ -28,7 +45,6 @@
    */
 
   /* reason upvote */
-  // ToDo control if I'm up or downvoting
   $('.btn-vote').bind('ajax:beforeSend', function(){
     numVotes = $(this).find('a').text();
     $(this).find('a').html('<i class="fa fa-cog fa-spin"></i>');
@@ -57,16 +73,3 @@
   rebindAll(null);
 
 });
-
-
-
-
-// $(document).on('click', 'a[data-remote=true]', function(e) {
-//   history.pushState({}, '', $(this).attr('href'));
-// });
-
-// $(window).on('popstate', function () {
-//   console.log('pop');
-//   $.get(document.location.href)
-// });
-

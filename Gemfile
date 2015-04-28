@@ -24,6 +24,9 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 
 gem 'public_activity'
+gem 'paper_trail', '~> 4.0.0.beta'
+gem 'best_in_place', '~> 3.0.1'
+gem 'redcarpet'
 
 # services 
 gem 'rollbar', '~> 1.5.0'
