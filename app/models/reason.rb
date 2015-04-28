@@ -14,6 +14,7 @@ class Reason < ActiveRecord::Base
   before_validation :set_public_id
 
   scope :sorted, -> { order(date: :desc) }
+  scope :most_voted_first, -> { order(votes_positive: :desc) }
    
   def self.for
     where('for' => true)

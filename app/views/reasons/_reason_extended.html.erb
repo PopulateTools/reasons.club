@@ -27,7 +27,7 @@
 
         <i class="fa fa-edit" title="<%= t('reason.edit_the_wiki_answer') %>"></i>
 
-        <%= best_in_place reason, :description, :as => :textarea, 
+        <%= best_in_place_if user_signed_in?, reason, :description, :as => :textarea, # ToDo change condition to check if user has enough karma
             :place_holder => t('reason.no_description_yet'), 
             :ok_button => 'Save', 
             :skip_blur => true,

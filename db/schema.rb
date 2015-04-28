@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425104141) do
+ActiveRecord::Schema.define(version: 20150428142208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,18 +81,22 @@ ActiveRecord::Schema.define(version: 20150425104141) do
     t.string   "title"
     t.string   "slug"
     t.text     "description"
-    t.boolean  "for",         default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "for",            default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "user_id"
     t.integer  "issue_id"
-    t.integer  "public_id",   default: 1
+    t.integer  "public_id",      default: 1
+    t.integer  "votes_positive", default: 0
+    t.integer  "votes_negative", default: 0
   end
 
   add_index "reasons", ["issue_id"], name: "index_reasons_on_issue_id", using: :btree
   add_index "reasons", ["public_id"], name: "index_reasons_on_public_id", using: :btree
   add_index "reasons", ["slug"], name: "index_reasons_on_slug", unique: true, using: :btree
   add_index "reasons", ["user_id"], name: "index_reasons_on_user_id", using: :btree
+  add_index "reasons", ["votes_negative"], name: "index_reasons_on_votes_negative", using: :btree
+  add_index "reasons", ["votes_positive"], name: "index_reasons_on_votes_positive", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -141,4 +145,7 @@ ActiveRecord::Schema.define(version: 20150425104141) do
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "identities", "users"
+  add_foreign_key "issues", "users"
+  add_foreign_key "reasons", "issues"
+  add_foreign_key "reasons", "users"
 end

@@ -1,7 +1,9 @@
 class Issue < ActiveRecord::Base
 
   has_many :reasons
-  # has_many :most_voted_reasons, :class_name => 'Statistic', :order
+  has_many :most_voted_reasons, -> { order('reasons.votes_positive DESC') }, class_name: 'Reason'
+  # Issue.includes(:most_voted_reasons) 
+
   belongs_to :user
   
   extend FriendlyId

@@ -35,7 +35,7 @@
             </div>
           <% end %>
 
-          <%= render @issue.reasons.for %>
+          <%= render @issue.reasons.for.most_voted_first %>
 
           <%= render 'reasons/form', :locals => {:position => 'for'} %>
 
@@ -57,7 +57,7 @@
             </div>
           <% end %>
 
-          <%= render @issue.reasons.against %>
+          <%= render @issue.reasons.against.most_voted_first %>
 
           <%= render 'reasons/form', :locals => {:position => 'against'} %>
 
