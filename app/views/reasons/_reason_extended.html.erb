@@ -10,6 +10,7 @@
     <h2><%= "#{reason.title} <span>##{reason.public_id}</span>".html_safe %></h2>
   </div>
   <div class="tools">
+    <%= t('by') %> <%= nick(reason.user) %> 
     N comentario
     N enlaces
   </div>
@@ -22,8 +23,29 @@
       
       <div class="note"><%= t('reason.wiki_reason') %></div>
 
-      <%= reason.description %>
+      <div class="reason_description_textarea">
 
+        <i class="fa fa-edit" title="<%= t('reason.edit_the_wiki_answer') %>"></i>
+
+        <%= best_in_place reason, :description, :as => :textarea, 
+            :place_holder => t('reason.no_description_yet'), 
+            :ok_button => 'Save', 
+            :skip_blur => true,
+            :url => update_reason_path(reason),
+            :ok_button_class => 'btn',
+            :confirm => true,
+            :display_with => lambda{ |v| markdown(v)
+            }
+        %>
+
+        <div class="meta_tools revisions">
+          <%= reason.versions.size %> <%= t('reason.revisions', :count => reason.versions.size) %> ·
+          <%= @contributors.size %> <%= t("person", :count => @contributors.size) %>
+          <%= t("have", :count => @contributors.size) %> <%= t("contributed") %>
+        </div>  
+
+      </div>
+      
     </div>
 
     <div class="clearfix">
@@ -42,6 +64,10 @@
 
       </div>
 
+    </div>
+
+    <div class="meta_tools flagging">
+      Flag this reason: <span class="tipsit-n tipsit-n" title="Soon!">Duplicated | Needs references | Opinion | Not relevant</span>
     </div>
 
   </div>

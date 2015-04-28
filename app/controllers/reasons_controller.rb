@@ -1,7 +1,7 @@
 class ReasonsController < ApplicationController
 
   before_action :set_new_reason
-  before_action :load_reason, only: [:show, :vote, :unvote]
+  before_action :load_reason, only: [:show, :update, :vote, :unvote]
   before_action :authenticate_user!, only: [:create, :update, :vote, :unvote]
 
   def new
@@ -11,7 +11,7 @@ class ReasonsController < ApplicationController
   def create
     @reason = current_user.reasons.build(reason_params)
     # ToDo: control when we fire the notification
-    UserMailer.new_reason_on_your_issue(current_user, @reason.issue).deliver_later
+    UserMailer.new_reason_on_your_issue(current_user, @reason.issue, @reason.title).deliver_later
     if @result = @reason.save
       @reason.create_activity action: 'create', owner: current_user
       respond_to do |format|
@@ -21,8 +21,23 @@ class ReasonsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @reason.update_attributes reason_params
+      # ToDo: when we let update more than description, control which activity we have
+      # ToDo: control if we have just made an edit (ie. in the last 2h?)
+      @reason.create_activity action: 'update.description', owner: current_user
+      respond_to do |format|
+        format.html { redirect_to '' }
+        format.json { respond_with_bip(@reason) }
+      end
+    end
+  end 
+
   def show
-    # @reason = Reason.friendly.find(params[:id]).where(public_id: params[:public_id])
+    @contributors = reason_description_contributors(@reason)
     respond_to do |format|
       format.html { redirect_to '' }
       format.js
@@ -64,6 +79,16 @@ class ReasonsController < ApplicationController
     def load_reason
       # issue = Issue.friendly.find(params[:id])
       @reason = Reason.find(params[:id])
+    end
+
+    def reason_description_contributors(reason)
+      contributors = []
+      reason.versions.select("DISTINCT(whodunnit), *").each do |reason|
+        unless contributors.include? reason.whodunnit
+          contributors.push reason.whodunnit
+        end
+      end
+      contributors
     end
 
 end

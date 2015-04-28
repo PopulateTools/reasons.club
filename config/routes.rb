@@ -21,10 +21,11 @@ Rails.application.routes.draw do
     
   resources :issues do
     resources :reasons
-    # get '/issues/:id/:public_id', to: 'reasons#show', as: 'reason_wadus'
+    get ':public_id', to: 'reasons#show', as: 'reason_modal'
   end
 
   get 'reason/:id', to: 'reasons#show', as: 'reason_modal'
+  match 'reason/:id', to: 'reasons#update', as: 'update_reason', via: [:put, :patch]
 
   resources :reasons do
     member do
