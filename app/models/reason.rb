@@ -6,7 +6,7 @@ class Reason < ActiveRecord::Base
   accepts_nested_attributes_for :issue
 
   acts_as_votable
-  has_paper_trail
+  has_paper_trail :only => [:title, :description]
   include PublicActivity::Common
 
   # validates :user_id, presence: true
