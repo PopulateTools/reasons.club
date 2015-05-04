@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428142208) do
+ActiveRecord::Schema.define(version: 20150429155016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,18 @@ ActiveRecord::Schema.define(version: 20150428142208) do
   add_index "issues", ["slug"], name: "index_issues_on_slug", using: :btree
   add_index "issues", ["user_id"], name: "index_issues_on_user_id", using: :btree
 
+  create_table "queued_notifications", force: :cascade do |t|
+    t.integer "user_id"
+    t.text    "notification"
+    t.string  "period"
+    t.boolean "status"
+  end
+
+  add_index "queued_notifications", ["period", "status"], name: "index_queued_notifications_on_period_and_status", using: :btree
+  add_index "queued_notifications", ["period"], name: "index_queued_notifications_on_period", using: :btree
+  add_index "queued_notifications", ["status"], name: "index_queued_notifications_on_status", using: :btree
+  add_index "queued_notifications", ["user_id"], name: "index_queued_notifications_on_user_id", using: :btree
+
   create_table "reasons", force: :cascade do |t|
     t.string   "title"
     t.string   "slug"
@@ -97,6 +109,15 @@ ActiveRecord::Schema.define(version: 20150428142208) do
   add_index "reasons", ["user_id"], name: "index_reasons_on_user_id", using: :btree
   add_index "reasons", ["votes_negative"], name: "index_reasons_on_votes_negative", using: :btree
   add_index "reasons", ["votes_positive"], name: "index_reasons_on_votes_positive", using: :btree
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "issue_id"
+    t.string  "type"
+  end
+
+  add_index "subscriptions", ["issue_id"], name: "index_subscriptions_on_issue_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -146,6 +167,9 @@ ActiveRecord::Schema.define(version: 20150428142208) do
 
   add_foreign_key "identities", "users"
   add_foreign_key "issues", "users"
+  add_foreign_key "queued_notifications", "users"
   add_foreign_key "reasons", "issues"
   add_foreign_key "reasons", "users"
+  add_foreign_key "subscriptions", "issues"
+  add_foreign_key "subscriptions", "users"
 end
