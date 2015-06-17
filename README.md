@@ -56,6 +56,37 @@ We are getting started, and we welcome contributions. You can take any issue mar
 
 Soon we'll have an open online space to discuss and hang out. Meanwhile write to discuss@reasons.club and ask that we set up that space so that you don't have to write to a private email address ;) 
 
+### To set up the project
+
+It assumes you have running:
+
+* ruby 2.x.x (it works from 2.0.0 to 2.1.5)
+
+```
+git clone git@github.com:furilo/reasons.club.git
+cd reasons
+bundle install
+rake db:setup
+cp config/secrets.yml.example config/secrets.yml
+cp config/database.yml.example config/database.yml
+rails server
+```
+
+Then navigate to: http://localhost:3000
+
+### To work on a new feature / bug / improvement
+
+* [Fork the project](https://help.github.com/articles/fork-a-repo)
+* Clone down your fork
+* Create a feature branch for your work (`git checkout -b new-feature`)
+* Commit your changes (`git commit -am 'Description of the commits'`)
+* Push the branch up to your fork
+* Send a pull request for your branch
+
+### Libraries/gems being used
+
+See Gemfile for complete reference
+
 ## License 
 
 MIT License: https://tldrlegal.com/license/mit-license
