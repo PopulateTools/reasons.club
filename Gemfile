@@ -41,6 +41,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'sqlite3'
   gem 'mina'
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :production do
