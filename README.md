@@ -24,7 +24,7 @@ Reasons.club is an online tool to discuss with order, reach conclusions faster, 
 
 Why do we hold the views we hold? Are we critic enough with the opinions we have? How do we get to form our opinions? Reasons.club aims to be a place that helps people to be more conscious about why they think what they think, and to help anyone better understand issues by outlining pros and cons and documenting them with external references to have informed opinions about those issues. 
 
-A project started by Álvaro Ortiz ([@furilo](twitter.com/furilo)
+A project started by Álvaro Ortiz ([@furilo](twitter.com/furilo))
 
 ## General roadmap
 
