@@ -64,7 +64,7 @@ It assumes you have running:
 
 ```
 git clone git@github.com:furilo/reasons.club.git
-cd reasons
+cd reasons.club
 bundle install
 rake db:setup
 cp config/secrets.yml.example config/secrets.yml
