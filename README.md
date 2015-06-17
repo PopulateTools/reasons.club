@@ -22,18 +22,15 @@ Reasons.club is an online tool to discuss with order, reach conclusions faster, 
 
 ## About 
 
-Why do we hold the views we hold? Are we critic enough with the opinions we have? How do we get to form our opinions? 
+Why do we hold the views we hold? Are we critic enough with the opinions we have? How do we get to form our opinions? Reasons.club aims to be a place that helps people to be more conscious about why they think what they think, and to help anyone better understand issues by outlining pros and cons and documenting them with external references to have informed opinions about those issues. 
 
-
-A project started by Álvaro Ortiz (alvaro - furilo.com)
-
-
-## Objectives
-
-* 
+A project started by Álvaro Ortiz ([@furilo](twitter.com/furilo)
 
 ## General roadmap
 
+* Let people gather together to outline reasons about isssues (public and group discussions)
+* Let individuals create private clubs to organize their knowledge and help them decide things with order
+* Create public profiles about what people think and why, and to have arguments (pros and cons) around issues in the public sphere
 
 ## Specific roadmap
 
@@ -41,6 +38,10 @@ See the [wiki](https://github.com/furilo/reasons.club/wiki)
 
 ## Feature requests
 
-
+You are welcome to request a feature. Just open an issue and tag them with the "[Feature Request](https://github.com/furilo/reasons.club/labels/Feature%20Request)" label.
 
 ## How to contribute
+
+We are getting started, and we welcome contributions. You can take any issue marked with [Ready to start](https://github.com/furilo/reasons.club/labels/2%20-%20Ready%20to%20start) and send a PR. 
+
+Soon we'll have an open online space to discuss and hang out. Meanwhile write to discuss@reasons.club and ask that we set up that space so that you don't have to write to a private email address ;) 
