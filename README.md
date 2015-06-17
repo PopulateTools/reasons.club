@@ -30,6 +30,8 @@ Contributors:
 
 * Alberto Calderón ([@bertocq](twitter.com/bertocq))
 
+More: https://github.com/furilo/reasons.club/graphs/contributors
+
 ## Set up your own reasons.club
 
 ToDo
