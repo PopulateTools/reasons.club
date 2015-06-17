@@ -26,6 +26,14 @@ Why do we hold the views we hold? Are we critic enough with the opinions we have
 
 A project started by Álvaro Ortiz ([@furilo](twitter.com/furilo))
 
+Contributors:
+
+* Alberto Calderón ([@bertocq](twitter.com/bertocq))
+
+## Set up your own reasons.club
+
+ToDo
+
 ## General roadmap
 
 * Let people gather together to outline reasons about isssues (public and group discussions)
@@ -45,3 +53,7 @@ You are welcome to request a feature. Just open an issue and tag them with the "
 We are getting started, and we welcome contributions. You can take any issue marked with [Ready to start](https://github.com/furilo/reasons.club/labels/2%20-%20Ready%20to%20start) and send a PR. 
 
 Soon we'll have an open online space to discuss and hang out. Meanwhile write to discuss@reasons.club and ask that we set up that space so that you don't have to write to a private email address ;) 
+
+## License 
+
+MIT License: https://tldrlegal.com/license/mit-license
