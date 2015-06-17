@@ -67,12 +67,25 @@ git clone git@github.com:furilo/reasons.club.git
 cd reasons.club
 bundle install
 rake db:setup
-cp config/secrets.yml.example config/secrets.yml
-cp config/database.yml.example config/database.yml
-rails server
 ```
 
-Then navigate to: http://localhost:3000
+Then copy & paste the result of 
+````
+rake secret
+```
+To lines 2 and 6 of /config/secrets.yml
+
+Then [register a twitter app](https://apps.twitter.com/) and complete lines 3 & 4 of /config/secrets.yml
+````
+twitter_api_key: # Twitter Consumer Key (API Key)  
+twitter_api_secret: # Twitter Consumer Secret (API Secret)
+```
+
+Finally run the server:
+```
+rails server
+```
+Great! Navigate to: http://localhost:3000 and give it a try!!
 
 ### To work on a new feature / bug / improvement
 
@@ -81,7 +94,7 @@ Then navigate to: http://localhost:3000
 * Create a feature branch for your work (`git checkout -b new-feature`)
 * Commit your changes (`git commit -am 'Description of the commits'`)
 * Push the branch up to your fork
-* Send a pull request for your branch
+* Send a [pull request](https://help.github.com/articles/creating-a-pull-request/) for your branch
 
 ### Libraries/gems being used
 
