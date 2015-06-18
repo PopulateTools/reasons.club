@@ -5,6 +5,9 @@ class Subscription < ActiveRecord::Base
 
   before_validation :set_email
 
+  # this is also in user.rb; review
+  enum email_subscription_mode: [ :live, :hourly, :daily, :no_mail]
+
   private
 
     def set_email

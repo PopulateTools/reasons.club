@@ -47,7 +47,7 @@ class ReasonsController < ApplicationController
   def vote
     @reason.liked_by current_user
     @reason.create_activity action: 'vote', owner: current_user
-    Subscription.create user: current_user, issue: @reason.issue
+    subscribe(current_user, @reason.issue)
     # ToDo create notification for reason owner
     # UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
     Reason.update_counters(@reason, votes_positive: +1)
@@ -72,6 +72,13 @@ class ReasonsController < ApplicationController
   end
   
   private
+
+
+    def subscribe(user, issue)
+      unless user.subscriptions.where :issue => issue
+        Subscription.create user: user, issue: issue
+      end
+    end
 
     def reason_params
       params.require(:reason).permit(:title, :description, :issue_id, :for)      

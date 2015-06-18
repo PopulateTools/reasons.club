@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :reasons
   has_many :issues
+  has_many :subscriptions
 
   acts_as_voter
   
