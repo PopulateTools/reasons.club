@@ -48,7 +48,7 @@ See the [wiki](https://github.com/furilo/reasons.club/wiki)
 
 ## Feature requests
 
-You are welcome to request a feature. Just open an issue and tag them with the "[Feature Request](https://github.com/furilo/reasons.club/labels/Feature%20Request)" label.
+Discuss them here: http://reasons.club/issues/improve
 
 ## How to contribute
 
