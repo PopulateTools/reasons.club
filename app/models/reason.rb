@@ -12,6 +12,7 @@ class Reason < ActiveRecord::Base
   # validates :user_id, presence: true
   
   before_validation :set_public_id
+  after_create :subscribe
 
   scope :sorted, -> { order(date: :desc) }
   scope :most_voted_first, -> { order(votes_positive: :desc) }
@@ -31,6 +32,10 @@ class Reason < ActiveRecord::Base
     else
       self.public_id = 1
     end
+  end
+
+  def subscribe
+    Subscription.create user: self.user, issue: self.issue
   end
 
 end

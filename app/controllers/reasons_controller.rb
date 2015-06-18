@@ -47,11 +47,14 @@ class ReasonsController < ApplicationController
   def vote
     @reason.liked_by current_user
     @reason.create_activity action: 'vote', owner: current_user
+    Subscription.create user: current_user, issue: @reason.issue
+    # ToDo create notification for reason owner
+    # UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
     Reason.update_counters(@reason, votes_positive: +1)
     # ToDo: control when we fire the notification
-    UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
     if @reason.user != @reason.issue.user
-      UserMailer.new_vote_on_your_issue(current_user, @reason).deliver_later
+      # UserMailer.new_vote_on_your_issue(current_user, @reason).deliver_later
+      # ToDo create notification for issue owner
     end
     respond_to do |format|
       format.html { redirect_to reason }

@@ -12,8 +12,13 @@ class Issue < ActiveRecord::Base
   include PublicActivity::Common
   
   validates :title, presence: true, length: { minimum: 10 }
+  after_create :subscribe
 
   scope :public_issues, -> { where(privacy_public: 2) }
   scope :featured, -> { where(featured: 1) }
+
+  def subscribe
+    Subscription.create user: self.user, issue: self
+  end
 
 end

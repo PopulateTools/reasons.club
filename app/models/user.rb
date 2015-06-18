@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   
   include PublicActivity::Common
   
+  enum email_subscription_mode: [ :live, :hourly, :daily, :no_mail]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
