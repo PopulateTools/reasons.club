@@ -46,8 +46,10 @@ class ReasonsController < ApplicationController
 
   def vote
     @reason.liked_by current_user
-    @reason.create_activity action: 'vote', owner: current_user
+    activity = @reason.create_activity action: 'vote', owner: current_user
     subscribe(current_user, @reason.issue)
+    # ToReview: should we just save the object id from the activity? 
+    Queued_Notification.create user: current_user, notification: activity.id, period: current_user.email_subscription_mode, status: 0
     # ToDo create notification for reason owner
     # UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
     Reason.update_counters(@reason, votes_positive: +1)
