@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :reasons
   has_many :issues
   has_many :subscriptions
+  has_many :queued_notifications
 
   acts_as_voter
   

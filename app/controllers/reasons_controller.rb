@@ -73,9 +73,8 @@ class ReasonsController < ApplicationController
   
   private
 
-
     def subscribe(user, issue)
-      unless user.subscriptions.where :issue => issue
+      unless user.subscriptions.where(:issue => issue).any?
         Subscription.create user: user, issue: issue
       end
     end

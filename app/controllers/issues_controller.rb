@@ -14,6 +14,7 @@ class IssuesController < ApplicationController
     @issue = current_user.issues.build(issue_params)
     if @result = @issue.save
       # load_issue
+      @issue.create_activity action: 'create', owner: current_user
       flash[:success] = t('issues.created')
       respond_to do |format|
         format.html { redirect_to @issue }
@@ -61,6 +62,9 @@ class IssuesController < ApplicationController
       # @issue = Issue.friendly.includes(reasons: [:user]).find(params[:id])
       @issue = Issue.friendly.includes(:most_voted_reasons).find(params[:id]) 
       @votes = issue_total_votes(@issue)
+      if user_signed_in?
+        @subscribed = current_user.subscriptions.where(:issue => @issue).take
+      end
       # votes = { for: 0, against: 0}
       # @votes = votes
     end 

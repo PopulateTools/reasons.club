@@ -111,9 +111,11 @@ ActiveRecord::Schema.define(version: 20150618065955) do
   add_index "reasons", ["votes_positive"], name: "index_reasons_on_votes_positive", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "issue_id"
-    t.integer "email_subscription_mode"
+    t.integer  "user_id"
+    t.integer  "issue_id"
+    t.integer  "email_subscription_mode"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "subscriptions", ["issue_id"], name: "index_subscriptions_on_issue_id", using: :btree

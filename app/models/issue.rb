@@ -17,8 +17,11 @@ class Issue < ActiveRecord::Base
   scope :public_issues, -> { where(privacy_public: 2) }
   scope :featured, -> { where(featured: 1) }
 
+  # ToReview: we have an almost exact method in reasons_controller.rb, reason.rb... - where we should put it? 
   def subscribe
-    Subscription.create user: self.user, issue: self
+    unless self.user.subscriptions.where(:issue => self).any?
+      Subscription.create user: self.user, issue: self
+    end
   end
 
 end

@@ -3,10 +3,8 @@ class Subscription < ActiveRecord::Base
   belongs_to :issue
   belongs_to :user
 
+  # ToReview: I can't get the system to save this properly, it always save 0 as the value
   before_validation :set_email
-
-  # this is also in user.rb; review
-  enum email_subscription_mode: [ :live, :hourly, :daily, :no_mail]
 
   private
 

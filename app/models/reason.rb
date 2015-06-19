@@ -34,8 +34,11 @@ class Reason < ActiveRecord::Base
     end
   end
 
+  # ToReview: we have an exact method in reasons_controller.rb - where we should put it? 
   def subscribe
-    Subscription.create user: self.user, issue: self.issue
+    unless self.user.subscriptions.where(:issue => self.issue).any?
+      Subscription.create user: self.user, issue: self.issue
+    end
   end
 
 end
