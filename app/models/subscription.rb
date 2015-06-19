@@ -9,7 +9,7 @@ class Subscription < ActiveRecord::Base
   private
 
     def set_email
-      self.email_subscription_mode = user.email_subscription_mode 
+      self.email_subscription_mode = user[:email_subscription_mode]
     end
 
 end

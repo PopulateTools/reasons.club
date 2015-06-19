@@ -113,9 +113,9 @@ ActiveRecord::Schema.define(version: 20150618065955) do
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "issue_id"
-    t.integer  "email_subscription_mode"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "email_subscription_mode", default: :hourly, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "subscriptions", ["issue_id"], name: "index_subscriptions_on_issue_id", using: :btree
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20150618065955) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "twitter_handle"
-    t.integer  "email_subscription_mode"
+    t.string  "email_subscription_mode", default: :hourly,  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

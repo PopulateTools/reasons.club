@@ -10,10 +10,10 @@ class ReasonsController < ApplicationController
 
   def create
     @reason = current_user.reasons.build(reason_params)
-    # ToDo: control when we fire the notification
-    UserMailer.new_reason_on_your_issue(current_user, @reason.issue, @reason.title).deliver_later
     if @result = @reason.save
-      @reason.create_activity action: 'create', owner: current_user
+      activity = @reason.create_activity action: 'create', owner: current_user
+      # ToReview: I was putting this on the model, but how would we access activity from there?
+      queue_notification(current_user, activity)
       respond_to do |format|
         format.html { redirect_to @reason }
         format.js
@@ -48,16 +48,10 @@ class ReasonsController < ApplicationController
     @reason.liked_by current_user
     activity = @reason.create_activity action: 'vote', owner: current_user
     subscribe(current_user, @reason.issue)
-    # ToReview: should we just save the object id from the activity? 
-    Queued_Notification.create user: current_user, notification: activity.id, period: current_user.email_subscription_mode, status: 0
-    # ToDo create notification for reason owner
+    # Notification for issue subscribers
+    queue_notification_for_subscribers(@reason.issue, activity)
     # UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
     Reason.update_counters(@reason, votes_positive: +1)
-    # ToDo: control when we fire the notification
-    if @reason.user != @reason.issue.user
-      # UserMailer.new_vote_on_your_issue(current_user, @reason).deliver_later
-      # ToDo create notification for issue owner
-    end
     respond_to do |format|
       format.html { redirect_to reason }
       format.js
@@ -77,7 +71,21 @@ class ReasonsController < ApplicationController
 
     def subscribe(user, issue)
       unless user.subscriptions.where(:issue => issue).any?
+        logger.debug 'existe'
         Subscription.create user: user, issue: issue
+      end
+    end
+
+    def queue_notification(user, activity)
+      # ToReview: should we just save the object id from the activity? If so, we should also change field type
+      logger.debug user[:email_subscription_mode]
+      Queued_Notification.create user: user, notification: activity.id, period: user[:email_subscription_mode], status: 0
+    end
+
+    def queue_notification_for_subscribers(issue, activity)
+      # ToReview,ToDo: Write the query with include so we generate less queries
+      Subscription.where(issue: issue).each do |subscription|
+        queue_notification(subscription.user, activity)
       end
     end
 

@@ -41,4 +41,6 @@ class Reason < ActiveRecord::Base
     end
   end
 
+  
+
 end
