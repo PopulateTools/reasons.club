@@ -13,7 +13,8 @@ class ReasonsController < ApplicationController
     if @result = @reason.save
       activity = @reason.create_activity action: 'create', owner: current_user
       # ToReview: I was putting this on the model, but how would we access activity from there?
-      queue_notification(current_user, activity)
+      # queue_notification(current_user, activity)
+      queue_notification_for_subscribers(@reason.issue, activity)
       respond_to do |format|
         format.html { redirect_to @reason }
         format.js
@@ -71,20 +72,19 @@ class ReasonsController < ApplicationController
 
     def subscribe(user, issue)
       unless user.subscriptions.where(:issue => issue).any?
-        logger.debug 'existe'
         Subscription.create user: user, issue: issue
       end
     end
 
     def queue_notification(user, activity)
       # ToReview: should we just save the object id from the activity? If so, we should also change field type
-      logger.debug user[:email_subscription_mode]
       Queued_Notification.create user: user, notification: activity.id, period: user[:email_subscription_mode], status: 0
     end
 
     def queue_notification_for_subscribers(issue, activity)
       # ToReview,ToDo: Write the query with include so we generate less queries
-      Subscription.where(issue: issue).each do |subscription|
+      # ToDo: Avoid creating notification if the issue owner is the one doing the action (new reason, new vote)
+      Subscription.where(issue: issue).where.not(user: current_user).each do |subscription|
         queue_notification(subscription.user, activity)
       end
     end

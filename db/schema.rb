@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 20150618065955) do
     t.text    "notification"
     t.string  "period"
     t.boolean "status"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "queued_notifications", ["period", "status"], name: "index_queued_notifications_on_period_and_status", using: :btree
