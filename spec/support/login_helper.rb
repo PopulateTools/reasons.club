@@ -5,6 +5,13 @@ module LoginHelpers
     mock_omniauth_login
     visit '/login/auth/twitter'
   end
+
+  def create_new_twitter_user
+    mock_omniauth_login
+    visit '/login/auth/twitter'
+    fill_in 'Email', with: 'henry@felguer.oso'
+    click_button 'Continue'
+  end
 end
 
 RSpec.configure do |c|
