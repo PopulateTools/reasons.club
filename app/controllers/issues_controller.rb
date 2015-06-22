@@ -63,7 +63,7 @@ class IssuesController < ApplicationController
       @issue = Issue.friendly.includes(:most_voted_reasons).find(params[:id]) 
       @votes = issue_total_votes(@issue)
       if user_signed_in?
-        @subscribed = current_user.subscriptions.where(:issue => @issue).take
+        @subscription = current_user.subscriptions.find_by issue: @issue
       end
       # votes = { for: 0, against: 0}
       # @votes = votes

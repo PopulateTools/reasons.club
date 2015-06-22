@@ -98,7 +98,6 @@ class ReasonsController < ApplicationController
     end
 
     def load_reason
-      # issue = Issue.friendly.find(params[:id])
       @reason = Reason.find(params[:id])
     end
 

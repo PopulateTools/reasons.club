@@ -75,6 +75,18 @@
     $(this).find('.fa').removeClass('fa-cog fa-spin');
   });
 
+  $('.issue_follow a').click(function(e) {
+    e.preventDefault();
+    $('.issue_follow').find('ul.options').show();
+  });
+  $(document).mouseup(function (e) {
+    var container = $('ul.options');
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      container.hide();
+    }
+  });
+
+
   rebindAll(null);
 
 });

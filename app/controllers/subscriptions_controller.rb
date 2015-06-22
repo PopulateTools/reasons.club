@@ -3,24 +3,26 @@ class SubscriptionsController < ApplicationController
   ## Subscribe a user to an Issue ##
   # By default, she will receive individual email notifications on each issue
 
-  # subscribe(current_user, @issue, live|hour|day)
-  # notify(current_user, activity, @issue) 
+  before_action :load_subscription, only: [:update]
 
-  # def update
-  #   if @reason.update_attributes reason_params
-  #     respond_to do |format|
-  #       format.html { redirect_to '' }
-  #       format.json { respond_with_bip(@reason) }
-  #     end
-  #   end
-  # end 
+  def update
+    if @subscription.update_attributes subscription_params
+      respond_to do |format|
+        format.html { redirect_to '' }
+        format.js
+      end
+    end
+  end 
 
   private
 
     def subscription_params
-      params.require(:subscription).permit(:type, :issue_id)      
+      params.require(:id).permit(:email_subscription_mode)
     end
 
+    def load_subscription
+      @subscription = Subscription.find(params[:id])
+    end
 
 
 end

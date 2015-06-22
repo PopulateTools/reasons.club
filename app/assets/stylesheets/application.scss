@@ -246,6 +246,47 @@ body > header /* .main-header */ {
       opacity: .8;
       margin: 0 0 2em 0;
     }
+    .issue_follow {
+      position: relative;
+      .fa {
+        margin: 0 0 0 5px;
+        padding: 0;
+      }
+      ul, li {
+        margin: 0; 
+        padding: 0; 
+        list-style-type: none;
+        line-height: 16px;
+      }
+      ul.options {
+        @include transition;
+        @include border-radius(4px);
+        @include box-shadow(2px, 2px, 5px, #DFDFDF);
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0; 
+        width: 250px;
+        background: #FFF;
+        z-index: 10;
+        a {
+          display: block;
+          margin: 0;
+          border-bottom: 1px solid #DFDFDF;
+          border-radius: none;
+        }
+        a:hover {
+          background: #DFDFDF; 
+        }
+        span {
+          display: block;
+          font-size: 14px;
+        }
+        li.selected a {
+          background: #DFDFDF;
+        }
+      }
+    }
     @include screen(740) {      
       .share {
         padding: .3em .5em;
@@ -576,7 +617,6 @@ i.back_line {
   @include border-radius(4px); 
   display: inline-block;
   margin: 0 0 0 1em;
-  padding: .5em 1em;
   font-size: .8em;
 
   a {
@@ -584,6 +624,8 @@ i.back_line {
     display: block;
     font-weight: 600;
     text-decoration: none;
+    padding: 8px 17px;
+    @include border-radius(4px);
     @include transition;
   }
   .fa {
@@ -593,12 +635,10 @@ i.back_line {
 .facebook, .facebook a, .reasons-against .btn-vote.active .facebook a, .reasons-for .btn-vote.active .facebook a {
   background: #306199;
   border-bottom: none; 
-  padding: 4px 9px; 
 }
 .twitter, .twitter a, .reasons-against .btn-vote.active .twitter a, .reasons-for .btn-vote.active .twitter a {
   background: #26c4f1;
-  border-bottom: none; 
-  padding: 4px 9px; 
+  border-bottom: none;  
 }
 
 // login etc
