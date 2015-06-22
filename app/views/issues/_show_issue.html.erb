@@ -24,19 +24,19 @@
 
             <ul class="options">
               <li <%= "class='selected'".html_safe if @subscription.email_subscription_mode == 'live' %>>
-                <%= link_to "<span><strong>Following</strong> Live notifications</span> Receive them as they happen".html_safe, subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
+                <%= link_to "<span><strong>Following</strong> Live notifications</span> Receive them as they happen".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
               </li>
               <li <%= "class='selected'".html_safe if @subscription.email_subscription_mode == 'hourly' %>>
-                <%= link_to "<span><strong>Following</strong> Hourly digest</span> Group them and receive no more than one mail per hour".html_safe, subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
+                <%= link_to "<span><strong>Following</strong> Hourly digest</span> Group them and receive no more than one mail per hour".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
               </li>
               <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'daily' %>>
-                <%= link_to "<span><strong>Following</strong> Daily digest</span> Just one mail per day".html_safe, subscription_path(@subscription, :email_subscription_mode => 'daily'), :remote => true, :method => 'patch' %>
+                <%= link_to "<span><strong>Following</strong> Daily digest</span> Just one mail per day".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'daily'), :remote => true, :method => 'patch' %>
               </li>
               <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'no_email' %>>
-                <%= link_to "<span><strong>Following</strong> No mail</span> Zen reasoner".html_safe, subscription_path(@subscription, :email_subscription_mode => 'no_email'), :remote => true, :method => 'patch' %>
+                <%= link_to "<span><strong>Following</strong> No mail</span> Zen reasoner".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'no_email'), :remote => true, :method => 'patch' %>
               </li>
               <li>
-              <%= link_to "<span><strong>Stop Following</strong>".html_safe, subscription_path(@subscription), :remote => true, :method => 'delete' %>
+              <%= link_to "<span><strong>Stop Following</strong>".html_safe, update_subscription_path(@subscription), :remote => true, :method => 'delete' %>
             </ul>
 
           <% end %>
