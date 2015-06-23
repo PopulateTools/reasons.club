@@ -16,6 +16,9 @@
 /tmp
 
 config/initializers/secret_token.rb
+config/secrets.yml
+config/database.yml
+config/deploy.rb
 
 app/assets/.DS_Store
 .DS_Store

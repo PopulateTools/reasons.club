@@ -1,3 +1,5 @@
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/PopulateTools/reasons.club?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # reasons.club
 
 Reasons.club is an online tool to discuss with order, reach conclusions faster, and take decisions. Take a look at the live version at [reasons.club](reasons.club), and start reasoning.
@@ -12,13 +14,13 @@ Reasons.club is an online tool to discuss with order, reach conclusions faster, 
 
 * Use Reasons.club with your partner, friends, coworkers, associates...
 * Collaboratively create lists of pros and cons about the issues you have to decide on
-* Have structured and organized debates about your decisions - avoid caotic email discussions without end nor results
+* Have structured and organized debates about your decisions - avoid chaotic email discussions without end nor results
  
 ### For public discussions
 
 * Hold public discussions with big groups while maintaining order
 * Let people add their reasons to a debate, or only vote for existing reasons
-* Gather feedback from many people about complex isuses with order and structure
+* Gather feedback from many people about complex issues with order and structure
 
 ## About 
 
@@ -48,7 +50,7 @@ See the [wiki](https://github.com/furilo/reasons.club/wiki)
 
 ## Feature requests
 
-You are welcome to request a feature. Just open an issue and tag them with the "[Feature Request](https://github.com/furilo/reasons.club/labels/Feature%20Request)" label.
+You are welcome to request a feature. Discuss them here: http://reasons.club/issues/improve
 
 ## How to contribute
 

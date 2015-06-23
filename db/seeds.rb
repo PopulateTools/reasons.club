@@ -188,24 +188,6 @@ Reason.create(
 #   issue: Issue.all[3])
 
 
-
-    # for_yourself: For yourself
-    # for_yourself_1: Take quick notes about the issues you have to decide and get your ideas organized
-    # for_yourself_2: Create drafts of pros and cons about the decisions you have to take
-    # for_yourself_3: List reasons affecting the issues you have to work on
-    # for_small_teams: For small teams
-    # for_small_teams_1: Use Reasons.club with your partner, friends, coworkers, associates...
-    # for_small_teams_2: Collaboratively create lists of pros and cons about the issues you have to decide on
-    # for_small_teams_3: Have structured and organized debates about your decisions - avoid caotic email discussions without end nor results 
-    # for_public_discussions: For public discussions
-    # for_public_discussions_1: Hold public discussions with big groups while maintaining order
-    # for_public_discussions_2: Let people add their reasons to a debate, or only vote for existing reasons
-    # for_public_discussions_3: Gather feedback from many people about complex isuses with order and structure
-    # some_example_public_clubs: Some example public clubs
-    # reasons_for_using_reasons: Reasons for using Reasons.club
-    # create_your_first_club: Create your first club
-
-
 # Issue.create(title: 'Razones para alquilar casa (vs. comprar)', locale: 'es', privacy_public: true, user_id: 1)
 # Issue.create(title: 'Razones para votar a Podemos (o no)', locale: 'es', privacy_public: true, user_id: 1)
 # Issue.create(title: 'Razones para votar a Manuela Carmena (o no)', locale: 'es', privacy_public: true, user_id: 1)
