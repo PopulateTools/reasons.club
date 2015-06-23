@@ -1,3 +1,5 @@
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/PopulateTools/reasons.club?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # reasons.club
 
 Reasons.club is an online tool to discuss with order, reach conclusions faster, and take decisions. Take a look at the live version at [reasons.club](reasons.club), and start reasoning.
