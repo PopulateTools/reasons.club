@@ -50,7 +50,7 @@ See the [wiki](https://github.com/furilo/reasons.club/wiki)
 
 ## Feature requests
 
-Discuss them here: http://reasons.club/issues/improve
+You are welcome to request a feature. Discuss them here: http://reasons.club/issues/improve
 
 ## How to contribute
 

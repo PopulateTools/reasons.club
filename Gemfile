@@ -41,6 +41,11 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'sqlite3'
   gem 'mina'
+  gem 'database_cleaner'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'capybara'
+  gem 'email_spec'
+  gem 'timecop'
 end
 
 group :production do
