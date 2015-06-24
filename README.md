@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/PopulateTools/reasons.club.png?label=ready&title=Ready)](https://waffle.io/PopulateTools/reasons.club)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/PopulateTools/reasons.club?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # reasons.club
