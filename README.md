@@ -78,7 +78,7 @@ rake secret
 ```
 To lines 2 and 6 of /config/secrets.yml
 
-Then [register a twitter app](https://apps.twitter.com/) and complete lines 3 & 4 of /config/secrets.yml
+Then [register a twitter app](https://apps.twitter.com/) using **http://127.0.0.1:3000/auth/twitter/callback** for the Callback URL and complete lines 3 & 4 of /config/secrets.yml
 ````
 twitter_api_key: # Twitter Consumer Key (API Key)  
 twitter_api_secret: # Twitter Consumer Secret (API Secret)
