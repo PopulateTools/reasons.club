@@ -27,7 +27,6 @@
   h = window.location.hash;
   h = h.substring(1);
   if((a.indexOf('issues') >= 0) && (window.location.hash != '')) {
-    console.log('entrando');
     $.ajax({
       url: "/reason/" + h,
       dataType: 'script',
