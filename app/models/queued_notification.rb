@@ -1,4 +1,4 @@
-class Queued_Notification < ActiveRecord::Base
+class QueuedNotification < ActiveRecord::Base
 
   # belongs_to :issue
   belongs_to :user

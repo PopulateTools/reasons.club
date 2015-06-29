@@ -12,7 +12,8 @@ class Reason < ActiveRecord::Base
   # validates :user_id, presence: true
   
   before_validation :set_public_id
-  after_create :subscribe
+  after_create :subscribe, :track_create_activity
+  after_update :track_update_activity
 
   scope :sorted, -> { order(date: :desc) }
   scope :most_voted_first, -> { order(votes_positive: :desc) }
@@ -25,6 +26,8 @@ class Reason < ActiveRecord::Base
     where('for' => false)
   end
 
+  private
+
   def set_public_id
     last_reason = self.issue.reasons.last
     if last_reason.present?
@@ -34,13 +37,19 @@ class Reason < ActiveRecord::Base
     end
   end
 
-  # ToReview: we have an exact method in reasons_controller.rb - where we should put it? 
   def subscribe
-    unless self.user.subscriptions.where(:issue => self.issue).any?
-      Subscription.create user: self.user, issue: self.issue
-    end
+    Subscription.subscribe_to self.user, self.issue
   end
 
-  
+  def track_create_activity
+    activity = self.create_activity action: 'create', owner: self.user
 
+    Subscription.queue_notifications_for(self.issue, activity)
+  end
+
+  def track_update_activity
+    activity = self.create_activity action: 'update.description', owner: self.user
+
+    Subscription.queue_notifications_for(self.issue, activity)
+  end
 end

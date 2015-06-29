@@ -13,8 +13,6 @@ class IssuesController < ApplicationController
   def create
     @issue = current_user.issues.build(issue_params)
     if @result = @issue.save
-      # load_issue
-      @issue.create_activity action: 'create', owner: current_user
       flash[:success] = t('issues.created')
       respond_to do |format|
         format.html { redirect_to @issue }

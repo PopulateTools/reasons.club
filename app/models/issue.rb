@@ -12,16 +12,19 @@ class Issue < ActiveRecord::Base
   include PublicActivity::Common
   
   validates :title, presence: true, length: { minimum: 10 }
-  after_create :subscribe
+  after_create :subscribe, :track_activity
 
   scope :public_issues, -> { where(privacy_public: 2) }
   scope :featured, -> { where(featured: 1) }
 
-  # ToReview: we have an almost exact method in reasons_controller.rb, reason.rb... - where we should put it? 
+  private
+
+  def track_activity
+    self.create_activity action: 'create', owner: self.user
+  end
+
   def subscribe
-    unless self.user.subscriptions.where(:issue => self).any?
-      Subscription.create user: self.user, issue: self
-    end
+    Subscription.subscribe_to self.user, self
   end
 
 end

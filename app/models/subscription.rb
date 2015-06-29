@@ -3,13 +3,25 @@ class Subscription < ActiveRecord::Base
   belongs_to :issue
   belongs_to :user
 
-  # ToReview: I can't get the system to save this properly, it always save 0 as the value
   before_validation :set_email
+
+  def self.subscribe_to(user, issue)
+    unless user.subscriptions.where(issue: issue).any?
+      create! user: user, issue: issue
+    end
+  end
+
+  def self.queue_notifications_for(issue, activity)
+    where(issue: issue).where.not(user: activity.owner).each do |subscription|
+      QueuedNotification.create user: subscription.user, notification: activity.id,
+                                period: subscription.user.email_subscription_mode, status: 0
+    end
+  end
 
   private
 
     def set_email
-      self.email_subscription_mode = user[:email_subscription_mode]
+      self.email_subscription_mode = self.user.email_subscription_mode
     end
 
 end
