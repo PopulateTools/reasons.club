@@ -1,9 +1,14 @@
 class Subscription < ActiveRecord::Base
 
+  # This order shouldn't be updated
+  MODES = [ :hourly, :daily, :no_mail, :live ]
+
   belongs_to :issue
   belongs_to :user
 
   before_validation :set_email
+
+  enum email_subscription_mode: Subscription::MODES
 
   def self.subscribe_to(user, issue)
     unless user.subscriptions.where(issue: issue).any?

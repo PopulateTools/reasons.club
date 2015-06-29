@@ -3,7 +3,7 @@ class CreateSubscriptions < ActiveRecord::Migration
     create_table :subscriptions do |t|
       t.references :user, index: true
       t.references :issue, index: true
-      t.string :email_subscription_mode
+      t.integer :email_subscription_mode
       t.timestamps
     end
     add_foreign_key :subscriptions, :users
