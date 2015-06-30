@@ -33,7 +33,7 @@
                 <%= link_to "<span><strong>Following</strong> Daily digest</span> Just one mail per day".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'daily'), :remote => true, :method => 'patch' %>
               </li>
               <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'no_email' %>>
-                <%= link_to "<span><strong>Following</strong> No mail</span> Zen reasoner".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'no_email'), :remote => true, :method => 'patch' %>
+                <%= link_to "<span><strong>Following</strong> No mail</span> Zen reasoner".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'no_mail'), :remote => true, :method => 'patch' %>
               </li>
               <li>
               <%= link_to "<span><strong>Stop Following</strong>".html_safe, update_subscription_path(@subscription), :remote => true, :method => 'delete' %>

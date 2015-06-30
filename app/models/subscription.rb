@@ -6,9 +6,9 @@ class Subscription < ActiveRecord::Base
   belongs_to :issue
   belongs_to :user
 
-  before_validation :set_email
+  before_create :set_email_subscription_mode
 
-  enum email_subscription_mode: Subscription::MODES
+  enum email_subscription_mode: MODES
 
   def self.subscribe_to(user, issue)
     unless user.subscriptions.where(issue: issue).any?
@@ -25,7 +25,7 @@ class Subscription < ActiveRecord::Base
 
   private
 
-    def set_email
+    def set_email_subscription_mode
       self.email_subscription_mode = self.user.email_subscription_mode
     end
 

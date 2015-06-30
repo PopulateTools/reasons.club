@@ -9,7 +9,7 @@ class SubscriptionsController < ApplicationController
     if @subscription.update_attributes subscription_params
       respond_to do |format|
         format.html { redirect_to '' }
-        format.js
+        format.js { render nothing: true }
       end
     end
   end 
@@ -17,7 +17,7 @@ class SubscriptionsController < ApplicationController
   private
 
     def subscription_params
-      params.require(:id).permit(:email_subscription_mode)
+      params.permit(:email_subscription_mode)
     end
 
     def load_subscription
