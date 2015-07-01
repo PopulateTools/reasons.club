@@ -14,6 +14,7 @@ module Paths
   private
 
   def locale_preffix
-    "/en"
+    ''
+    #"/en"
   end
 end
