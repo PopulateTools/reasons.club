@@ -70,6 +70,8 @@ git clone git@github.com:furilo/reasons.club.git
 cd reasons.club
 bundle install
 rake db:setup
+cp config/secrets.yml.example config/secrets.yml
+cp config/database.yml.example config/database.yml
 ```
 
 Then copy & paste the result of 
