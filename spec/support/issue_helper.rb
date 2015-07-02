@@ -2,7 +2,6 @@ module IssueHelpers
   def create_issue_helper(title, privacy = nil)
     visit home_page
     page.click_link('add_new_issue')
-    expect(page).to have_content('Set up your Club') 
     within(:css, '#new_issue') do
       fill_in 'issue[title]', with: title
       page.choose(privacy ? privacy : 'issue_privacy_public_2')
