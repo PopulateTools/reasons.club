@@ -30,6 +30,9 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   OmniAuth.config.test_mode = true
   Capybara.javascript_driver = :webkit
+  Capybara::Webkit.configure do |config|
+    config.allow_unknown_urls
+  end
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
   config.include(Factories)
