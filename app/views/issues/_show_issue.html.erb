@@ -24,7 +24,10 @@
         <div class="reasons-list reasons-for">
 
           <header class="py2 px4">
-            <div class="reasons-counter"><strong><%= @issue.reasons.for.count %></strong> <%= t('issues.reasons_for',count:@issue.reasons.for.count) %></div>
+            <%= render(
+                  :partial => 'reasons/reasons_counter', 
+                  :locals => {:destination => 'for' }
+                ) %>
             <div class="votes-counter"><strong><%= @votes[:for] %></strong> <%= t('issues.votes') %></div>
             <!-- <div><strong>4</strong> Partidarios</div> -->
           </header>
@@ -46,7 +49,10 @@
         <div class="reasons-list reasons-against">
 
           <header class="py2 px4">
-            <div class="reasons-counter"><strong><%= @issue.reasons.against.count %></strong> <%= t('issues.reasons_against', count:@issue.reasons.against.count) %></div>
+            <%= render(
+                  :partial => 'reasons/reasons_counter', 
+                  :locals => {:destination => 'against' }
+                ) %>
             <div class="votes-counter"><strong><%= @votes[:against] %></strong> <%= t('issues.votes') %></div>
             <!-- <div><strong>4345</strong> Partidarios</div> -->
           </header>
