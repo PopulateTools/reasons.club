@@ -26,6 +26,7 @@ class IssuesController < ApplicationController
 
   def index
     @issues = Issue.friendly.all
+    @promoted_issue = Issue.find_by_title "Razones para usar Reasons.club"
   end
 
   def show
