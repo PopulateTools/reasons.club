@@ -44,6 +44,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'email_spec'
   gem 'timecop'
 end
