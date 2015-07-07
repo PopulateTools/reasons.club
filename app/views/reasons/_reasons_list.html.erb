@@ -1,0 +1,19 @@
+<div class="reasons-list reasons-<%="#{argument}"%>">
+
+  <header class="py2 px4">
+    <%= render_reasons_counter issue, argument %>
+    <div class="votes-counter"><strong><%= @votes[argument] %></strong> <%= t('issues.votes') %></div>
+    <!-- <div><strong>4</strong> Partidarios</div> -->
+  </header>
+
+  <% if @issue.reasons.send(argument).empty? %>
+    <div class="no_reasons_yet m4">
+      <%= t('issues.no_reasons_yet') %>
+    </div>
+  <% end %>
+
+  <%= render @issue.reasons.send(argument).most_voted_first %>
+
+  <%= render 'reasons/form', :locals => {:position => argument} %>
+
+</div><!-- .reasons-list -->
