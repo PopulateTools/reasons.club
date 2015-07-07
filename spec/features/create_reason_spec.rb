@@ -7,7 +7,7 @@ RSpec.feature 'Create a Reason in a Issue ' do
     create_issue_helper('Reasons to eat Cachopo everyday', 'issue_privacy_public_2')
   end
  
-  scenario 'should create a "for" Reason and be able to see it', :js => true do
+  scenario 'should create "for" Reasons and be able to see them, and the reasons counter increase', :js => true do
     expect(page).to have_content('0 REASONS FOR')
     within('div.reasons-for') {
       fill_in 'reason_title', :with => 'Improve my opinions in a structured way'
@@ -23,7 +23,7 @@ RSpec.feature 'Create a Reason in a Issue ' do
     expect(page).to have_content('2 REASONS FOR')
   end 
 
-  scenario 'should create an "against" Reason and be able to see it', :js => true do
+  scenario 'should create an "against" Reason and be able to see it, and the reasons counter increase', :js => true do
     expect(page).to have_content('0 REASONS AGAINST')
     within('div.reasons-against') {
       fill_in 'reason_title', :with => 'I could be eating a Cachopo right now'

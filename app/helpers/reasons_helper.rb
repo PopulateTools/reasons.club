@@ -6,6 +6,14 @@ module ReasonsHelper
     end
   end
 
-  
+  def render_reasons_counter issue, argument
+    render(
+      partial: 'reasons/reasons_counter',
+      locals: {
+        reasons_count: issue.reasons.send(argument).count,
+        destination: argument,
+      }
+    )
+  end
 
 end

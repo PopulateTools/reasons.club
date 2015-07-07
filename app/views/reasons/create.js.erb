@@ -9,7 +9,7 @@
   %>
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript(render(:partial => @reason, :formats => [:html] )) %>");
   $('.new_reason_here_<%= destination %>').append('<%= escape_javascript(render(:partial => "reasons/after_reason_share", :formats => [:html] )) %>');
-  $('.reasons-<%= destination %> .reasons-counter').html('<%= j render(:partial => "reasons_counter", :locals => {:destination => "#{destination}" })%>');
+  $('.reasons-<%= destination %> .reasons-counter').html('<%= j render_reasons_counter @issue, destination %>');
   $('.reason_title_<%= destination %>').val('');
 <% else %>
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript('errrrrroor') %>");
