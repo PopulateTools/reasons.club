@@ -24,7 +24,7 @@
         <div class="reasons-list reasons-for">
 
           <header class="py2 px4">
-            <%= render_reasons_counter @issue, "for" %>
+            <%= render_reasons_counter @issue, :for %>
             <div class="votes-counter"><strong><%= @votes[:for] %></strong> <%= t('issues.votes') %></div>
             <!-- <div><strong>4</strong> Partidarios</div> -->
           </header>
@@ -37,7 +37,7 @@
 
           <%= render @issue.reasons.for.most_voted_first %>
 
-          <%= render 'reasons/form', :locals => {:position => 'for'} %>
+          <%= render 'reasons/form', :locals => {:position => :for} %>
 
         </div><!-- .reasons-for -->
       </div>
@@ -46,7 +46,7 @@
         <div class="reasons-list reasons-against">
 
           <header class="py2 px4">
-            <%= render_reasons_counter @issue, "against" %>
+            <%= render_reasons_counter @issue, :against %>
             <div class="votes-counter"><strong><%= @votes[:against] %></strong> <%= t('issues.votes') %></div>
             <!-- <div><strong>4345</strong> Partidarios</div> -->
           </header>
@@ -59,7 +59,7 @@
 
           <%= render @issue.reasons.against.most_voted_first %>
 
-          <%= render 'reasons/form', :locals => {:position => 'against'} %>
+          <%= render 'reasons/form', :locals => {:position => :against} %>
 
         </div><!-- .reasons-against -->
       </div>

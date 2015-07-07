@@ -2,9 +2,9 @@
 <% if @result %>
   <% 
   if @reason.for == true
-    destination = 'for'
+    destination = :for
   else
-    destination = 'against'
+    destination = :against
   end
   %>
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript(render(:partial => @reason, :formats => [:html] )) %>");
