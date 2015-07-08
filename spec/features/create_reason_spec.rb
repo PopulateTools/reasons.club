@@ -6,31 +6,22 @@ RSpec.feature 'Create a Reason in a Issue ' do
     create_issue_helper('Reasons to eat Cachopo everyday', 'issue_privacy_public_2')
   end
 
-  scenario 'should create "for" Reasons and be able to see them, and the reasons counter increase', js: true do
+  scenario 'should create "for" Reasons, see them, and increase counter', js: true do
     expect(page).to have_content('0 REASONS FOR')
-    within('div.reasons-for') do
-      fill_in 'reason_title', with: 'Improve my opinions in a structured way'
-      page.execute_script("$('form#new_reason').submit()")
-    end
+    create_reason_helper(:for, 'Improve my opinions in a structured way')
     expect(page).to have_content('Reason added! Broadcast your mind, check what others think')
     sleep 3
     expect(page).not_to have_content('Reason added! Broadcast your mind, check what others think')
     expect(page).to have_content('Improve my opinions in a structured way')
     expect(page).to have_content('1 REASON FOR')
-    within('div.reasons-for') do
-      fill_in 'reason_title', with: 'Collects info from various people about the subject'
-      page.execute_script("$('form#new_reason').submit()")
-    end
+    create_reason_helper(:for, 'Collects info from various people about the subject')
     expect(page).to have_content('Collects info from various people about the subject')
     expect(page).to have_content('2 REASONS FOR')
   end
 
-  scenario 'should create an "against" Reason and be able to see it, and the reasons counter increase', js: true do
+  scenario 'should create "against" Reason, see it, and increase counter', js: true do
     expect(page).to have_content('0 REASONS AGAINST')
-    within('div.reasons-against') do
-      fill_in 'reason_title', with: 'I could be eating a Cachopo right now'
-      page.execute_script("$('form#new_reason').submit()")
-    end
+    create_reason_helper(:against, 'I could be eating a Cachopo right now')
     expect(page).to have_content('Reason added! Broadcast your mind, check what others think')
     sleep 3
     expect(page).not_to have_content('Reason added! Broadcast your mind, check what others think')
