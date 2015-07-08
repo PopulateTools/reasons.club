@@ -2,7 +2,7 @@
 
   <header class="py2 px4">
     <%= render_reasons_counter issue, argument %>
-    <div class="votes-counter"><strong><%= @votes[argument] %></strong> <%= t('issues.votes') %></div>
+    <%= render_votes_counter @votes[argument] %>
     <!-- <div><strong>4</strong> Partidarios</div> -->
   </header>
 

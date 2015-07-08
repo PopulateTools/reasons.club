@@ -25,4 +25,13 @@ module ReasonsHelper
       }
     )
   end
+
+  def render_votes_counter(votes)
+    render(
+      partial: 'issues/total_votes_counter',
+      locals: {
+        counter: votes
+      }
+    )
+  end
 end

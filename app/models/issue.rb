@@ -16,4 +16,20 @@ class Issue < ActiveRecord::Base
   scope :public_issues, -> { where(privacy_public: 2) }
   scope :featured, -> { where(featured: 1) }
 
+  def votes_for
+    votes = 0
+    self.reasons.for.find_each do |reason|
+      votes     += reason.votes_for.size        
+    end
+    votes
+  end
+  
+  def votes_against
+    votes = 0
+    self.reasons.against.find_each do |reason|
+      votes += reason.votes_for.size
+    end
+    votes
+  end
+
 end
