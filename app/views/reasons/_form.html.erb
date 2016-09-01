@@ -10,7 +10,7 @@
             <div class="icon_holder"><i class="fa fa-plus-circle"></i></div>
             <%= f.text_area :title, placeholder: t('reasons.add_argument'), class: "cd-signup reason_title js-auto-size reason_title_#{locals[:position]}", rows: '1', required: true %>
             <%= f.hidden_field :issue_id, :value => @issue.id %>
-            <% if locals[:position] == 'for' %>
+            <% if locals[:position] == :for %>
               <%= f.hidden_field :for, :value => true %>
             <% else %>
               <%= f.hidden_field :for, :value => false %>

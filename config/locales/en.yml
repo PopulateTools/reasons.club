@@ -93,8 +93,12 @@ en:
     create_submit: Create your Club
     new_top_bar_title: Add new issue to discuss
     no_reasons_yet: No reasons yet. Start reasoning now!
-    reasons_for: reasons for
-    reasons_against: reasons against
+    reasons_for:
+      one: reason for
+      other: reasons for
+    reasons_against:
+      one: reason against
+      other: reasons against
     votes: votes
     reasons_creation_placeholder: This is where you'll add your reasons for and against
     set_up_your_club: Set up your Club

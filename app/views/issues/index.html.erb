@@ -70,7 +70,9 @@
       <span><strong><%= t('home.reasons_for_using_reasons') %></strong></span>
     </p>
     
-    <iframe src="/issues/razones-para-usar-reasons-club?embed=1" width="100%" height="700" scrolling="no" seamless="seamless" style="border: none; "></iframe>
+    <% if @promoted_issue %>
+      <iframe src="/issues/razones-para-usar-reasons-club?embed=1" width="100%" height="700" scrolling="no" seamless="seamless" style="border: none; "></iframe>
+    <% end %>
 
   </div>
 
