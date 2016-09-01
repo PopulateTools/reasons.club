@@ -1,102 +1,101 @@
-    
-    <header>
+<header>
 
-      <em></em>
-      <h1><%= @issue.title %></h1>
-      <% if @issue.privacy_public == "0" %>
-        <i class="fa fa-lock tipsit" title="<%= t('issues.private') %>"></i>
+  <em></em>
+  <h1><%= @issue.title %></h1>
+  <% if @issue.privacy_public == "0" %>
+    <i class="fa fa-lock tipsit" title="<%= t('issues.private') %>"></i>
+  <% end %>
+  <div class="share_container">
+    <div class="share issue_follow">
+      <% if @subscription.blank? %>
+        <a href="">Follow</a>
+      <% else %>
+
+        <% if @subscription.email_subscription_mode == 'live' %>
+          <a href="">Following <span><strong>Live</strong></span> <i class="fa fa-angle-down"></i></a>
+        <% elsif @subscription.email_subscription_mode == 'hourly' %>
+          <a href="">Following <span><strong>Hourly</strong></span> <i class="fa fa-angle-down"></i></a>
+        <% elsif @subscription.email_subscription_mode == 'daily' %>
+          <a href="">Following <span><strong>Daily</strong></span> <i class="fa fa-angle-down"></i></a>
+        <% elsif @subscription.email_subscription_mode == 'no_email' %>
+          <a href="">Following <span><strong>Hourly</strong></span> <i class="fa fa-angle-down"></i></a>
+        <% end %>
+
+        <ul class="options">
+          <li <%= "class='selected'".html_safe if @subscription.email_subscription_mode == 'live' %>>
+            <%= link_to "<span><strong>Following</strong> Live notifications</span> Receive them as they happen".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
+          </li>
+          <li <%= "class='selected'".html_safe if @subscription.email_subscription_mode == 'hourly' %>>
+            <%= link_to "<span><strong>Following</strong> Hourly digest</span> Group them and receive no more than one mail per hour".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
+          </li>
+          <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'daily' %>>
+            <%= link_to "<span><strong>Following</strong> Daily digest</span> Just one mail per day".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'daily'), :remote => true, :method => 'patch' %>
+          </li>
+          <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'no_email' %>>
+            <%= link_to "<span><strong>Following</strong> No mail</span> Zen reasoner".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'no_mail'), :remote => true, :method => 'patch' %>
+          </li>
+          <li>
+            <%= link_to "<span><strong>Stop Following</strong>".html_safe, update_subscription_path(@subscription), :remote => true, :method => 'delete' %>
+        </ul>
+
       <% end %>
-      <div class="share_container">
-        <div class="share issue_follow">
-          <% if @subscription.blank? %>
-            <a href="">Follow</a>
-          <% else %>
+    </div>
+    <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= u(request.original_url) %>&t=<%= u(t('tagline')) %>" class="popup"><i class="fa fa-facebook"></i><span>Facebook</span></a></div>
+    <div class="share twitter"><a href="http://twitter.com/home?status=<%= @issue.title %> <%= request.original_url %>" class="popup"><i class="fa fa-twitter"></i><span>Twitter</span></a></div>
+  </div>
+  <div class="description">
+    <%= @issue.description %>
+  </div>
 
-            <% if @subscription.email_subscription_mode == 'live' %> 
-              <a href="">Following <span><strong>Live</strong></span> <i class="fa fa-angle-down"></i></a>
-            <% elsif @subscription.email_subscription_mode == 'hourly' %>
-              <a href="">Following <span><strong>Hourly</strong></span> <i class="fa fa-angle-down"></i></a>
-            <% elsif @subscription.email_subscription_mode == 'daily' %>
-              <a href="">Following <span><strong>Daily</strong></span> <i class="fa fa-angle-down"></i></a>
-            <% elsif @subscription.email_subscription_mode == 'no_email' %>
-              <a href="">Following <span><strong>Hourly</strong></span> <i class="fa fa-angle-down"></i></a>
-            <% end %>
 
-            <ul class="options">
-              <li <%= "class='selected'".html_safe if @subscription.email_subscription_mode == 'live' %>>
-                <%= link_to "<span><strong>Following</strong> Live notifications</span> Receive them as they happen".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
-              </li>
-              <li <%= "class='selected'".html_safe if @subscription.email_subscription_mode == 'hourly' %>>
-                <%= link_to "<span><strong>Following</strong> Hourly digest</span> Group them and receive no more than one mail per hour".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
-              </li>
-              <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'daily' %>>
-                <%= link_to "<span><strong>Following</strong> Daily digest</span> Just one mail per day".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'daily'), :remote => true, :method => 'patch' %>
-              </li>
-              <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'no_email' %>>
-                <%= link_to "<span><strong>Following</strong> No mail</span> Zen reasoner".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'no_mail'), :remote => true, :method => 'patch' %>
-              </li>
-              <li>
-              <%= link_to "<span><strong>Stop Following</strong>".html_safe, update_subscription_path(@subscription), :remote => true, :method => 'delete' %>
-            </ul>
+</header>
 
-          <% end %>
+<div class="reasons">
+
+  <div id="show_reason_extended" class="show_extended"></div>
+
+  <div class="col-1-2">
+    <div class="reasons-list reasons-for">
+
+      <header class="py2 px4">
+        <div><strong><%= @issue.reasons.for.count %></strong> <%= t('issues.reasons_for') %></div>
+        <div><strong><%= @votes[:for] %></strong> <%= t('issues.votes') %></div>
+        <!-- <div><strong>4</strong> Partidarios</div> -->
+      </header>
+
+      <% if @issue.reasons.for.empty? %>
+        <div class="no_reasons_yet m4">
+          <%= t('issues.no_reasons_yet') %>
         </div>
-        <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= u(request.original_url) %>&t=<%= u(t('tagline')) %>" class="popup"><i class="fa fa-facebook"></i><span>Facebook</span></a></div>
-        <div class="share twitter"><a href="http://twitter.com/home?status=<%= @issue.title %> <%= request.original_url %>" class="popup"><i class="fa fa-twitter"></i><span>Twitter</span></a></div>
-      </div>
-      <div class="description">
-        <%= @issue.description %>
-      </div>
-      
+      <% end %>
 
-    </header>
+      <%= render @issue.reasons.for.most_voted_first %>
 
-    <div class="reasons">
+      <%= render 'reasons/form', :locals => {:position => 'for'} %>
 
-      <div id="show_reason_extended" class="show_extended"></div>
+    </div><!-- .reasons-for -->
+  </div>
 
-      <div class="col-1-2">
-        <div class="reasons-list reasons-for">
+  <div class="col-2-2">
+    <div class="reasons-list reasons-against">
 
-          <header class="py2 px4">
-            <div><strong><%= @issue.reasons.for.count %></strong> <%= t('issues.reasons_for') %></div>
-            <div><strong><%= @votes[:for] %></strong> <%= t('issues.votes') %></div>
-            <!-- <div><strong>4</strong> Partidarios</div> -->
-          </header>
+      <header class="py2 px4">
+        <div><strong><%= @issue.reasons.against.count %></strong> <%= t('issues.reasons_against') %></div>
+        <div><strong><%= @votes[:against] %></strong> <%= t('issues.votes') %></div>
+        <!-- <div><strong>4345</strong> Partidarios</div> -->
+      </header>
 
-          <% if @issue.reasons.for.empty? %>
-            <div class="no_reasons_yet m4">
-              <%= t('issues.no_reasons_yet') %>
-            </div>
-          <% end %>
+      <% if @issue.reasons.against.empty? %>
+        <div class="no_reasons_yet m4">
+          <%= t('issues.no_reasons_yet') %>
+        </div>
+      <% end %>
 
-          <%= render @issue.reasons.for.most_voted_first %>
+      <%= render @issue.reasons.against.most_voted_first %>
 
-          <%= render 'reasons/form', :locals => {:position => 'for'} %>
+      <%= render 'reasons/form', :locals => {:position => 'against'} %>
 
-        </div><!-- .reasons-for -->
-      </div>
+    </div><!-- .reasons-against -->
+  </div>
 
-      <div class="col-2-2">
-        <div class="reasons-list reasons-against">
-
-          <header class="py2 px4">
-            <div><strong><%= @issue.reasons.against.count %></strong> <%= t('issues.reasons_against') %></div>
-            <div><strong><%= @votes[:against] %></strong> <%= t('issues.votes') %></div>
-            <!-- <div><strong>4345</strong> Partidarios</div> -->
-          </header>
-
-          <% if @issue.reasons.against.empty? %>
-            <div class="no_reasons_yet m4">
-              <%= t('issues.no_reasons_yet') %>
-            </div>
-          <% end %>
-
-          <%= render @issue.reasons.against.most_voted_first %>
-
-          <%= render 'reasons/form', :locals => {:position => 'against'} %>
-
-        </div><!-- .reasons-against -->
-      </div>
-
-    </div><!-- .reasons -->
+</div><!-- .reasons -->

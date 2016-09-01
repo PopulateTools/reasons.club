@@ -6,6 +6,32 @@ module ReasonsHelper
     end
   end
 
-  
+  def render_reasons_counter(issue, argument)
+    render(
+      partial: 'reasons/reasons_counter',
+      locals: {
+        reasons_count: issue.reasons.send(argument).count,
+        argument: argument
+      }
+    )
+  end
 
+  def render_reasons_list(issue, argument)
+    render(
+      partial: 'reasons/reasons_list',
+      locals: {
+        issue: issue,
+        argument: argument
+      }
+    )
+  end
+
+  def render_votes_counter(votes)
+    render(
+      partial: 'issues/total_votes_counter',
+      locals: {
+        counter: votes
+      }
+    )
+  end
 end
