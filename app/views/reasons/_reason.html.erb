@@ -1,5 +1,5 @@
 <div class="reason m4">
-  
+
   <div class="vote btn-vote <%= user_voted_for(reason) ? 'active' : '' %> vote-<%= reason.public_id %>"><!-- .active -->
     <div class="btn-triangle"></div>
     <% if !user_signed_in? %>
@@ -15,9 +15,9 @@
     <h2><%= link_to "#{reason.title} <span>##{reason.public_id}</span>".html_safe, reason_modal_path(reason), remote: true %></h2>
   </div>
   <div class="tools">
-    <%= t('by') %> <%= nick(reason.user) %> 
-    N comentario
-    N enlaces
+    <%= t('by') %> <%= nick(reason.user) %>
+    <!-- TODO -->
+    <!-- N comentario N enlaces -->
   </div>
 
 </div>

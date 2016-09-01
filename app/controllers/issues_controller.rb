@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
   before_action :set_new_reason, only: [:show]
-  before_action :load_issue, only: [:show]
+  before_action :load_issue, only: [:show, :update]
   before_action :random_issue, only: [:show]
   before_action :set_new_issue, only: [:new]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
@@ -30,10 +30,24 @@ class IssuesController < ApplicationController
   def show
   end
 
+  def update
+    @issue.update_attributes issue_update_params
+    respond_to do |format|
+      format.html { redirect_to @issue }
+      format.json do
+        render json: @issue.to_json
+      end
+    end
+  end
+
   private
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :locale, :privacy_public, :user)
+    params.require(:issue).permit(:title, :description, :locale, :privacy_public)
+  end
+
+  def issue_update_params
+    params.require(:issue).permit(:title, :privacy_public)
   end
 
   def set_new_reason

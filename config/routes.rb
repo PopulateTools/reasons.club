@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  
+
   root 'issues#index'
 
   # devise_for :users
-  devise_for :users, 
-    :path => 'login', 
+  devise_for :users,
+    :path => 'login',
     :path_names => {:sign_in => 'login', :sign_out => 'logout'},
     :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
-  
+
   resources :users, only: [:update, :finish_signup, :destroy]
   get '/me', to: 'users#me', :as => :user_profile
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
@@ -16,9 +16,8 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/issue'
 
-
   # get '/issues/:id', to: 'issues#show', as: 'reason'
-    
+
   resources :issues do
     resources :reasons
     get ':public_id', to: 'reasons#show', as: 'reason_modal'
@@ -33,7 +32,7 @@ Rails.application.routes.draw do
       patch 'unvote'
     end
   end
-  
+
   resources :invites
 
 end

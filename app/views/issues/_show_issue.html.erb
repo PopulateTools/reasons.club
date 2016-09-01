@@ -1,6 +1,16 @@
 <header>
   <em></em>
-  <h1><%= @issue.title %></h1>
+  <h1>
+    <%= best_in_place_if user_signed_in?, @issue, :title,
+      :ok_button => t('.save'),
+      :cancel_button => t('.cancel'),
+      :skip_blur => true,
+      :url => issue_path(@issue),
+      :ok_button_class => 'btn',
+      :confirm => true,
+      :display_with => lambda{ |v| markdown(v) } %>
+  </h1>
+
   <% if @issue.privacy_public == "0" %>
     <i class="fa fa-lock tipsit" title="<%= t('issues.private') %>"></i>
   <% end %>

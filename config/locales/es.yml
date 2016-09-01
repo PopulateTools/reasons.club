@@ -61,4 +61,7 @@ es:
     create:
       your_issue: Issue to decide
       create_your_club: Create your Club
+    show_issue:
+      save: 'Save'
+      cancel: 'Cancel'
 
