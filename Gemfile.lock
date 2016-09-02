@@ -77,16 +77,6 @@ GEM
     capistrano-rbenv (2.0.4)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
-    capybara (2.7.1)
-      addressable
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
-    capybara-webkit (1.11.1)
-      capybara (>= 2.3.0, < 2.8.0)
-      json
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -265,8 +255,6 @@ GEM
     warden (1.2.6)
       rack (>= 1.0)
     xml-simple (1.1.5)
-    xpath (2.0.0)
-      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -285,8 +273,6 @@ DEPENDENCIES
   capistrano-rails-console
   capistrano-rails-log
   capistrano-rbenv
-  capybara
-  capybara-webkit
   database_cleaner
   devise
   email_spec
