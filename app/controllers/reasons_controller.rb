@@ -3,7 +3,7 @@ class ReasonsController < ApplicationController
   before_action :set_new_reason
   before_action :load_reason, only: [:show, :update, :vote, :unvote]
   before_action :authenticate_user!, only: [:create, :update, :vote, :unvote]
-  
+
   def new
     @reason = Reason.new
   end
@@ -35,12 +35,12 @@ class ReasonsController < ApplicationController
         format.json { respond_with_bip(@reason) }
       end
     end
-  end 
+  end
 
   def show
     @contributors = reason_description_contributors(@reason)
     respond_to do |format|
-      format.html { redirect_to '' }
+      format.html { redirect_to root_path }
       format.js
     end
   end
@@ -70,11 +70,11 @@ class ReasonsController < ApplicationController
       format.js
     end
   end
-  
+
   private
 
     def reason_params
-      params.require(:reason).permit(:title, :description, :issue_id, :for)      
+      params.require(:reason).permit(:title, :description, :issue_id, :for)
     end
 
     def set_new_reason
@@ -82,8 +82,8 @@ class ReasonsController < ApplicationController
     end
 
     def load_reason
-      # issue = Issue.friendly.find(params[:id])
-      @reason = Reason.find(params[:id])
+      @issue = Issue.friendly.find(params[:issue_id])
+      @reason = @issue.reasons.find_by_param(params[:id])
     end
 
     def reason_description_contributors(reason)

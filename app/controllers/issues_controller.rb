@@ -2,10 +2,10 @@ class IssuesController < ApplicationController
   before_action :set_new_reason, only: [:show]
   before_action :load_issue, only: [:show]
   before_action :random_issue, only: [:show]
-  before_action :set_new_issue, only: [:new]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def new
+    @issue = Issue.new
   end
 
   def create
@@ -38,10 +38,6 @@ class IssuesController < ApplicationController
 
   def set_new_reason
     @reason = Reason.new issue: @issue
-  end
-
-  def set_new_issue
-    @issue = Issue.new
   end
 
   def load_issue
