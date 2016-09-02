@@ -7,7 +7,7 @@
     <h1><%= t('home.intro_text') %></h1>
 
     <div class="justify-columns clearfix">
-      
+
       <div class="justify-item thirty percent">
         <h2><i class="back_line"></i><span><%= t('home.for_yourself') %></span></h2>
 
@@ -47,14 +47,14 @@
 <div class="full issues_list">
 
   <div class="container">
-    
+
     <p class="back_liner">
       <i class="back_line"></i>
       <span><strong><%= t('home.some_example_public_clubs') %></strong></span>
     </p>
-    
+
     <div class="justify-columns clearfix">
-      <%= render @issues.featured %>
+      <%= render @issues %>
     </div>
 
   </div>
@@ -64,14 +64,14 @@
 <div class="full ">
 
   <div class="container">
-    
+
     <p class="back_liner">
       <i class="back_line"></i>
       <span><strong><%= t('home.reasons_for_using_reasons') %></strong></span>
     </p>
-    
+
     <% if @promoted_issue %>
-      <iframe src="/issues/razones-para-usar-reasons-club?embed=1" width="100%" height="700" scrolling="no" seamless="seamless" style="border: none; "></iframe>
+      <iframe src="<%= issue_path(@promoted_issue) %>?embed=1" width="100%" height="700" scrolling="no" seamless="seamless" style="border: none; "></iframe>
     <% end %>
 
   </div>
@@ -81,12 +81,12 @@
 <div class="full start_your_own">
 
   <div class="container">
-    
+
     <p class="back_liner">
       <i class="back_line"></i>
       <span><strong><%= t('home.create_your_first_club') %></strong></span>
     </p>
-    
+
     <p><%= t('home.start') %></p>
 
     <%# form_for @invite, remote: true, html: { id: :invite } do |f| %>

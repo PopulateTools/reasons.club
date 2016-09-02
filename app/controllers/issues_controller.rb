@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
-  before_action :set_new_reason, only: [:show]
   before_action :load_issue, only: [:show]
+  before_action :set_new_reason, only: [:show]
   before_action :random_issue, only: [:show]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
 
@@ -23,8 +23,8 @@ class IssuesController < ApplicationController
   end
 
   def index
-    @issues = Issue.friendly.all
-    @promoted_issue = Issue.find_by_title 'Razones para usar Reasons.club'
+    @issues = Issue.public_issues.featured.sorted
+    @promoted_issue = Issue.fetch_promoted_issue
   end
 
   def show
@@ -37,17 +37,18 @@ class IssuesController < ApplicationController
   end
 
   def set_new_reason
-    @reason = Reason.new issue: @issue
+    @reason = @issue.reasons.new
   end
 
   def load_issue
-    # @issue = Issue.friendly.includes(reasons: [:user]).find(params[:id])
-    @issue = Issue.friendly.includes(:most_voted_reasons).find(params[:id])
+    unless @issue = Issue.load_issue(params[:id], current_user)
+      redirect_to(root_path) and return false
+    end
+
     @votes = { for: @issue.votes_for, against: @issue.votes_against }
   end
 
   def random_issue
-    offset = rand(Issue.public_issues.count)
-    @rand_issue = Issue.offset(offset).first
+    @rand_issue = Issue.public_issues.sample
   end
 end

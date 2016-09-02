@@ -82,7 +82,10 @@ class ReasonsController < ApplicationController
     end
 
     def load_reason
-      @issue = Issue.friendly.find(params[:issue_id])
+      unless @issue = Issue.load_issue(params[:issue_id], current_user)
+        redirect_to(root_path) and return false
+      end
+
       @reason = @issue.reasons.find_by_param(params[:id])
     end
 
