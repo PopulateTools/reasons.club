@@ -6,7 +6,7 @@ module Factories
     attrs[:twitter_handle] ||= "henry"
     attrs[:password] ||= "marlo"
     User.create!(attrs)
-  end 
+  end
 
   def create_identity(attrs = {})
     attrs[:uid] ||= "12355"
@@ -34,6 +34,7 @@ module Factories
   def create_issue(attrs = {})
     attrs[:title] ||= "Reasons to eat Cachopo everyday"
     attrs[:user]  ||= create_user
+    attrs[:privacy_public]  ||= 0
     Issue.create!(attrs)
   end
 
