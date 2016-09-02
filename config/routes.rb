@@ -16,23 +16,16 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/issue'
 
-  # get '/issues/:id', to: 'issues#show', as: 'reason'
-
   resources :issues do
-    resources :reasons
-    get ':public_id', to: 'reasons#show', as: 'reason_modal'
-  end
-
-  get 'reason/:id', to: 'reasons#show', as: 'reason_modal'
-  match 'reason/:id', to: 'reasons#update', as: 'update_reason', via: [:put, :patch]
-
-  resources :reasons do
-    member do
-      patch 'vote'
-      patch 'unvote'
+    resources :reasons do
+      member do
+        patch 'vote'
+        patch 'unvote'
+      end
     end
   end
 
-  resources :invites
+  match 'reason/:id', to: 'reasons#update', as: 'update_reason', via: [:put, :patch]
 
+  resources :invites
 end

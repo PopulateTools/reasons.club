@@ -10,18 +10,24 @@ class Reason < ActiveRecord::Base
   include PublicActivity::Common
 
   # validates :user_id, presence: true
-  
+
   before_validation :set_public_id
 
   scope :sorted, -> { order(date: :desc) }
   scope :most_voted_first, -> { order(votes_positive: :desc) }
-   
+
+  validates :public_id, uniqueness: { scope: :issue_id }
+
   def self.for
     where('for' => true)
   end
 
   def self.against
     where('for' => false)
+  end
+
+  def self.find_by_param(public_id)
+    find_by!(public_id: public_id)
   end
 
   def set_public_id
@@ -31,6 +37,10 @@ class Reason < ActiveRecord::Base
     else
       self.public_id = 1
     end
+  end
+
+  def to_param
+    self.public_id.to_s
   end
 
 end
