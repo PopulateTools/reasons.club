@@ -201,6 +201,7 @@ body > header /* .main-header */ {
 
     h1 {
       font-size: 2em;
+      height: 40px;
       margin: 0 0 5px 0;
       display: inline-block;
       color: #FFF;
@@ -208,9 +209,37 @@ body > header /* .main-header */ {
       position: relative;
       font-size: 1.8em;
       font-weight: 600;
+      vertical-align: middle;
       @include screen(740) { 
         font-size: 1.2em;
         display: inline;
+      }
+      p {
+        margin: 0;
+      }
+      form.form_in_place {
+        display: inline-block !important;
+        margin: -.2em .5em .2em -.5em;
+        input {
+          float: left; 
+          margin: 0 .4em 0 0;
+        }
+        input[type=text] {
+          color: #666;
+          min-width: 500px;
+          font-size: .95em;
+          outline: none;
+        }
+        input[type=submit] {
+          font-size: .7em;
+        }
+        input[type=button] {
+          background: none;
+          border: none;
+          font-size: .5em;
+          opacity: .5;
+          padding: 1em;
+        }
       }
     }
     .share_container {
