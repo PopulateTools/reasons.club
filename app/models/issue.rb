@@ -34,19 +34,11 @@ class Issue < ActiveRecord::Base
   end
 
   def votes_for
-    votes = 0
-    self.reasons.for.find_each do |reason|
-      votes     += reason.votes_for.size
-    end
-    votes
+    reasons.for.sum(:votes_positive)
   end
 
   def votes_against
-    votes = 0
-    self.reasons.against.find_each do |reason|
-      votes += reason.votes_for.size
-    end
-    votes
+    reasons.against.sum(:votes_positive)
   end
 
   def private?
