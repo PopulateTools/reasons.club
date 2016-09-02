@@ -1,16 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
-gem 'jquery-turbolinks'
+gem 'pg'
+gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-# gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
 gem 'rails-i18n'
@@ -28,19 +26,13 @@ gem 'paper_trail', '~> 4.0.0.beta'
 gem 'best_in_place', '~> 3.0.1'
 gem 'redcarpet'
 
-# services 
-gem 'rollbar', '~> 1.5.0'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
+gem 'rollbar'
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'quiet_assets'
+  gem 'spring-commands-rspec'
   gem 'sqlite3'
-  gem 'mina'
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0'
   #gem 'capybara'
@@ -49,6 +41,14 @@ group :development, :test do
   gem 'timecop'
 end
 
-group :production do
-  gem 'pg'
+group :development do
+  gem 'puma'
+  gem 'quiet_assets'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-rails-log'
 end
