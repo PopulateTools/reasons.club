@@ -41,6 +41,11 @@ GEM
     airbrussh (1.1.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (6.0.3)
+    aws-ses (0.6.0)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     bcrypt (3.1.11)
     best_in_place (3.0.3)
       actionpack (>= 3.2)
@@ -243,12 +248,14 @@ GEM
     unicode_utils (1.4.0)
     warden (1.2.6)
       rack (>= 1.0)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   acts_as_votable
+  aws-ses
   bcrypt
   best_in_place (~> 3.0.1)
   bourbon
