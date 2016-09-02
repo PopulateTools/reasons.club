@@ -25,6 +25,9 @@ es:
   about: Acerca de
   contact: Contacto
   help: Ayuda
+  common:
+    save: 'Save'
+    cancel: 'Cancel'
   home:
     intro_text: Discute con orden, alcanza conclusiones más rápido, toma decisiones
     for_yourself: Para tí
@@ -64,7 +67,4 @@ es:
     create:
       your_issue: Issue to decide
       create_your_club: Create your Club
-    show_issue:
-      save: 'Save'
-      cancel: 'Cancel'
 

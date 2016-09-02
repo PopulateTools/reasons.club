@@ -29,6 +29,9 @@ en:
   ago: "%{time} ago"
   by: by
   everything: Everything
+  common:
+    save: 'Save'
+    cancel: 'Cancel'
   person:
     one: person
     other: people
@@ -116,9 +119,6 @@ en:
     no_one_to_invite: "No one to invite since this is only for you... You'll be able to to open this Club to a group or everybody afterwards (so: use this mode if you want to prepare a draft)"
     private: This issue is just for you, nobody can access it (you can change this)
     keep_reasoning: Keep reasoning
-    show_issue:
-      save: 'Save'
-      cancel: 'Cancel'
   metas:
     issues:
       issue:

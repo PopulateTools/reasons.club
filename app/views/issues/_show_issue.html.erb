@@ -1,8 +1,8 @@
 <header>
   <h1>
     <%= best_in_place_if (user_signed_in? && @issue.user == current_user), @issue, :title,
-      :ok_button => t('.save'),
-      :cancel_button => t('.cancel'),
+      :ok_button => t('common.save'),
+      :cancel_button => t('common.cancel'),
       :skip_blur => true,
       :url => issue_path(@issue),
       :ok_button_class => 'btn',
