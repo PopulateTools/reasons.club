@@ -149,6 +149,7 @@ body > header /* .main-header */ {
       text-decoration: none;
       min-height: 17px;
       min-width: 7px;
+      vertical-align: middle;
     }
 
     @include screen(740) {
