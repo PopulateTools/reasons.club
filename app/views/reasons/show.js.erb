@@ -1,8 +1,7 @@
 <% if @reason %>
   $('.blurry').show();
   $('#show_reason_extended').fadeIn().html("<%= escape_javascript(render(:partial => 'reason_extended', locals: { reason: @reason }, :formats => [:html] )) %>");
-  $('.show_extended').offset({top: $('body').scrollTop()+50 } );  
-  console.log($('body').scrollTop());
+  $('.show_extended').offset({top: $('body').scrollTop()+50 } );
   if($('.reason_description_textarea .best_in_place').html() == '') {
     $('.reason_description_textarea .best_in_place').html('<%= t("reason.no_description_yet") %>');
   }

@@ -25,7 +25,5 @@ Rails.application.routes.draw do
     end
   end
 
-  match 'reason/:id', to: 'reasons#update', as: 'update_reason', via: [:put, :patch]
-
   resources :invites
 end
