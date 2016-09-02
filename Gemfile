@@ -27,6 +27,7 @@ gem 'best_in_place', '~> 3.0.1'
 gem 'redcarpet'
 
 gem 'rollbar'
+gem 'aws-ses'
 
 group :development, :test do
   gem 'byebug'
