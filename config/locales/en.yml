@@ -99,11 +99,11 @@ en:
     new_top_bar_title: Add new issue to discuss
     no_reasons_yet: No reasons yet. Start reasoning now!
     reasons_for:
-      one: reason for
-      other: reasons for
+      one: '%{count} reason for'
+      other: '%{count} reasons for'
     reasons_against:
-      one: reason against
-      other: reasons against
+      one: '%{count} reason against'
+      other: '%{count} reasons against'
     votes:
       one: vote
       other: votes
