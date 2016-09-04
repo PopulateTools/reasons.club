@@ -30,7 +30,7 @@ class IssuesController < ApplicationController
       redirect_to(root_path) and return false
     end
     @reason = @issue.reasons.new
-    @rand_issue = Issue.public_issues.sample
+    @rand_issue = Issue.load_rand_issue(@issue)
     @votes = { for: @issue.votes_for, against: @issue.votes_against }
   end
 

@@ -35,6 +35,10 @@ class Issue < ActiveRecord::Base
     end
   end
 
+  def self.load_rand_issue(issue)
+    (self.public_issues - [issue]).sample
+  end
+
   def votes_for
     reasons.for.sum(:votes_positive)
   end
