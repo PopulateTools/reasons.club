@@ -67,4 +67,12 @@ es:
     create:
       your_issue: Issue to decide
       create_your_club: Create your Club
+    show_issue:
+      edit: 'Editar'
+  metas:
+    issues:
+      issue:
+        description: Reasons.club permite discutir con otros con ordern y estructura. Entérate sobre %{title}
+        create_new: Crear nuevo Club
+        edit: Edita tu Club
 

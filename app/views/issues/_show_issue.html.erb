@@ -1,22 +1,19 @@
 <header>
-  <h1>
-    <%= best_in_place_if (user_signed_in? && @issue.user == current_user), @issue, :title,
-      :ok_button => t('common.save'),
-      :cancel_button => t('common.cancel'),
-      :skip_blur => true,
-      :url => issue_path(@issue),
-      :ok_button_class => 'btn',
-      :confirm => true
-    %>
-  </h1>
+  <h1><%= @issue.title %></h1>
 
   <% if @issue.private? %>
     <i class="fa fa-lock tipsit" title="<%= t('issues.private') %>"></i>
   <% end %>
+
+  <% if @issue.user == current_user %>
+    <%= link_to t('.edit'), edit_issue_path(@issue) %>
+  <% end %>
+
   <div class="share_container">
     <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= u(request.original_url) %>&t=<%= u(t('tagline')) %>" class="popup"><i class="fa fa-facebook"></i><span>Facebook</span></a></div>
     <div class="share twitter"><a href="http://twitter.com/home?status=<%= @issue.title %> <%= request.original_url %>" class="popup"><i class="fa fa-twitter"></i><span>Twitter</span></a></div>
   </div>
+
   <div class="description">
     <%= @issue.description %>
   </div>

@@ -1,8 +1,9 @@
 class ReasonsController < ApplicationController
 
+  before_action :load_issue, only: [:update, :vote, :unvote, :show]
+  before_action :load_owner_reason, only: [:update]
+  before_action :load_reason, only: [:vote, :unvote, :show]
   before_action :set_new_reason
-  before_action :load_owner_reason, only: [:show]
-  before_action :load_reason, only: [:vote, :unvote, :update]
   before_action :authenticate_user!, only: [:create, :update, :vote, :unvote]
 
   def new
@@ -82,19 +83,20 @@ class ReasonsController < ApplicationController
       @reason = Reason.new issue: @issue
     end
 
-    def load_owner_reason
-      unless @issue = Issue.load_issue(params[:issue_id], current_user)
+    def load_issue
+      unless @issue = Issue.load_issue(params[:issue_id], current_user, false)
         redirect_to(root_path) and return false
       end
+    end
 
+    def load_owner_reason
       @reason = @issue.reasons.find_by_param(params[:id])
+      if current_user.nil? || @reason.user != current_user
+        redirect_to(root_path) and return false
+      end
     end
 
     def load_reason
-      unless @issue = Issue.load_issue(params[:issue_id])
-        redirect_to(root_path) and return false
-      end
-
       @reason = @issue.reasons.find_by_param(params[:id])
     end
 

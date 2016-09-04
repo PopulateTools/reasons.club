@@ -24,9 +24,9 @@ class Issue < ActiveRecord::Base
     @fetch_promoted_issue ||= Issue.find_by(title: 'Razones para usar Reasons.club')
   end
 
-  def self.load_issue(id, current_user = nil)
+  def self.load_issue(id, current_user, check_owner = false)
     issue = Issue.friendly.includes(:most_voted_reasons).find(id)
-    return issue if issue.public? || current_user.nil?
+    return issue if issue.public? && !check_owner
 
     if (current_user.nil? || issue.user != current_user)
       return nil
