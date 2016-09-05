@@ -70,16 +70,16 @@ It assumes you have running:
 git clone git@github.com:furilo/reasons.club.git
 cd reasons.club
 bundle install
-rake db:setup
 cp config/secrets.yml.example config/secrets.yml
 cp config/database.yml.example config/database.yml
+rake db:setup
 ```
 
 Then copy & paste the result of 
 ````
 rake secret
 ```
-To lines 2 and 6 of /config/secrets.yml
+To lines 14 and 18 of /config/secrets.yml
 
 Then [register a twitter app](https://apps.twitter.com/) using **http://127.0.0.1:3000/auth/twitter/callback** for the Callback URL and complete lines 3 & 4 of /config/secrets.yml
 ````
