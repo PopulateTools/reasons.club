@@ -58,6 +58,9 @@ es:
     add_argument: Add argument
     submit_reason: Send your reason
   issues:
+    vote:
+      one: voto
+      other: votos
     create:
       your_issue: Issue to decide
       create_your_club: Create your Club

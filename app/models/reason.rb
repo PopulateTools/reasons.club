@@ -10,14 +10,16 @@ class Reason < ActiveRecord::Base
   include PublicActivity::Common
 
   # validates :user_id, presence: true
-  
+
   before_validation :set_public_id
   after_create :subscribe, :track_create_activity
   after_update :track_update_activity
 
   scope :sorted, -> { order(date: :desc) }
   scope :most_voted_first, -> { order(votes_positive: :desc) }
-   
+
+  validates :public_id, uniqueness: { scope: :issue_id }
+
   def self.for
     where('for' => true)
   end
@@ -26,7 +28,9 @@ class Reason < ActiveRecord::Base
     where('for' => false)
   end
 
-  private
+  def self.find_by_param(public_id)
+    find_by!(public_id: public_id)
+  end
 
   def set_public_id
     last_reason = self.issue.reasons.last
@@ -51,5 +55,11 @@ class Reason < ActiveRecord::Base
     activity = self.create_activity action: 'update.description', owner: self.user
 
     Subscription.queue_notifications_for(self.issue, activity)
+  end
+
+  private
+
+  def to_param
+    self.public_id.to_s
   end
 end

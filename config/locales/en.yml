@@ -99,7 +99,9 @@ en:
     reasons_against:
       one: reason against
       other: reasons against
-    votes: votes
+    votes:
+      one: vote
+      other: votes
     reasons_creation_placeholder: This is where you'll add your reasons for and against
     set_up_your_club: Set up your Club
     your_clubs_title: Your Club's title

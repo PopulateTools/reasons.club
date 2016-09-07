@@ -1,23 +1,23 @@
 <div class="reason m4">
-  
+
   <div class="vote btn-vote <%= user_voted_for(reason) ? 'active' : '' %> vote-<%= reason.public_id %>"><!-- .active -->
     <div class="btn-triangle"></div>
     <% if !user_signed_in? %>
       <% # show button, to log in when pressed %>
       <%= link_to reason.votes_for.size, '', class: 'cd-signup' %>
     <% elsif current_user.voted_for? reason %>
-      <%= link_to reason.votes_for.size, unvote_reason_path(reason), action: 'unvote', :remote => true, :method => 'patch' %>
+      <%= link_to reason.votes_for.size, unvote_issue_reason_path(@issue, reason), remote: true, method: 'patch' %>
     <% elsif %>
-      <%= link_to reason.votes_for.size, vote_reason_path(reason), action: 'vote', :remote => true, :method => 'patch' %>
+      <%= link_to reason.votes_for.size, vote_issue_reason_path(@issue, reason), remote: true, method: 'patch' %>
     <% end %>
   </div>
   <div class="title">
-    <h2><%= link_to "#{reason.title} <span>##{reason.public_id}</span>".html_safe, reason_modal_path(reason), remote: true %></h2>
+    <h2><%= link_to "#{reason.title} <span>##{reason.public_id}</span>".html_safe, issue_reason_path(@issue, reason), remote: true %></h2>
   </div>
   <div class="tools">
-    <%= t('by') %> <%= nick(reason.user) %> 
-    N comentario
-    N enlaces
+    <%= t('by') %> <%= nick(reason.user) %>
+    <!-- N comentario
+    N enlaces -->
   </div>
 
 </div>

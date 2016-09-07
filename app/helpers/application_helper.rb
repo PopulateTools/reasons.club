@@ -31,10 +31,10 @@ module ApplicationHelper
   end
 
   def nick(user)
-    if user.twitter_handle.present? 
+    if user.twitter_handle.present?
       "<strong class='tipsit-n' title='#{user.name}'>@#{user.twitter_handle}</strong>".html_safe
     else
-      user.name 
+      user.name
     end
   end
 
@@ -44,11 +44,10 @@ module ApplicationHelper
 
   def reason_path(reason)
     issue_path(reason.issue, :anchor => "#{reason.public_id.to_s}")
-    
   end
 
   def reason_url(reason)
-    issue_url(reason.issue, :anchor => "#{reason.public_id.to_s}")  
+    issue_url(reason.issue, :anchor => "#{reason.public_id.to_s}")
   end
 
   def markdown(text)
@@ -56,9 +55,9 @@ module ApplicationHelper
 
     options = {
       filter_html:     true,
-      hard_wrap:       true, 
+      hard_wrap:       true,
       link_attributes: { rel: 'nofollow', target: "_blank" },
-      space_after_headers: true, 
+      space_after_headers: true,
       fenced_code_blocks: true
     }
 
@@ -73,8 +72,4 @@ module ApplicationHelper
 
     markdown.render(text).html_safe
   end
-  
-  
-
-  
 end

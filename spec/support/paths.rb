@@ -11,6 +11,10 @@ module Paths
     locale_preffix + "/login"
   end
 
+  def issue_page(issue)
+    [locale_preffix, 'issues', issue.to_param].join('/')
+  end
+
   private
 
   def locale_preffix

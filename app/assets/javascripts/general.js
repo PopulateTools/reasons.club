@@ -16,7 +16,7 @@
 
   // $.slidebars();
   // $.subscribe("view:ready", rebindAll);
-  
+
   $(".best_in_place").best_in_place();
 
   // new issue
@@ -33,16 +33,12 @@
   h = h.substring(1);
   if((a.indexOf('issues') >= 0) && (window.location.hash != '')) {
     $.ajax({
-      url: "/reason/" + h,
+      url: window.location.pathname + "/reasons/" + h,
       dataType: 'script',
-      success: function(data) {
-        console.log('ajax');    
-      }
-    });    
+      success: function(data) {}
+    });
   }
-  // });
 
-  
   /*
    * Reasons interactions
    *

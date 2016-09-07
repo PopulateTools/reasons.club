@@ -39,7 +39,7 @@ class ReasonsController < ApplicationController
   def show
     @contributors = reason_description_contributors(@reason)
     respond_to do |format|
-      format.html { redirect_to '' }
+      format.html { redirect_to root_path }
       format.js
     end
   end
@@ -82,7 +82,11 @@ class ReasonsController < ApplicationController
     end
 
     def load_reason
-      @reason = Reason.find(params[:id])
+      unless @issue = Issue.load_issue(params[:issue_id], current_user)
+        redirect_to(root_path) and return false
+      end
+
+      @reason = @issue.reasons.find_by_param(params[:id])
     end
 
     def reason_description_contributors(reason)
