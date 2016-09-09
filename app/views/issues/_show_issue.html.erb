@@ -3,10 +3,12 @@
 
   <% if @issue.private? %>
     <i class="fa fa-lock tipsit" title="<%= t('issues.private') %>"></i>
+  <% else %>
+    <i class="fa fa-unlock tipsit" title="<%= t('issues.public') %>"></i>
   <% end %>
 
   <% if current_user?(@issue.user) %>
-    <%= link_to t('.edit'), edit_issue_path(@issue) %>
+    <%= link_to t('.edit'), edit_issue_path(@issue), class: 'edit_issue' %>
   <% end %>
 
   <div class="share_container">

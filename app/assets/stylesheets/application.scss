@@ -335,13 +335,16 @@ body > header /* .main-header */ {
         }
       }
     }
-    .fa-lock {
+    .fa {
       position: relative;
       margin: 0 .5em; 
       font-size: 1.5em; 
       z-index: 2;
       color: #FFF;
       opacity: .5;
+    }
+    .edit_issue {
+      
     }
   }
   .next_issue {
