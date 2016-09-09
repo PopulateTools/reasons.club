@@ -38,7 +38,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0'
-  # gem 'capybara'
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'email_spec'
   gem 'timecop'
