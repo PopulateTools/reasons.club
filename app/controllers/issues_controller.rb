@@ -30,7 +30,9 @@ class IssuesController < ApplicationController
 
     @votes = { for: @issue.votes_for, against: @issue.votes_against }
 
-    @subscription = user_signed_in? and current_user.subscriptions.by_issue(@issue).first
+    @subscription = if user_signed_in?
+                      current_user.subscriptions.by_issue(@issue).first || current_user.subscriptions.new
+                    end
   end
 
   def edit

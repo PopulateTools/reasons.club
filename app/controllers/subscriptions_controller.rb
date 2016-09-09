@@ -1,28 +1,40 @@
 class SubscriptionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :load_subscription, except: [:create]
 
-  ## Subscribe a user to an Issue ##
-  # By default, she will receive individual email notifications on each issue
-
-  before_action :load_subscription, only: [:update]
+  def create
+    issue = Issue.load_issue(params[:issue_id], current_user, false)
+    @subscription = current_user.subscriptions.new issue: issue
+    @subscription.save!
+    respond_to do |format|
+      format.js { render 'update' }
+    end
+  end
 
   def update
     if @subscription.update_attributes subscription_params
       respond_to do |format|
-        format.html { redirect_to '' }
-        format.js { render nothing: true }
+        format.js
       end
     end
-  end 
+  end
+
+  def destroy
+    @subscription.destroy
+    respond_to do |format|
+      format.js { render 'update' }
+    end
+  end
 
   private
 
-    def subscription_params
-      params.permit(:email_subscription_mode)
-    end
+  def subscription_params
+    params.permit(:email_subscription_mode)
+  end
 
-    def load_subscription
-      @subscription = Subscription.find(params[:id])
-    end
-
+  def load_subscription
+    @subscription = current_user.subscriptions.find(params[:id])
+    @issue = @subscription.issue
+  end
 
 end

@@ -11,39 +11,9 @@
 
   <div class="share_container">
     <div class="share issue_follow">
-      <% if @subscription %>
-        <a href="">Follow</a>
-      <% else %>
-
-        <% if @subscription.email_subscription_mode == 'live' %>
-          <a href="">Following <span><strong>Live</strong></span> <i class="fa fa-angle-down"></i></a>
-        <% elsif @subscription.email_subscription_mode == 'hourly' %>
-          <a href="">Following <span><strong>Hourly</strong></span> <i class="fa fa-angle-down"></i></a>
-        <% elsif @subscription.email_subscription_mode == 'daily' %>
-          <a href="">Following <span><strong>Daily</strong></span> <i class="fa fa-angle-down"></i></a>
-        <% elsif @subscription.email_subscription_mode == 'no_email' %>
-          <a href="">Following <span><strong>Hourly</strong></span> <i class="fa fa-angle-down"></i></a>
-        <% end %>
-
-        <ul class="options">
-          <li <%= "class='selected'".html_safe if @subscription.email_subscription_mode == 'live' %>>
-            <%= link_to "<span><strong>Following</strong> Live notifications</span> Receive them as they happen".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
-          </li>
-          <li <%= "class='selected'".html_safe if @subscription.email_subscription_mode == 'hourly' %>>
-            <%= link_to "<span><strong>Following</strong> Hourly digest</span> Group them and receive no more than one mail per hour".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'hourly'), :remote => true, :method => 'patch' %>
-          </li>
-          <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'daily' %>>
-            <%= link_to "<span><strong>Following</strong> Daily digest</span> Just one mail per day".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'daily'), :remote => true, :method => 'patch' %>
-          </li>
-          <li <%= 'class="selected"'.html_safe if @subscription.email_subscription_mode == 'no_email' %>>
-            <%= link_to "<span><strong>Following</strong> No mail</span> Zen reasoner".html_safe, update_subscription_path(@subscription, :email_subscription_mode => 'no_mail'), :remote => true, :method => 'patch' %>
-          </li>
-          <li>
-            <%= link_to "<span><strong>Stop Following</strong>".html_safe, update_subscription_path(@subscription), :remote => true, :method => 'delete' %>
-        </ul>
-
-      <% end %>
+      <%= render partial: 'subscriptions/show' %>
     </div>
+
     <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= u(request.original_url) %>&t=<%= u(t('tagline')) %>" class="popup"><i class="fa fa-facebook"></i><span>Facebook</span></a></div>
     <div class="share twitter"><a href="http://twitter.com/home?status=<%= @issue.title %> <%= request.original_url %>" class="popup"><i class="fa fa-twitter"></i><span>Twitter</span></a></div>
   </div>

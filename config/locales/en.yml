@@ -202,3 +202,17 @@ en:
         description: updated the wiki answer on
     issue: 
       create: created the issue
+  subscriptions:
+    status:
+      following: Following
+      following_live_status: Live
+      following_hourly_status: Hourly
+      following_daily_status: Daily
+      following_no_mail_status: No email
+      following_live_notifications: "<span><strong>Following</strong> Live notifications</span> Receive them as they happen"
+      following_hourly_notifications: "<span><strong>Following</strong> Hourly digest</span> Group them and receive no more than one mail per hour"
+      following_daily_notifications: "<span><strong>Following</strong> Daily digest</span> Just one mail per day"
+      following_no_mail_notifications: "<span><strong>Following</strong> No mail</span> Zen reasoner"
+      stop_following: "<span><strong>Stop Following</strong>"
+      follow: Follow
+
