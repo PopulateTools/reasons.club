@@ -9,6 +9,9 @@ class Subscription < ActiveRecord::Base
 
   before_create :set_email_subscription_mode
 
+  scope :by_user, ->(user) { where(user_id: user.id) }
+  scope :by_issue, ->(issue) { where(issue_id: issue.id) }
+
   enum email_subscription_mode: MODES
 
   def self.subscribe_to(user, issue)

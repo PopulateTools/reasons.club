@@ -1,6 +1,5 @@
 class IssuesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
-  before_action :load_issue, only: [:show]
   before_action :load_owner_issue, only: [:edit, :update]
 
   def new
@@ -9,12 +8,9 @@ class IssuesController < ApplicationController
 
   def create
     @issue = current_user.issues.build(issue_params)
-    if @result = @issue.save
+    if @issue.save
       flash[:success] = t('issues.created')
-      respond_to do |format|
-        format.html { redirect_to @issue }
-        format.js
-      end
+      redirect_to @issue
     else
       render 'new'
     end
@@ -30,15 +26,11 @@ class IssuesController < ApplicationController
       redirect_to(root_path) and return false
     end
 
-    @reason = @issue.reasons.new
-
     @rand_issue = Issue.load_rand_issue(@issue)
 
     @votes = { for: @issue.votes_for, against: @issue.votes_against }
 
-    if user_signed_in?
-      @subscription = current_user.subscriptions.find_by(issue: @issue)
-    end
+    @subscription = user_signed_in? and current_user.subscriptions.by_issue(@issue).first
   end
 
   def edit

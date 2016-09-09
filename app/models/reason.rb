@@ -57,8 +57,6 @@ class Reason < ActiveRecord::Base
     Subscription.queue_notifications_for(self.issue, activity)
   end
 
-  private
-
   def to_param
     self.public_id.to_s
   end

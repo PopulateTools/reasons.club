@@ -5,6 +5,7 @@ class Issue < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   has_many :reasons
+  has_many :subscriptions
   has_many :most_voted_reasons, -> { order('reasons.votes_positive DESC') }, class_name: 'Reason'
   belongs_to :user
 
@@ -38,14 +39,6 @@ class Issue < ActiveRecord::Base
     (self.public_issues - [issue]).sample
   end
 
-  def track_activity
-    self.create_activity action: 'create', owner: self.user
-  end
-
-  def subscribe
-    Subscription.subscribe_to self.user, self
-  end
-
   def votes_for
     reasons.for.sum(:votes_positive)
   end
@@ -60,5 +53,15 @@ class Issue < ActiveRecord::Base
 
   def public?
     privacy_public == 2
+  end
+
+  private
+
+  def track_activity
+    self.create_activity action: 'create', owner: self.user
+  end
+
+  def subscribe
+    Subscription.subscribe_to self.user, self
   end
 end

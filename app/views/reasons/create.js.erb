@@ -1,12 +1,5 @@
-<%# @reason.inspect %>
 <% if @result %>
-  <% 
-  if @reason.for == true
-    destination = :for
-  else
-    destination = :against
-  end
-  %>
+  <% destination = (@reason.for == true) ? :for : :against %>
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript(render(:partial => @reason, :formats => [:html] )) %>");
   $('.new_reason_here_<%= destination %>').append('<%= escape_javascript(render(:partial => "reasons/after_reason_share", :formats => [:html] )) %>');
   $('.after_reason_share').delay(2500).fadeOut('slow');
@@ -15,5 +8,4 @@
 <% else %>
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript('errrrrroor') %>");
 <% end %>
-
 

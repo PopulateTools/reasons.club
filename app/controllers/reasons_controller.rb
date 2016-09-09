@@ -1,9 +1,8 @@
 class ReasonsController < ApplicationController
 
-  before_action :load_issue, only: [:update, :vote, :unvote, :show]
+  before_action :load_issue, only: [:create, :vote, :unvote, :show]
   before_action :load_owner_reason, only: [:update]
   before_action :load_reason, only: [:vote, :unvote, :show]
-  before_action :set_new_reason
   before_action :authenticate_user!, only: [:create, :update, :vote, :unvote]
 
   def new
@@ -12,9 +11,9 @@ class ReasonsController < ApplicationController
 
   def create
     @reason = current_user.reasons.build(reason_params)
-    @issue = @reason.issue
+    @reason.issue = @issue
     # ToDo: control when we fire the notification
-    UserMailer.new_reason_on_your_issue(current_user, @reason.issue, @reason.title).deliver_later
+    UserMailer.new_reason_on_your_issue(current_user, @issue, @reason.title).deliver_later
 
     if @result = @reason.save
       respond_to do |format|
@@ -76,11 +75,7 @@ class ReasonsController < ApplicationController
   private
 
     def reason_params
-      params.require(:reason).permit(:title, :description, :issue_id, :for)
-    end
-
-    def set_new_reason
-      @reason = Reason.new issue: @issue
+      params.require(:reason).permit(:title, :description, :for)
     end
 
     def load_issue
