@@ -26,6 +26,16 @@
       }
 
     }
+    .form_in_place {
+      input {
+        font-size: 1em;
+        padding: .1em .5em .2em;
+        outline: none;
+      }
+      input[type=text] {
+        width: 63%;
+      }
+    }
   }
 
 }
@@ -42,13 +52,11 @@
       text-decoration: none;
       @include transition;
       span {
-        opacity: .25;
         font-weight: normal;
       }
     }
     span {
-      opacity: .25;
-      font-weight: normal;
+      
     }
   }
   .vote {

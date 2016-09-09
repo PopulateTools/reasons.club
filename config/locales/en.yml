@@ -67,6 +67,7 @@ en:
       one: revision
       other: revisions
     edit_the_wiki_answer: Edit the wiki answer for this reason
+    click_to_edit: Click to edit the title of this reason
   issues:
     create:
       your_issue: Issue to decide
