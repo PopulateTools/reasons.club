@@ -5,6 +5,8 @@
   $('.after_reason_share').delay(2500).fadeOut('slow');
   $('.reasons-<%= destination %> .reasons-counter').html('<%= j render_reasons_counter @issue, destination %>');
   $('.reason_title_<%= destination %>').val('');
+  // Update following control
+  $('.issue_follow').html('<%=j render(partial: 'subscriptions/show') %>');
 <% else %>
   $('.new_reason_here_<%= destination %>').append("<%= escape_javascript('errrrrroor') %>");
 <% end %>

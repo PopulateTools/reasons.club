@@ -12,6 +12,8 @@ class ReasonsController < ApplicationController
   def create
     @reason = current_user.reasons.build(reason_params)
     @reason.issue = @issue
+
+    @subscription = Subscription.subscribe_to current_user, @reason.issue
     # ToDo: control when we fire the notification
     UserMailer.new_reason_on_your_issue(current_user, @issue, @reason.title).deliver_later
 
@@ -49,7 +51,7 @@ class ReasonsController < ApplicationController
     @reason.liked_by current_user
     activity = @reason.create_activity action: 'vote', owner: current_user
 
-    Subscription.subscribe_to current_user, @reason.issue
+    @subscription = Subscription.subscribe_to current_user, @reason.issue
 
     # Notification for issue subscribers
     Subscription.queue_notifications_for(@reason.issue, activity)
@@ -104,5 +106,4 @@ class ReasonsController < ApplicationController
       end
       contributors
     end
-
 end
