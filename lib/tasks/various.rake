@@ -13,3 +13,11 @@ task :reset_public_ids => :environment do
     end
   end
 end
+
+# task :notify_user => :environment do
+  # page_updates = ProductPageUpdate.where(status: 'pending')
+  # PageUpdate.user_notification(page_updates).deliver!
+  # page_updates.each do |page_update|
+    # page_update.update_attribute(:status, 'notified')
+  # end
+# end

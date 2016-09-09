@@ -1,7 +1,12 @@
 ;$(function(e){
   $(".popup").click(function(e){
     e.preventDefault();
-    window.open($(this).attr("href"), "popupWindow", "width=600,height=600,scrollbars=yes");
+    var width = 600;
+    var height = 500;
+    var left = parseInt((screen.availWidth/2) - (width/2));
+    var top = parseInt((screen.availHeight/2) - (height/2));
+    var windowFeatures = "width=" + width + ",height=" + height + ",status,resizable,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top;
+    window.open($(this).attr("href"), "popup", windowFeatures);
   });
 
   function rebindAll() {
@@ -63,6 +68,20 @@
   }).bind('ajax:success', function(){
     $(this).find('.fa').addClass('fa-plus-circle');
     $(this).find('.fa').removeClass('fa-cog fa-spin');
+  });
+
+  $(document).on('click', '.issue_follow a', function(e) {
+    if($(this).attr('href') === ''){
+      e.preventDefault();
+      $('.issue_follow').find('ul.options').show();
+    }
+  });
+
+  $(document).mouseup(function (e) {
+    var container = $('ul.options');
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      container.hide();
+    }
   });
 
   rebindAll(null);

@@ -5,11 +5,15 @@
     <i class="fa fa-lock tipsit" title="<%= t('issues.private') %>"></i>
   <% end %>
 
-  <% if @issue.user == current_user %>
+  <% if current_user?(@issue.user) %>
     <%= link_to t('.edit'), edit_issue_path(@issue) %>
   <% end %>
 
   <div class="share_container">
+    <div class="share issue_follow">
+      <%= render partial: 'subscriptions/show' %>
+    </div>
+
     <div class="share facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<%= u(request.original_url) %>&t=<%= u(t('tagline')) %>" class="popup"><i class="fa fa-facebook"></i><span>Facebook</span></a></div>
     <div class="share twitter"><a href="http://twitter.com/home?status=<%= @issue.title %> <%= request.original_url %>" class="popup"><i class="fa fa-twitter"></i><span>Twitter</span></a></div>
   </div>
@@ -20,10 +24,13 @@
 </header>
 
 <div class="reasons">
+
   <div id="show_reason_extended" class="show_extended"></div>
+
   <div class="col-1-2">
     <%= render_reasons_list @issue, :for %>
   </div>
+
   <div class="col-2-2">
     <%= render_reasons_list @issue, :against %>
   </div>

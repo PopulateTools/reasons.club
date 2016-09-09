@@ -23,7 +23,11 @@ Rails.application.routes.draw do
         patch 'unvote'
       end
     end
+    resources :subscriptions, only: [:create]
   end
 
   resources :invites
+
+  resources :subscriptions, only: [:update, :destroy]
+
 end

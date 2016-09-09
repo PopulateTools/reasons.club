@@ -1,0 +1,18 @@
+<% if @subscription.nil? %>
+  <%= link_to 'Follow', twitter_login_path %>
+<% elsif !@subscription.persisted? %>
+  <%= link_to t("subscriptions.status.follow").html_safe, issue_subscriptions_path(@issue), remote: true, method: :post %></li>
+<% else %>
+  <a href=""><%= t('subscriptions.status.following') %> <span><strong><%= t("subscriptions.status.following_#{@subscription.email_subscription_mode}_status") %></strong></span> <i class="fa fa-angle-down"></i></a>
+
+  <ul class="options">
+    <% Subscription.email_subscription_modes.each do |mode, _| %>
+      <li <%= css_class_if('selected', @subscription.send("#{mode}?")) %>>
+        <%= link_to t("subscriptions.status.following_#{mode}_notifications").html_safe, subscription_path(@subscription, :email_subscription_mode => mode), remote: true, method: 'patch' %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to t('subscriptions.status.stop_following').html_safe, subscription_path(@subscription), remote: true, method: 'delete' %>
+    </li>
+  </ul>
+<% end %>

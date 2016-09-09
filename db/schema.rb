@@ -77,6 +77,20 @@ ActiveRecord::Schema.define(version: 20160902103457) do
   add_index "issues", ["slug"], name: "index_issues_on_slug", using: :btree
   add_index "issues", ["user_id"], name: "index_issues_on_user_id", using: :btree
 
+  create_table "queued_notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.integer  "period"
+    t.boolean  "delivered",   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "queued_notifications", ["delivered"], name: "index_queued_notifications_on_delivered", using: :btree
+  add_index "queued_notifications", ["period", "delivered"], name: "index_queued_notifications_on_period_and_delivered", using: :btree
+  add_index "queued_notifications", ["period"], name: "index_queued_notifications_on_period", using: :btree
+  add_index "queued_notifications", ["user_id"], name: "index_queued_notifications_on_user_id", using: :btree
+
   create_table "reasons", force: :cascade do |t|
     t.string   "title"
     t.string   "slug"
@@ -98,13 +112,24 @@ ActiveRecord::Schema.define(version: 20160902103457) do
   add_index "reasons", ["votes_negative"], name: "index_reasons_on_votes_negative", using: :btree
   add_index "reasons", ["votes_positive"], name: "index_reasons_on_votes_positive", using: :btree
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "issue_id"
+    t.integer  "email_subscription_mode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["issue_id"], name: "index_subscriptions_on_issue_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                   default: "", null: false
+    t.string   "encrypted_password",      default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -113,6 +138,7 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "twitter_handle"
+    t.integer  "email_subscription_mode", default: 0,  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -146,6 +172,10 @@ ActiveRecord::Schema.define(version: 20160902103457) do
 
   add_foreign_key "identities", "users"
   add_foreign_key "issues", "users"
+  add_foreign_key "queued_notifications", "activities"
+  add_foreign_key "queued_notifications", "users"
   add_foreign_key "reasons", "issues"
   add_foreign_key "reasons", "users"
+  add_foreign_key "subscriptions", "issues"
+  add_foreign_key "subscriptions", "users"
 end

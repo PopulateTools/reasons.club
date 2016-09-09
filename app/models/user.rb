@@ -2,15 +2,19 @@ class User < ActiveRecord::Base
 
   has_many :reasons
   has_many :issues
+  has_many :subscriptions
+  has_many :queued_notifications
 
   acts_as_voter
-  
+
   include PublicActivity::Common
-  
+
+  enum email_subscription_mode: Subscription::MODES
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -61,6 +65,4 @@ class User < ActiveRecord::Base
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
-
-
 end

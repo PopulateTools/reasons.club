@@ -72,4 +72,8 @@ module ApplicationHelper
 
     markdown.render(text).html_safe
   end
+
+  def css_class_if(css_class, condition)
+    "class='#{css_class}'".html_safe if condition
+  end
 end

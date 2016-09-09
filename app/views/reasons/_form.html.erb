@@ -1,22 +1,16 @@
-      
-      <div class="new_reason_here_<%= locals[:position] %>"></div>
-        
-        <div class="py2 px4 add-reason">
-          
-          <div class="empty_form_alert"></div>
-            
-          <div class="add_reason_input">
-          <%= form_for [@issue, @reason], remote: true do |f| %>
-            <div class="icon_holder"><i class="fa fa-plus-circle"></i></div>
-            <%= f.text_area :title, placeholder: t('reasons.add_argument'), class: "cd-signup reason_title js-auto-size reason_title_#{locals[:position]}", rows: '1', required: true %>
-            <%= f.hidden_field :issue_id, :value => @issue.id %>
-            <% if locals[:position] == :for %>
-              <%= f.hidden_field :for, :value => true %>
-            <% else %>
-              <%= f.hidden_field :for, :value => false %>
-            <% end %>
-            <%= f.submit t('reasons.submit_reason'), class: "btn" %>
-          <% end %>
-          </div>
+<div class="new_reason_here_<%= locals[:position] %>"></div>
 
-        </div>
+<div class="py2 px4 add-reason">
+
+  <div class="empty_form_alert"></div>
+
+  <div class="add_reason_input">
+    <%= form_for [@issue, @issue.reasons.new], remote: true do |f| %>
+      <div class="icon_holder"><i class="fa fa-plus-circle"></i></div>
+      <%= f.text_area :title, placeholder: t('reasons.add_argument'), class: "cd-signup reason_title js-auto-size reason_title_#{locals[:position]}", rows: '1', required: true %>
+      <%= f.hidden_field :for, :value => (locals[:position] == :for) %>
+      <%= f.submit t('reasons.submit_reason'), class: "btn" %>
+    <% end %>
+  </div>
+
+</div>
