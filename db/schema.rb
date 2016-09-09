@@ -81,14 +81,14 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.integer  "user_id"
     t.text     "notification"
     t.integer  "period"
-    t.boolean  "status"
+    t.boolean  "delivered",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "queued_notifications", ["period", "status"], name: "index_queued_notifications_on_period_and_status", using: :btree
+  add_index "queued_notifications", ["delivered"], name: "index_queued_notifications_on_delivered", using: :btree
+  add_index "queued_notifications", ["period", "delivered"], name: "index_queued_notifications_on_period_and_delivered", using: :btree
   add_index "queued_notifications", ["period"], name: "index_queued_notifications_on_period", using: :btree
-  add_index "queued_notifications", ["status"], name: "index_queued_notifications_on_status", using: :btree
   add_index "queued_notifications", ["user_id"], name: "index_queued_notifications_on_user_id", using: :btree
 
   create_table "reasons", force: :cascade do |t|

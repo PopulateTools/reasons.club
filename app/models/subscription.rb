@@ -1,7 +1,8 @@
 class Subscription < ActiveRecord::Base
 
-  # This order shouldn't be updated
-  MODES = [ :hourly, :daily, :no_mail, :live ]
+  MODES = {
+    hourly: 0, daily: 1, no_mail: 2, live: 3
+  }
 
   belongs_to :issue
   belongs_to :user
@@ -19,7 +20,7 @@ class Subscription < ActiveRecord::Base
   def self.queue_notifications_for(issue, activity)
     where(issue: issue).where.not(user: activity.owner).each do |subscription|
       QueuedNotification.create user: subscription.user, notification: activity.id,
-                                period: subscription.user.email_subscription_mode, status: 0
+                                period: subscription.user.email_subscription_mode
     end
   end
 

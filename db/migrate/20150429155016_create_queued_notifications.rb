@@ -4,8 +4,8 @@ class CreateQueuedNotifications < ActiveRecord::Migration
       t.references :user, index: true
       t.text :notification
       t.integer :period, index: true
-      t.boolean :status, index: true
-      t.index [:period, :status]
+      t.boolean :delivered, index: true, default: false
+      t.index [:period, :delivered]
       t.timestamps
     end
     add_foreign_key :queued_notifications, :users
