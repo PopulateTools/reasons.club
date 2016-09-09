@@ -29,6 +29,9 @@ en:
   ago: "%{time} ago"
   by: by
   everything: Everything
+  common:
+    save: 'Save'
+    cancel: 'Cancel'
   person:
     one: person
     other: people
@@ -90,20 +93,23 @@ en:
       your_issue: Issue to decide
       create_your_club: Create your Club
     created: Hooray, your Club has been created. Time to start reasoning
+    updated: Hooray, your Club has been updated.
     create_submit: Create your Club
+    update_submit: Update your Club
     new_top_bar_title: Add new issue to discuss
     no_reasons_yet: No reasons yet. Start reasoning now!
     reasons_for:
-      one: reason for
-      other: reasons for
+      one: '%{count} reason for'
+      other: '%{count} reasons for'
     reasons_against:
-      one: reason against
-      other: reasons against
+      one: '%{count} reason against'
+      other: '%{count} reasons against'
     votes:
       one: vote
       other: votes
     reasons_creation_placeholder: This is where you'll add your reasons for and against
     set_up_your_club: Set up your Club
+    edit_your_club: Edit your Club
     your_clubs_title: Your Club's title
     just_for_me: Just for me <span>Private club, noboby can access it</span>
     just_for_me_exp: Private club, noboby can access it
@@ -116,11 +122,14 @@ en:
     no_one_to_invite: "No one to invite since this is only for you... You'll be able to to open this Club to a group or everybody afterwards (so: use this mode if you want to prepare a draft)"
     private: This issue is just for you, nobody can access it (you can change this)
     keep_reasoning: Keep reasoning
+    show_issue:
+      edit: 'Edit'
   metas:
     issues:
       issue:
         description: Reasons.club enables you to discuss with order and structure. Learn about %{title}
         create_new: Create new Club
+        edit: Edit your Club
   user:
     welcome_title: Welcome to Reasons.club
     welcome_text: Happy to have you here and help you discuss about anything, and specially to help you reach conclusions faster. Be it a public matter, something to discuss with your colleagues or partner, or just a personal club to help you make up your mind. We are getting ready...

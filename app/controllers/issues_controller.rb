@@ -1,7 +1,6 @@
 class IssuesController < ApplicationController
-  before_action :load_issue, only: [:show]
-  before_action :set_new_reason, only: [:show]
-  before_action :random_issue, only: [:show]
+
+  before_action :load_owner_issue, only: [:edit, :update]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def new
@@ -11,7 +10,6 @@ class IssuesController < ApplicationController
   def create
     @issue = current_user.issues.build(issue_params)
     if @result = @issue.save
-      # load_issue
       flash[:success] = t('issues.created')
       respond_to do |format|
         format.html { redirect_to @issue }
@@ -28,27 +26,43 @@ class IssuesController < ApplicationController
   end
 
   def show
+    unless @issue = Issue.load_issue(params[:id], current_user, false)
+      redirect_to(root_path) and return false
+    end
+    @reason = @issue.reasons.new
+    @rand_issue = Issue.load_rand_issue(@issue)
+    @votes = { for: @issue.votes_for, against: @issue.votes_against }
+  end
+
+  def edit
+  end
+
+  def update
+    success = @issue.update_attributes issue_params
+    respond_to do |format|
+      format.html do
+        if success
+          flash[:success] = t('issues.updated')
+          redirect_to @issue
+        else
+          render 'edit'
+        end
+      end
+      format.json do
+        render json: @issue.to_json
+      end
+    end
   end
 
   private
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :locale, :privacy_public, :user)
+    params.require(:issue).permit(:title, :description, :locale, :privacy_public)
   end
 
-  def set_new_reason
-    @reason = @issue.reasons.new
-  end
-
-  def load_issue
-    unless @issue = Issue.load_issue(params[:id], current_user)
+  def load_owner_issue
+    unless @issue = Issue.load_issue(params[:id], current_user, true)
       redirect_to(root_path) and return false
     end
-
-    @votes = { for: @issue.votes_for, against: @issue.votes_against }
-  end
-
-  def random_issue
-    @rand_issue = Issue.public_issues.sample
   end
 end
