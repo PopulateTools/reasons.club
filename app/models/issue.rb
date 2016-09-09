@@ -12,7 +12,7 @@ class Issue < ActiveRecord::Base
   validates :title, presence: true, length: { minimum: 10 }
   validates :privacy_public, inclusion: { in: [0, 1, 2] }
 
-  after_create :subscribe, :track_activity
+  after_create :subscribe_owner, :track_activity
 
   scope :public_issues, -> { where(privacy_public: 2) }
   scope :featured, -> { where(featured: 1) }
@@ -61,7 +61,7 @@ class Issue < ActiveRecord::Base
     self.create_activity action: 'create', owner: self.user
   end
 
-  def subscribe
+  def subscribe_owner
     Subscription.subscribe_to self.user, self
   end
 end

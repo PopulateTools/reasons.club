@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(version: 20160902103457) do
 
   create_table "queued_notifications", force: :cascade do |t|
     t.integer  "user_id"
-    t.text     "notification"
+    t.integer  "activity_id"
     t.integer  "period"
-    t.boolean  "delivered",    default: false
+    t.boolean  "delivered",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(version: 20160902103457) do
 
   add_foreign_key "identities", "users"
   add_foreign_key "issues", "users"
+  add_foreign_key "queued_notifications", "activities"
   add_foreign_key "queued_notifications", "users"
   add_foreign_key "reasons", "issues"
   add_foreign_key "reasons", "users"

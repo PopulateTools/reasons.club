@@ -13,11 +13,8 @@ class ReasonsController < ApplicationController
     @reason = current_user.reasons.build(reason_params)
     @reason.issue = @issue
 
-    @subscription = Subscription.subscribe_to current_user, @reason.issue
-    # ToDo: control when we fire the notification
-    UserMailer.new_reason_on_your_issue(current_user, @issue, @reason.title).deliver_later
-
     if @result = @reason.save
+      @subscription = current_user.subscriptions.by_issue(@issue).first
       respond_to do |format|
         format.html { redirect_to @reason }
         format.js
@@ -49,13 +46,13 @@ class ReasonsController < ApplicationController
 
   def vote
     @reason.liked_by current_user
-    activity = @reason.create_activity action: 'vote', owner: current_user
 
     @subscription = Subscription.subscribe_to current_user, @reason.issue
 
     # Notification for issue subscribers
+    activity = @reason.create_activity action: 'vote', owner: current_user
     Subscription.queue_notifications_for(@reason.issue, activity)
-    # UserMailer.new_vote_on_your_reason(current_user, @reason).deliver_later
+
     @argument = @reason.for ? :for : :against
     Reason.update_counters(@reason, votes_positive: +1)
     respond_to do |format|

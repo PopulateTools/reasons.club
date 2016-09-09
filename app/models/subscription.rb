@@ -11,26 +11,29 @@ class Subscription < ActiveRecord::Base
 
   scope :by_user, ->(user) { where(user_id: user.id) }
   scope :by_issue, ->(issue) { where(issue_id: issue.id) }
+  scope :queueable, -> { where(email_subscription_mode: queueable_modes) }
 
   enum email_subscription_mode: MODES
 
+  def self.queueable_modes
+    [self.email_subscription_modes[:hourly], self.email_subscription_modes[:daily], self.email_subscription_modes[:live]]
+  end
+
   def self.subscribe_to(user, issue)
-    unless user.subscriptions.where(issue: issue).any?
-      create! user: user, issue: issue
-    end
+    find_or_create_by user: user, issue: issue
   end
 
   def self.queue_notifications_for(issue, activity)
-    where(issue: issue).where.not(user: activity.owner).each do |subscription|
-      QueuedNotification.create user: subscription.user, notification: activity.id,
-                                period: subscription.user.email_subscription_mode
+    queueable.by_issue(issue).where.not(user: activity.owner).each do |subscription|
+      QueuedNotification.queue user: subscription.user, activity: activity,
+                               period: subscription.email_subscription_mode
     end
   end
 
   private
 
-    def set_email_subscription_mode
-      self.email_subscription_mode = self.user.email_subscription_mode
-    end
+  def set_email_subscription_mode
+    self.email_subscription_mode = self.user.email_subscription_mode
+  end
 
 end

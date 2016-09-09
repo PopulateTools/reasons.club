@@ -12,7 +12,7 @@ class Reason < ActiveRecord::Base
   # validates :user_id, presence: true
 
   before_validation :set_public_id
-  after_create :subscribe, :track_create_activity
+  after_create :subscribe_reason_owner, :track_create_activity
   after_update :track_update_activity
 
   scope :sorted, -> { order(date: :desc) }
@@ -32,6 +32,12 @@ class Reason < ActiveRecord::Base
     find_by!(public_id: public_id)
   end
 
+  def to_param
+    self.public_id.to_s
+  end
+
+  private
+
   def set_public_id
     last_reason = self.issue.reasons.last
     if last_reason.present?
@@ -41,7 +47,7 @@ class Reason < ActiveRecord::Base
     end
   end
 
-  def subscribe
+  def subscribe_reason_owner
     Subscription.subscribe_to self.user, self.issue
   end
 
@@ -52,12 +58,8 @@ class Reason < ActiveRecord::Base
   end
 
   def track_update_activity
-    activity = self.create_activity action: 'update.description', owner: self.user
+    activity = self.create_activity action: 'update', owner: self.user
 
     Subscription.queue_notifications_for(self.issue, activity)
-  end
-
-  def to_param
-    self.public_id.to_s
   end
 end
