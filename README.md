@@ -1,6 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/PopulateTools/reasons.club.png?label=ready&title=Ready)](https://waffle.io/PopulateTools/reasons.club)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/PopulateTools/reasons.club?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Code Climate](https://codeclimate.com/github/PopulateTools/reasons.club/badges/gpa.svg)](https://codeclimate.com/github/PopulateTools/reasons.club)
+[![CircleCI](https://circleci.com/gh/PopulateTools/reasons.club/tree/master.svg?style=svg)](https://circleci.com/gh/PopulateTools/reasons.club/tree/master)
 
 # reasons.club
 
