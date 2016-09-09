@@ -335,7 +335,7 @@ body > header /* .main-header */ {
         }
       }
     }
-    .fa {
+    .fa-lock, .fa-unlock {
       position: relative;
       margin: 0 .5em; 
       font-size: 1.5em; 
@@ -344,7 +344,15 @@ body > header /* .main-header */ {
       opacity: .5;
     }
     .edit_issue {
-      
+      display: none;
+      background: rgba(#FFF, .2);
+      padding: .35em 1em;
+      font-size: .9em;
+      @include border-radius(3px);
+    }
+    .show_edit {
+      padding: 0 3em 0 0;
+      display: inline-block;
     }
   }
   .next_issue {

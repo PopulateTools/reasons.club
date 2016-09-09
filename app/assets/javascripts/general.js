@@ -84,6 +84,13 @@
     }
   });
 
+  // show issue edit link when hovering header
+  $('.issue header .show_edit').hover(function(e) {
+    $('.edit_issue').velocity("fadeIn", { duration: 200 });
+  }, function(e) {
+    $('.edit_issue').velocity("fadeOut", { duration: 200 });
+  });
+
   rebindAll(null);
 
 });
