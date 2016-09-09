@@ -33,12 +33,16 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'sqlite3'
+end
+
+group :test do
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0'
-  #gem 'capybara'
-  #gem 'capybara-webkit'
+  gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'email_spec'
   gem 'timecop'
+  gem 'rack-test', require: "rack/test"
 end
 
 group :development do

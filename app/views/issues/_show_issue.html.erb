@@ -1,9 +1,14 @@
 <header>
-  <em></em>
   <h1><%= @issue.title %></h1>
+
   <% if @issue.private? %>
     <i class="fa fa-lock tipsit" title="<%= t('issues.private') %>"></i>
   <% end %>
+
+  <% if @issue.user == current_user %>
+    <%= link_to t('.edit'), edit_issue_path(@issue) %>
+  <% end %>
+
   <div class="share_container">
     <div class="share issue_follow">
       <% if @subscription.blank? %>

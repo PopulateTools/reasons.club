@@ -1,6 +1,7 @@
 class IssuesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :load_issue, only: [:show]
+  before_action :load_owner_issue, only: [:edit, :update]
 
   def new
     @issue = Issue.new
@@ -25,24 +26,50 @@ class IssuesController < ApplicationController
   end
 
   def show
+    unless @issue = Issue.load_issue(params[:id], current_user, false)
+      redirect_to(root_path) and return false
+    end
+
     @reason = @issue.reasons.new
+
+    @rand_issue = Issue.load_rand_issue(@issue)
+
+    @votes = { for: @issue.votes_for, against: @issue.votes_against }
+
+    if user_signed_in?
+      @subscription = current_user.subscriptions.find_by(issue: @issue)
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    success = @issue.update_attributes issue_params
+    respond_to do |format|
+      format.html do
+        if success
+          flash[:success] = t('issues.updated')
+          redirect_to @issue
+        else
+          render 'edit'
+        end
+      end
+      format.json do
+        render json: @issue.to_json
+      end
+    end
   end
 
   private
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :locale, :privacy_public, :user)
+    params.require(:issue).permit(:title, :description, :locale, :privacy_public)
   end
 
-  def load_issue
-    unless @issue = Issue.load_issue(params[:id], current_user)
+  def load_owner_issue
+    unless @issue = Issue.load_issue(params[:id], current_user, true)
       redirect_to(root_path) and return false
-    end
-
-    @votes = { for: @issue.votes_for, against: @issue.votes_against }
-
-    if user_signed_in?
-      @subscription = current_user.subscriptions.find_by issue: @issue
     end
   end
 end

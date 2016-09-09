@@ -1,5 +1,5 @@
-<% set_meta_tags :description => t("metas.issues.issue.create_new") %>
-<% set_meta_tags :title => t("metas.issues.issue.create_new") %>
+<% set_meta_tags :description => t("metas.issues.issue.edit") %>
+<% set_meta_tags :title => t("metas.issues.issue.edit") %>
 
 <% if @issue.errors.any? %>
   <div class="alert notice error">
@@ -14,7 +14,7 @@
 
   <%= form_for @issue do |f| %>
 
-    <h2><%= t('issues.set_up_your_club') %></h2>
+    <h2><%= t('issues.edit_your_club') %></h2>
 
     <div class="issue clearfix">
 
@@ -59,7 +59,7 @@
                 <!-- <span><%= t('issues.for_a_closed_group_exp') %></span> -->
               </p>
 
-              <%= f.submit t('issues.create_submit'), class: 'btn m3' %>
+              <%= f.submit t('issues.update_submit'), class: 'btn m3' %>
 
             </div>
 
