@@ -15,7 +15,7 @@ class Reason < ActiveRecord::Base
   after_create :subscribe_reason_owner, :track_create_activity
   after_update :track_update_activity
 
-  scope :sorted, -> { order(date: :desc) }
+  scope :sorted, -> { order(id: :desc) }
   scope :most_voted_first, -> { order(votes_positive: :desc) }
 
   validates :public_id, uniqueness: { scope: :issue_id }
@@ -39,9 +39,9 @@ class Reason < ActiveRecord::Base
   private
 
   def set_public_id
-    last_reason = self.issue.reasons.last
-    if last_reason.present?
-      self.public_id = last_reason.public_id + 1
+    max_public_id = self.issue.reasons.maximum('public_id')
+    if max_public_id.present?
+      self.public_id = max_public_id + 1
     else
       self.public_id = 1
     end
