@@ -1,3 +1,13 @@
+function openNewIssueInvitePref(val) {
+  $('.invites-pref').hide();
+  $('#invites_' + val).show();
+}
+
+function rebindAll() {
+  $('.tipsit').tipsy({fade: true, gravity: 's'});
+  $('.tipsit-n').tipsy({fade: true, gravity: 'n'});
+}
+
 ;$(function(e){
   $(".popup").click(function(e){
     e.preventDefault();
@@ -9,25 +19,9 @@
     window.open($(this).attr("href"), "popup", windowFeatures);
   });
 
-  function rebindAll() {
-    $('.tipsit').tipsy({fade: true, gravity: 's'});
-    $('.tipsit-n').tipsy({fade: true, gravity: 'n'});
-  }
-
-  // $.slidebars();
-  // $.subscribe("view:ready", rebindAll);
-
   $(".best_in_place").best_in_place();
 
-  // new issue
-  $('input[name="issue[privacy_public]"]').on('change', function(){
-    openNewIssueInvitePref(this.value)
-  });
-  function openNewIssueInvitePref(val) {
-    $('.invites-pref').hide();
-    $('#invites_' + val).show();
-  }
-
+  // Load reason refered in URL
   a = window.location.pathname;
   h = window.location.hash;
   h = h.substring(1);
@@ -43,54 +37,50 @@
    * Reasons interactions
    *
    */
-
-  /* reason upvote */
-  $('.btn-vote').bind('ajax:beforeSend', function(){
-    numVotes = $(this).find('a').text();
-    $(this).find('a').html('<i class="fa fa-cog fa-spin"></i>');
-    // status = $(this).find('a').attr('action');
-  })/*
-  .bind('ajax:success', function(){
-
-  })
-  .bind('ajax:complete', function(){
-    console.log('complete');
-  }).bind('ajax:error', function(){
-    console.log('error');
-  })
-  */
-  ;
-
-  /* reason add */
-  $('.add_reason_input form').bind('ajax:beforeSend', function(){
-    $(this).find('.fa').removeClass('fa-plus-circle');
-    $(this).find('.fa').addClass('fa-cog fa-spin');
-  }).bind('ajax:success', function(){
-    $(this).find('.fa').addClass('fa-plus-circle');
-    $(this).find('.fa').removeClass('fa-cog fa-spin');
-  });
-
-  $(document).on('click', '.issue_follow a', function(e) {
-    if($(this).attr('href') === ''){
-      e.preventDefault();
-      $('.issue_follow').find('ul.options').show();
-    }
-  });
-
-  $(document).mouseup(function (e) {
-    var container = $('ul.options');
-    if (!container.is(e.target) && container.has(e.target).length === 0) {
-      container.hide();
-    }
-  });
-
-  // show issue edit link when hovering header
-  $('.issue header .show_edit').hover(function(e) {
-    $('.edit_issue').velocity("fadeIn", { duration: 200 });
-  }, function(e) {
-    $('.edit_issue').velocity("fadeOut", { duration: 200 });
-  });
-
   rebindAll(null);
-
 });
+
+$(document).on('click', '.issue_follow a', function(e) {
+  if($(this).attr('href') === ''){
+    e.preventDefault();
+    $('.issue_follow').find('ul.options').show();
+  }
+});
+
+$(document).mouseup(function (e) {
+  var container = $('ul.options');
+  if (!container.is(e.target) && container.has(e.target).length === 0) {
+    container.hide();
+  }
+});
+
+$(document).on('change', 'input[name="issue[privacy_public]"]', function(){
+  openNewIssueInvitePref(this.value)
+});
+
+$(document).on('ajax:beforeSend', '.btn-vote', function(){
+  numVotes = $(this).find('a').text();
+  $(this).find('a').html('<i class="fa fa-cog fa-spin"></i>');
+});
+
+$(document).on('ajax:beforeSend', '.add_reason_input form', function(){
+  $(this).find('.fa').removeClass('fa-plus-circle');
+  $(this).find('.fa').addClass('fa-cog fa-spin');
+});
+
+$(document).on('ajax:success', '.add_reason_input form', function(){
+  $(this).find('.fa').addClass('fa-plus-circle');
+  $(this).find('.fa').removeClass('fa-cog fa-spin');
+});
+
+// show issue edit link when hovering header
+$(document).on('mouseenter', '.issue header .show_edit', function(e) {
+  $('.edit_issue').velocity("fadeIn", { duration: 200 });
+});
+
+// hide issue edit link when hovering header
+$(document).on('mouseleave', '.issue header .show_edit', function(e) {
+  $('.edit_issue').velocity("fadeOut", { duration: 200 });
+});
+
+

@@ -1,11 +1,10 @@
-jQuery(document).ready(function($){
+;$(function(e){
   $('textarea.js-auto-size').textareaAutoSize();
+});
 
-  $('.reason_title').keydown(function(event) {
-    if (event.keyCode == 13) {
-      $(this.form).submit()
-      return false;
-    }
-  })
-
+$(document).on('keydown', '.reason_title', function(event) {
+  if (event.keyCode == 13) {
+    $(this.form).submit();
+    return false;
+  }
 });
