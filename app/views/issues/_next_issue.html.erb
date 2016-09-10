@@ -3,8 +3,8 @@
     <p><%= t('issues.keep_reasoning') %>...</p>
     <h2><%= link_to @rand_issue.title, issue_path(@rand_issue) %></h2>
     <div class="num_reasons">
-      <span><%= t('issues.reasons_for', count: @rand_issue.reasons.for.count) %></span>
-      <span><%= t('issues.reasons_against', count: @rand_issue.reasons.against.count) %></span>
+      <span><%= t('issues.reasons_for', count: @rand_issue.reasons.for.count).html_safe %></span>
+      <span><%= t('issues.reasons_against', count: @rand_issue.reasons.against.count).html_safe %></span>
     </div>
   </div>
 <% end %>

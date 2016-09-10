@@ -9,6 +9,7 @@ RSpec.feature 'Edit an Issue ' do
     visit issue_page(issue)
     expect(page).to have_content('Eat 5 vegetables every day')
     expect(page).to have_css('i.fa-lock', visible: true)
+    find(".show_edit").hover
     expect(page).to have_content("Edit")
     click_link "Edit"
     fill_in 'issue[title]', with: 'Issue title updated'
@@ -27,6 +28,7 @@ RSpec.feature 'Edit an Issue ' do
 
     visit issue_page(issue)
     expect(page).to have_content('Eat 5 vegetables every day')
+    expect(page).to_not have_css(".edit_issue")
     expect(page).to_not have_content("Edit")
   end
 end

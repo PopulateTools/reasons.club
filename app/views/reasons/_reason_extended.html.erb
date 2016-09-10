@@ -10,14 +10,15 @@
   <% if false %>
     <h2><%= "#{reason.title} <span>##{reason.public_id}</span>".html_safe %></h2>
   <% end %>
-    <h2>
+    <h2 class="tipsit" title="<%= t('reason.click_to_edit') %>">
         <%= best_in_place_if (user_signed_in? && current_user == reason.user), reason, :title, :as => :input,
             :display_with => lambda { |title| "#{title} <span>##{reason.public_id}</span>".html_safe },
             :ok_button => t('common.save'),
-            :cancel_button => t('common.cancel'),
+            :cancel_button => 'x',
             :skip_blur => true,
             :url => issue_reason_path(reason.issue, reason),
-            :ok_button_class => 'btn'
+            :ok_button_class => 'btn', 
+            :cancel_button_class => 'btn cancel'
         %>
     </h2>
   </div>
@@ -40,10 +41,11 @@
         <%= best_in_place_if (user_signed_in? && current_user == reason.user), reason, :description, :as => :textarea, # ToDo change condition to check if user has enough karma
             :place_holder => t('reason.no_description_yet'),
             :ok_button => t('common.save'),
-            :cancel_button => t('common.cancel'),
+            :cancel_button => 'x',
             :skip_blur => true,
             :url => issue_reason_path(reason.issue, reason),
             :ok_button_class => 'btn',
+            :cancel_button_class => 'btn cancel',
             :confirm => true,
             :display_with => lambda{ |v| markdown(v) }
         %>
