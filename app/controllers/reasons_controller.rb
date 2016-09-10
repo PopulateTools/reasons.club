@@ -1,6 +1,6 @@
 class ReasonsController < ApplicationController
 
-  before_action :load_issue, only: [:create, :vote, :unvote, :show]
+  before_action :load_issue, only: [:create, :update, :vote, :unvote, :show]
   before_action :load_owner_reason, only: [:update]
   before_action :load_reason, only: [:vote, :unvote, :show]
   before_action :authenticate_user!, only: [:create, :update, :vote, :unvote]
