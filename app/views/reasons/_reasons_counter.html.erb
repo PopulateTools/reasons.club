@@ -1,4 +1,3 @@
 <div class="reasons-counter">
-  <strong><%= reasons_count %></strong>
-  <%= t("issues.reasons_#{argument}", count: reasons_count) %>
+  <%= t("issues.reasons_#{argument}", count: reasons_count).html_safe %>
 </div>
