@@ -15,6 +15,9 @@ module Reasons
     config.generators do |g|
       g.orm             :active_record
       g.template_engine :erb
+      g.assets          false
+      g.helper          false
+      g.routes          false
       g.test_framework  :rspec, fixtures: false, view_spec: false,
                                 helper_specs: false, routing_specs: false,
                                 controller_specs: false, request_specs: false

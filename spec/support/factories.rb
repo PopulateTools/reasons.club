@@ -35,6 +35,7 @@ module Factories
     attrs[:title] ||= "Reasons to eat Cachopo everyday"
     attrs[:user]  ||= create_user
     attrs[:privacy_public]  ||= 0
+    attrs[:tag_list] ||= []
     Issue.create!(attrs)
   end
 

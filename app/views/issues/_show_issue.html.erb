@@ -11,6 +11,8 @@
     <% if current_user?(@issue.user) %>
       <%= link_to t('.edit'), edit_issue_path(@issue), class: 'edit_issue' %>
     <% end %>
+
+    <p><%= issue_tag_list @issue.tag_list %></p>
   </span>
 
   <div class="share_container">

@@ -1,17 +1,6 @@
-<% if @issue.errors.any? %>
-  <div class="alert notice error">
-    Hey, maybe there are some things wrong.
-    <% @issue.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </div>
-<% end %>
-
-<div class="container new_issue">
-
   <%= form_for @issue do |f| %>
 
-    <h2><%= t('issues.set_up_your_club') %></h2>
+    <h2><%= t("issues.#{action_name}_issue") %></h2>
 
     <div class="issue clearfix">
 
@@ -20,10 +9,6 @@
         <em></em>
         <h1><%= f.text_field :title, placeholder: t('issues.your_clubs_title'), :autofocus => true %></h1>
 
-        <div class="description">
-          <%= "FIELD" %>
-        </div>
-
       </header>
 
       <div class="issue_conf clearfix py2 px4">
@@ -31,6 +16,16 @@
         <div class="float-left fifty percent">
 
           <div class="clearfix">
+
+            <div class="float-left twenty percent">
+              <p>Tags</p>
+            </div>
+
+            <div class="float-right eighty percent">
+              <p>
+                <%= f.text_field :tag_list, value: f.object.tag_list.join(',') %>
+              </p>
+            </div>
 
             <div class="float-left twenty percent">
               <p>This club is</p>
@@ -56,7 +51,7 @@
                 <!-- <span><%= t('issues.for_a_closed_group_exp') %></span> -->
               </p>
 
-              <%= f.submit t('issues.create_submit'), class: 'btn m3' %>
+              <%= f.submit t("issues.#{action_name}_submit"), class: 'btn m3' %>
 
             </div>
 
@@ -89,4 +84,4 @@
 
     </div><!-- .issue -->
   <% end %>
-</div>
+

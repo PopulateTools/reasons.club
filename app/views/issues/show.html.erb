@@ -10,6 +10,18 @@
     <%= render 'show_issue' %>
 
     <div class="clearfix">
+      <% if @issue.tag_list.any? %>
+        <div class="next_issue">
+          <p><%= t('issues.related') %>...</p>
+
+          <p>
+            <% @issue.tag_list.each do |tag_name| %>
+              <%= link_to "##{tag_name}", tag_path(tag_name) %>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+
       <%= render 'next_issue' %>
     </div>
 
