@@ -13,16 +13,21 @@ RSpec.feature 'Edit an Issue ' do
     expect(page).to have_content("Edit")
     click_link "Edit"
     fill_in 'issue[title]', with: 'Issue title updated'
-    fill_in 'issue[tag_list]', with: 'tag 1, tag 2, tag 3'
+    fill_autocomplete('#issue_tag_list', page, with: 'tag 1,')
+    sleep 2
+    fill_autocomplete('#issue_tag_list', page, with: 'tag 2,')
+    sleep 2
+    fill_autocomplete('#issue_tag_list', page, with: 'tag 3,')
+    sleep 2
     page.choose('issue_privacy_public_2')
     click_button 'Update your Club'
 
     expect(page).to have_content('Issue title updated')
     expect(page).to have_content('Hooray, your Club has been updated.')
     expect(page).to_not have_css('i.fa-lock', visible: true)
-    expect(page).to have_content('#tag 1')
-    expect(page).to have_content('#tag 2')
-    expect(page).to have_content('#tag 3')
+    expect(page).to have_content('#tag-1')
+    expect(page).to have_content('#tag-2')
+    expect(page).to have_content('#tag-3')
   end
 
   scenario "Visit other's issue", js: true do

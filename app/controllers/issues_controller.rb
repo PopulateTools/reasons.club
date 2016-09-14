@@ -58,7 +58,7 @@ class IssuesController < ApplicationController
   private
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :locale, :privacy_public, :tag_list)
+    params.require(:issue).permit(:title, :description, :locale, :privacy_public, tag_list: [])
   end
 
   def load_owner_issue

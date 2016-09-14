@@ -23,7 +23,7 @@
 
             <div class="float-right eighty percent">
               <p>
-                <%= f.text_field :tag_list, value: f.object.tag_list.join(',') %>
+                <%= f.select :tag_list, f.object.tag_list, {}, {multiple: true, data: {'select-2-tags': true}, style: 'width: 250px'} %>
               </p>
             </div>
 
@@ -67,10 +67,6 @@
 
           <div class="invites-pref hide" id="invites_1">
             <p><%= t('issues.for_a_closed_group_exp_long') %></p>
-
-            <%# f.text_area :wadus %>
-            <%= text_area_tag :wadus %>
-
           </div>
 
           <div class="invites-pref hide" id="invites_2">

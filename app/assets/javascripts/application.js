@@ -10,6 +10,7 @@
 
 //= require vendor/tipsy
 //= require vendor/jquery.textarea_autosize
+//= require vendor/select2-full
 
 //= require modules/autofocus.jquery
 //= require modules/modal
