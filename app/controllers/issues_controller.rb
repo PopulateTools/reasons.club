@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
   before_action :load_owner_issue, only: [:edit, :update]
 
   def new
@@ -58,7 +58,7 @@ class IssuesController < ApplicationController
   private
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :locale, :privacy_public)
+    params.require(:issue).permit(:title, :description, :locale, :privacy_public, tag_list: [])
   end
 
   def load_owner_issue

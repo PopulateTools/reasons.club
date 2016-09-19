@@ -76,4 +76,10 @@ module ApplicationHelper
   def css_class_if(css_class, condition)
     "class='#{css_class}'".html_safe if condition
   end
+
+  def issue_tag_list(tag_names)
+    return if tag_names.empty?
+
+    tag_names.map{|tag_name| link_to("##{tag_name}", tag_path(tag_name))}.join(' ').html_safe
+  end
 end

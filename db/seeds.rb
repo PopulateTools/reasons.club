@@ -2,15 +2,15 @@
 # pending to see the devise thing
 
 User.create(
-  name: 'Alvaro Ortiz', 
-  email: 'alvaro@furilo.com', 
-  password: "alvarofu", 
+  name: 'Alvaro Ortiz',
+  email: 'alvaro@furilo.com',
+  password: "alvarofu",
   password_confirmation: "alvarofu",
   twitter_handle: 'furilo')
 User.create(
-  name: 'Reason Holder', 
-  email: 'reason@holder.com', 
-  password: "reasonho", 
+  name: 'Reason Holder',
+  email: 'reason@holder.com',
+  password: "reasonho",
   password_confirmation: "reasonho",
   twitter_handle: 'reasonholder')
 
@@ -21,6 +21,7 @@ Issue.create(
   locale: 'es',
   privacy_public: '2',
   featured: '1',
+  tag_list: 'política,madrid,elecciones',
   user: User.all[0])
 Reason.create(
   title: 'Muchos de sus colaboradores cercanos estan implicados en casos de corrupcion',
@@ -95,6 +96,7 @@ Issue.create(
   locale: 'es',
   privacy_public: '2',
   featured: '1',
+  tag_list: 'self',
   user: User.all[0])
 Reason.create(
   title: 'Te ayuda a organizar tus ideas sobre un tema',
@@ -129,6 +131,7 @@ Issue.create(
   locale: 'es',
   privacy_public: '2',
   featured: '1',
+  tag_list: 'deporte,ocio',
   user: User.all[0])
 Reason.create(
   title: 'Ahorras dinero',

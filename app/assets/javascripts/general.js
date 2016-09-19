@@ -8,7 +8,7 @@ function rebindAll() {
   $('.tipsit-n').tipsy({fade: true, gravity: 'n'});
 }
 
-;$(function(e){
+$(document).on('turbolinks:load', function() {
   $(".popup").click(function(e){
     e.preventDefault();
     var width = 600;
@@ -32,6 +32,32 @@ function rebindAll() {
       success: function(data) {}
     });
   }
+
+  $('[data-select-2-tags]').select2({
+    tags: true,
+    tokenSeparators: [','],
+    ajax: {
+      url: '/tags',
+      dataType: 'json',
+      delay: 250,
+      minimumInputLength: 2,
+      data: function (params) {
+        return {
+          q: params.term
+        };
+      },
+      processResults: function (data, params) {
+        return {
+          results: data.map(function(t){
+            return {
+              id: t.id,
+              text: t.name
+            };
+          })
+        };
+      },
+    }
+  });
 
   /*
    * Reasons interactions

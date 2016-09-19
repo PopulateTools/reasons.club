@@ -4,6 +4,8 @@ class Issue < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  acts_as_taggable
+
   has_many :reasons
   has_many :subscriptions
   has_many :most_voted_reasons, -> { order('reasons.votes_positive DESC') }, class_name: 'Reason'

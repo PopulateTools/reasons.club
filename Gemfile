@@ -25,8 +25,8 @@ gem 'public_activity'
 gem 'paper_trail', '~> 4.0.0.beta'
 gem 'best_in_place', '~> 3.0.1'
 gem 'redcarpet'
-
 gem 'rollbar'
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   gem 'byebug'

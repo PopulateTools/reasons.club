@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'issues#index'
 
   # devise_for :users
@@ -30,4 +29,5 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:update, :destroy]
 
+  resources :tags, only: [:index, :show]
 end

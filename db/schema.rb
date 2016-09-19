@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902103457) do
+ActiveRecord::Schema.define(version: 20160914063122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +26,10 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.string   "recipient_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
   end
-
-  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
-  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
-  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -39,12 +37,11 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
     t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -52,9 +49,8 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.string   "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "invites", force: :cascade do |t|
     t.string   "email"
@@ -72,10 +68,9 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.datetime "updated_at",                 null: false
     t.integer  "user_id"
     t.integer  "featured",       default: 0
+    t.index ["slug"], name: "index_issues_on_slug", using: :btree
+    t.index ["user_id"], name: "index_issues_on_user_id", using: :btree
   end
-
-  add_index "issues", ["slug"], name: "index_issues_on_slug", using: :btree
-  add_index "issues", ["user_id"], name: "index_issues_on_user_id", using: :btree
 
   create_table "queued_notifications", force: :cascade do |t|
     t.integer  "user_id"
@@ -84,12 +79,11 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.boolean  "delivered",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["delivered"], name: "index_queued_notifications_on_delivered", using: :btree
+    t.index ["period", "delivered"], name: "index_queued_notifications_on_period_and_delivered", using: :btree
+    t.index ["period"], name: "index_queued_notifications_on_period", using: :btree
+    t.index ["user_id"], name: "index_queued_notifications_on_user_id", using: :btree
   end
-
-  add_index "queued_notifications", ["delivered"], name: "index_queued_notifications_on_delivered", using: :btree
-  add_index "queued_notifications", ["period", "delivered"], name: "index_queued_notifications_on_period_and_delivered", using: :btree
-  add_index "queued_notifications", ["period"], name: "index_queued_notifications_on_period", using: :btree
-  add_index "queued_notifications", ["user_id"], name: "index_queued_notifications_on_user_id", using: :btree
 
   create_table "reasons", force: :cascade do |t|
     t.string   "title"
@@ -103,14 +97,13 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.integer  "public_id",      default: 1
     t.integer  "votes_positive", default: 0
     t.integer  "votes_negative", default: 0
+    t.index ["issue_id"], name: "index_reasons_on_issue_id", using: :btree
+    t.index ["public_id"], name: "index_reasons_on_public_id", using: :btree
+    t.index ["slug"], name: "index_reasons_on_slug", unique: true, using: :btree
+    t.index ["user_id"], name: "index_reasons_on_user_id", using: :btree
+    t.index ["votes_negative"], name: "index_reasons_on_votes_negative", using: :btree
+    t.index ["votes_positive"], name: "index_reasons_on_votes_positive", using: :btree
   end
-
-  add_index "reasons", ["issue_id"], name: "index_reasons_on_issue_id", using: :btree
-  add_index "reasons", ["public_id"], name: "index_reasons_on_public_id", using: :btree
-  add_index "reasons", ["slug"], name: "index_reasons_on_slug", unique: true, using: :btree
-  add_index "reasons", ["user_id"], name: "index_reasons_on_user_id", using: :btree
-  add_index "reasons", ["votes_negative"], name: "index_reasons_on_votes_negative", using: :btree
-  add_index "reasons", ["votes_positive"], name: "index_reasons_on_votes_positive", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "user_id"
@@ -118,10 +111,34 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.integer  "email_subscription_mode"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["issue_id"], name: "index_subscriptions_on_issue_id", using: :btree
+    t.index ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
   end
 
-  add_index "subscriptions", ["issue_id"], name: "index_subscriptions_on_issue_id", using: :btree
-  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
+    t.string   "tagger_type"
+    t.integer  "tagger_id"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context", using: :btree
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                   default: "", null: false
@@ -139,10 +156,9 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.string   "name"
     t.string   "twitter_handle"
     t.integer  "email_subscription_mode", default: 0,  null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "versions", force: :cascade do |t|
     t.string   "item_type",  null: false
@@ -151,9 +167,8 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
-
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
@@ -165,10 +180,9 @@ ActiveRecord::Schema.define(version: 20160902103457) do
     t.integer  "vote_weight"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
-
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "identities", "users"
   add_foreign_key "issues", "users"
