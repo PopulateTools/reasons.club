@@ -10,8 +10,6 @@ module Reasons
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:es, :en]
 
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.generators do |g|
       g.orm             :active_record
       g.template_engine :erb

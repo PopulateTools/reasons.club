@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '>= 5.0.0', '< 5.1'
-gem 'pg'
+gem "rails", "~> 5.1.1"
+gem "pg", "~> 0.19"
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
@@ -16,13 +16,13 @@ gem 'meta-tags'
 
 gem 'friendly_id'
 gem 'acts_as_votable'
-gem 'devise'  
-gem 'bourbon'
+gem 'devise'
+gem 'bourbon', "~> 4.3"
 gem 'omniauth'
 gem 'omniauth-twitter'
 
 gem 'public_activity'
-gem 'paper_trail', '~> 4.0.0.beta'
+gem 'paper_trail'
 gem 'best_in_place', '~> 3.0.1'
 gem 'redcarpet'
 
@@ -47,11 +47,4 @@ end
 
 group :development do
   gem 'puma'
-  gem 'capistrano'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-passenger'
-  gem 'capistrano-rails-console'
-  gem 'capistrano-rails-log'
 end

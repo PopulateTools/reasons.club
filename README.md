@@ -65,20 +65,20 @@ Soon we'll have an open online space to discuss and hang out. Meanwhile write to
 
 It assumes you have running:
 
-* ruby 2.x.x (it works from 2.0.0 to 2.1.5)
+* ruby 2.5.0
 
 ```
-git clone git@github.com:furilo/reasons.club.git
+git clone git@github.com:PopulateTools/reasons.club.git
 cd reasons.club
 bundle install
 cp config/secrets.yml.example config/secrets.yml
 cp config/database.yml.example config/database.yml
-rake db:setup
+bin/rails db:setup
 ```
 
 Then copy & paste the result of 
 ````
-rake secret
+bin/rails secret
 ```
 To lines 14 and 18 of /config/secrets.yml
 
