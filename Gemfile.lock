@@ -61,7 +61,7 @@ GEM
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     concurrent-ruby (1.0.5)
-    crass (1.0.3)
+    crass (1.0.6)
     database_cleaner (1.6.2)
     devise (4.4.0)
       bcrypt (~> 3.0)
@@ -101,7 +101,7 @@ GEM
       turbolinks
     launchy (2.4.3)
       addressable (~> 2.3)
-    loofah (2.1.1)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
